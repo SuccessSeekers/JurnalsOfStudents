@@ -5,9 +5,9 @@
     <projectFile profileName="IIS Express">WebAPI/WebAPI.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aaabd197-24ba-4ddd-b825-1b51add124f8" name="Changes" comment="Storage broker referenced to main project">
-      <change afterPath="$PROJECT_DIR$/StorageBroker/Models/Group.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageBroker/StorageBroker.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/StorageBroker.csproj" afterDir="false" />
+    <list default="true" id="aaabd197-24ba-4ddd-b825-1b51add124f8" name="Changes" comment="Group Model created">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Backend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageBroker/Models/Group.cs" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/Models/Group.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +79,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1671273410384</updated>
-      <workItem from="1671273416701" duration="1782000" />
+      <workItem from="1671273416701" duration="2996000" />
     </task>
     <task id="LOCAL-00001" summary="Project Initialized">
       <created>1671273435653</created>
@@ -116,7 +116,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671278267064</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Group Model created">
+      <created>1671278592285</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1671278592285</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -155,6 +162,7 @@
     <MESSAGE value="Created StorageBroker layer" />
     <MESSAGE value="Recreated StorageBroker layer" />
     <MESSAGE value="Storage broker referenced to main project" />
-    <option name="LAST_COMMIT_MESSAGE" value="Storage broker referenced to main project" />
+    <MESSAGE value="Group Model created" />
+    <option name="LAST_COMMIT_MESSAGE" value="Group Model created" />
   </component>
 </project>
