@@ -1,0 +1,26 @@
+Index: WebAPI/obj/Debug/net6.0/WebAPI.GeneratedMSBuildEditorConfig.editorconfig
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>is_global = true\r\nbuild_property.TargetFramework = net6.0\r\nbuild_property.TargetPlatformMinVersion = \r\nbuild_property.UsingMicrosoftNETSdkWeb = true\r\nbuild_property.ProjectTypeGuids = \r\nbuild_property.InvariantGlobalization = \r\nbuild_property.PlatformNeutralAssembly = \r\nbuild_property.EnforceExtendedAnalyzerRules = \r\nbuild_property._SupportedPlatformList = Linux,macOS,Windows\r\nbuild_property.RootNamespace = WebAPI\r\nbuild_property.RootNamespace = WebAPI\r\nbuild_property.ProjectDir = C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\WebAPI\\\r\nbuild_property.RazorLangVersion = 6.0\r\nbuild_property.SupportLocalizedComponentNames = \r\nbuild_property.GenerateRazorMetadataSourceChecksumAttributes = \r\nbuild_property.MSBuildProjectDirectory = C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\WebAPI\r\nbuild_property._RazorSourceGeneratorDebug = \r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/WebAPI/obj/Debug/net6.0/WebAPI.GeneratedMSBuildEditorConfig.editorconfig b/WebAPI/obj/Debug/net6.0/WebAPI.GeneratedMSBuildEditorConfig.editorconfig
+--- a/WebAPI/obj/Debug/net6.0/WebAPI.GeneratedMSBuildEditorConfig.editorconfig	(revision bdbe97b8c5f55958a08f7953d0bd2f6d382865e0)
++++ b/WebAPI/obj/Debug/net6.0/WebAPI.GeneratedMSBuildEditorConfig.editorconfig	(date 1671295208756)
+@@ -5,13 +5,12 @@
+ build_property.ProjectTypeGuids = 
+ build_property.InvariantGlobalization = 
+ build_property.PlatformNeutralAssembly = 
+-build_property.EnforceExtendedAnalyzerRules = 
+ build_property._SupportedPlatformList = Linux,macOS,Windows
+ build_property.RootNamespace = WebAPI
+ build_property.RootNamespace = WebAPI
+-build_property.ProjectDir = C:\Users\elchi\Source\Repos\JurnalsOfStudents\Backend\WebAPI\
++build_property.ProjectDir = C:\Users\Abdumannon-PC\Desktop\JurnalsOfStudents\Backend\WebAPI\
+ build_property.RazorLangVersion = 6.0
+ build_property.SupportLocalizedComponentNames = 
+ build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+-build_property.MSBuildProjectDirectory = C:\Users\elchi\Source\Repos\JurnalsOfStudents\Backend\WebAPI
++build_property.MSBuildProjectDirectory = C:\Users\Abdumannon-PC\Desktop\JurnalsOfStudents\Backend\WebAPI
+ build_property._RazorSourceGeneratorDebug = 
