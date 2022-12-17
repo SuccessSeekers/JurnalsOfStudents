@@ -5,11 +5,21 @@
     <projectFile profileName="IIS Express">WebAPI/WebAPI.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aaabd197-24ba-4ddd-b825-1b51add124f8" name="Changes" comment="Recreated StorageBroker layer" />
+    <list default="true" id="aaabd197-24ba-4ddd-b825-1b51add124f8" name="Changes" comment="Group Model created">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Backend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageBroker/Models/Group.cs" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/Models/Group.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="main" />
+      </map>
+    </option>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
@@ -69,7 +79,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1671273410384</updated>
-      <workItem from="1671273416701" duration="1416000" />
+      <workItem from="1671273416701" duration="2996000" />
     </task>
     <task id="LOCAL-00001" summary="Project Initialized">
       <created>1671273435653</created>
@@ -99,7 +109,21 @@
       <option name="project" value="LOCAL" />
       <updated>1671278151577</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Storage broker referenced to main project">
+      <created>1671278267064</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1671278267064</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Group Model created">
+      <created>1671278592285</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1671278592285</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -113,7 +137,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="Abdumannon" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -125,6 +161,8 @@
     <MESSAGE value="Project fixed for developing" />
     <MESSAGE value="Created StorageBroker layer" />
     <MESSAGE value="Recreated StorageBroker layer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Recreated StorageBroker layer" />
+    <MESSAGE value="Storage broker referenced to main project" />
+    <MESSAGE value="Group Model created" />
+    <option name="LAST_COMMIT_MESSAGE" value="Group Model created" />
   </component>
 </project>
