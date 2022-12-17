@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\elchi\\OneDrive\\Desktop\\hackaton\\Backend\\StorageBroker\\StorageBroker.csproj": {}
+    "C:\\Users\\Abdumannon-PC\\Desktop\\JurnalsOfStudents\\Backend\\StorageBroker\\StorageBroker.csproj": {}
   },
   "projects": {
-    "C:\\Users\\elchi\\OneDrive\\Desktop\\hackaton\\Backend\\StorageBroker\\StorageBroker.csproj": {
+    "C:\\Users\\Abdumannon-PC\\Desktop\\JurnalsOfStudents\\Backend\\StorageBroker\\StorageBroker.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\elchi\\OneDrive\\Desktop\\hackaton\\Backend\\StorageBroker\\StorageBroker.csproj",
+        "projectUniqueName": "C:\\Users\\Abdumannon-PC\\Desktop\\JurnalsOfStudents\\Backend\\StorageBroker\\StorageBroker.csproj",
         "projectName": "StorageBroker",
-        "projectPath": "C:\\Users\\elchi\\OneDrive\\Desktop\\hackaton\\Backend\\StorageBroker\\StorageBroker.csproj",
-        "packagesPath": "C:\\Users\\elchi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\elchi\\OneDrive\\Desktop\\hackaton\\Backend\\StorageBroker\\obj\\",
+        "projectPath": "C:\\Users\\Abdumannon-PC\\Desktop\\JurnalsOfStudents\\Backend\\StorageBroker\\StorageBroker.csproj",
+        "packagesPath": "C:\\Users\\Abdumannon-PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Abdumannon-PC\\Desktop\\JurnalsOfStudents\\Backend\\StorageBroker\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\elchi\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Abdumannon-PC\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -61,7 +59,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

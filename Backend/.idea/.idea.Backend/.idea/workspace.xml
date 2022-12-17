@@ -5,7 +5,111 @@
     <projectFile profileName="IIS Express">WebAPI/WebAPI.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aaabd197-24ba-4ddd-b825-1b51add124f8" name="Changes" comment="changed StorageBroker.Model.Group and created Enum of StorageBroker.Model.GroupStatus" />
+    <list default="true" id="aaabd197-24ba-4ddd-b825-1b51add124f8" name="Changes" comment="Merge conflict fixed up on StorageBroker.Model.AttendanceLog">
+      <change afterPath="$PROJECT_DIR$/LoggerService/ILogManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LoggerService/LogManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LoggerService/LoggerService.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LoggerService/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LoggerService/obj/Debug/net6.0/LoggerService.AssemblyInfo.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LoggerService/obj/Debug/net6.0/LoggerService.AssemblyInfoInputs.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LoggerService/obj/Debug/net6.0/LoggerService.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LoggerService/obj/Debug/net6.0/LoggerService.GlobalUsings.g.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LoggerService/obj/Debug/net6.0/LoggerService.assets.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LoggerService/obj/Debug/net6.0/LoggerService.csproj.AssemblyReference.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LoggerService/obj/LoggerService.csproj.nuget.dgspec.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LoggerService/obj/LoggerService.csproj.nuget.g.props" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LoggerService/obj/LoggerService.csproj.nuget.g.targets" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LoggerService/obj/project.assets.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LoggerService/obj/project.nuget.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LoggerService/obj/project.packagespec.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LoggerService/obj/rider.project.restore.info" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LoggerServiceTest/LoggerServiceTest.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LoggerServiceTest/UnitTest1.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LoggerServiceTest/Usings.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LoggerServiceTest/bin/Debug/net6.0/CoverletSourceRootsMapping" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LoggerServiceTest/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LoggerServiceTest/obj/Debug/net6.0/LoggerServiceTest.AssemblyInfo.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LoggerServiceTest/obj/Debug/net6.0/LoggerServiceTest.AssemblyInfoInputs.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LoggerServiceTest/obj/Debug/net6.0/LoggerServiceTest.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LoggerServiceTest/obj/Debug/net6.0/LoggerServiceTest.GlobalUsings.g.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LoggerServiceTest/obj/Debug/net6.0/LoggerServiceTest.assets.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LoggerServiceTest/obj/Debug/net6.0/LoggerServiceTest.csproj.AssemblyReference.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LoggerServiceTest/obj/LoggerServiceTest.csproj.nuget.dgspec.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LoggerServiceTest/obj/LoggerServiceTest.csproj.nuget.g.props" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LoggerServiceTest/obj/LoggerServiceTest.csproj.nuget.g.targets" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LoggerServiceTest/obj/project.assets.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LoggerServiceTest/obj/project.nuget.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LoggerServiceTest/obj/project.packagespec.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LoggerServiceTest/obj/rider.project.restore.info" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test.LoggerService/Test.LoggerService.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test.LoggerService/UnitTest1.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test.LoggerService/Usings.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test.LoggerService/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test.LoggerService/obj/Debug/net6.0/Test.LoggerService.AssemblyInfo.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test.LoggerService/obj/Debug/net6.0/Test.LoggerService.AssemblyInfoInputs.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test.LoggerService/obj/Debug/net6.0/Test.LoggerService.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test.LoggerService/obj/Debug/net6.0/Test.LoggerService.GlobalUsings.g.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test.LoggerService/obj/Debug/net6.0/Test.LoggerService.assets.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test.LoggerService/obj/Debug/net6.0/Test.LoggerService.csproj.AssemblyReference.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test.LoggerService/obj/Test.LoggerService.csproj.nuget.dgspec.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test.LoggerService/obj/Test.LoggerService.csproj.nuget.g.props" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test.LoggerService/obj/Test.LoggerService.csproj.nuget.g.targets" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test.LoggerService/obj/project.assets.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test.LoggerService/obj/project.nuget.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test.LoggerService/obj/project.packagespec.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test.LoggerService/obj/rider.project.restore.info" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/LogManagerTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/Tests.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/Usings.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/bin/Debug/net6.0/CoverletSourceRootsMapping" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/obj/Debug/net6.0/LoggerService.Test.AssemblyInfo.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/obj/Debug/net6.0/LoggerService.Test.AssemblyInfoInputs.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/obj/Debug/net6.0/LoggerService.Test.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/obj/Debug/net6.0/LoggerService.Test.GlobalUsings.g.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/obj/Debug/net6.0/LoggerService.Test.assets.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/obj/Debug/net6.0/LoggerService.Test.csproj.AssemblyReference.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/obj/Debug/net6.0/Tests.AssemblyInfo.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/obj/Debug/net6.0/Tests.AssemblyInfoInputs.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/obj/Debug/net6.0/Tests.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/obj/Debug/net6.0/Tests.GlobalUsings.g.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/obj/Debug/net6.0/Tests.assets.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/obj/Debug/net6.0/Tests.csproj.AssemblyReference.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/obj/LoggerService.Test.csproj.nuget.dgspec.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/obj/LoggerService.Test.csproj.nuget.g.props" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/obj/LoggerService.Test.csproj.nuget.g.targets" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/obj/Tests.csproj.nuget.dgspec.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/obj/Tests.csproj.nuget.g.props" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/obj/Tests.csproj.nuget.g.targets" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/obj/project.assets.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/obj/project.nuget.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/obj/project.packagespec.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Backend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/Backend/FileContentIndex/48463216-8c61-4c88-962c-3a95d0c24c35.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/Backend/FileContentIndex/aa8676ce-e11c-47ba-8a3b-a6b0d752816e.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/Backend/FileContentIndex/c4cbcfd6-e973-4085-ba27-ff0a4bb12504.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Backend.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageBroker/Models/Teacher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/Models/Teacher.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/StorageBroker.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/StorageBroker.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/StorageBroker.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/StorageBroker.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageBroker/obj/StorageBroker.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/obj/StorageBroker.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageBroker/obj/StorageBroker.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/obj/StorageBroker.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageBroker/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageBroker/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageBroker/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAPI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAPI/WebAPI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/WebAPI.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAPI/obj/WebAPI.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/WebAPI.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAPI/obj/WebAPI.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/WebAPI.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAPI/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAPI/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAPI/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAPI/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/rider.project.restore.info" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,19 +123,24 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Users/Abdumannon-PC/Desktop/JurnalsOfStudents/Backend/StorageBroker/Models/Group.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Test.LoggerService/UnitTest1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/LoggerServiceTest/UnitTest1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/LoggerServiceTest/Usings.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2J2PrupFnHHhL39kFHbQQt9Dgyg" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -135,7 +244,7 @@
     <option name="version" value="3" />
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -148,7 +257,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="Abdumannon" />
+                        <option value="Logger_Service" />
                       </list>
                     </value>
                   </entry>
@@ -161,6 +270,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Project Initialized" />
     <MESSAGE value="Project fixed for developing" />
