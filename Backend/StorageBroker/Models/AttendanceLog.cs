@@ -1,5 +1,4 @@
-﻿
-namespace StorageBroker.Models
+﻿namespace StorageBroker.Models
 {
     public class AttendanceLog
     {
@@ -7,12 +6,5 @@ namespace StorageBroker.Models
         public int GroupId { get; set; }
         public int StudentId { get; set; }
         public int Mark { get; set; }
-        public TypeOfGrade Grade { get; set; }
-    }
-    public enum TypeOfGrade
-    {
-        DailyGrade,
-        HomeworkGrade,
-        ExamGrade
     }
 }
