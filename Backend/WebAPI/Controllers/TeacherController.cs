@@ -10,7 +10,7 @@ namespace WebAPI.Controllers
 
         public TeacherController(IRepositoryManager repositoryManager)
         {
-            this.RepositoryManager = repositoryManager;
+            thi`s.RepositoryManager = repositoryManager;
         }
 
         [HttpGet]
@@ -21,7 +21,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("{TeacherId:int}")]
-        [Produces(nameof(Teacher))]
+        [Produces(typeof(Teacher))]
         public IActionResult GetTeacherById(int id)
         {
             IQueryable<Teacher> teacher = RepositoryManager.TeacherRepository
@@ -34,21 +34,21 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost]
-        [Produces(nameof(Teacher))]
-        public void CreateTeacher([FromBody]Teacher teacher)
+        [Produces(typeof(Teacher))]
+        public void CreateTeacher([FromBody] Teacher teacher)
         {
             RepositoryManager.TeacherRepository.Create(teacher);
         }
 
         [HttpPut]
-        [Produces(nameof(Teacher))]
-        public void UpdateTeacher([FromBody]Teacher teacher)
+        [Produces(typeof(Teacher))]
+        public void UpdateTeacher([FromBody] Teacher teacher)
         {
             RepositoryManager.TeacherRepository.Update(teacher);
         }
 
         [HttpDelete]
-        [Produces(nameof(Teacher))]
+        [Produces(typeof(Teacher))]
         public void DeleteTeacherById(int id)
         {
             var oldTeacher = RepositoryManager.TeacherRepository.GetAll()
@@ -58,6 +58,5 @@ namespace WebAPI.Controllers
 
             RepositoryManager.TeacherRepository.Delete(oldTeacher);
         }
-
     }
 }
