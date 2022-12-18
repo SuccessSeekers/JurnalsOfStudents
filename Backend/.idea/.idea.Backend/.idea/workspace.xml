@@ -5,7 +5,12 @@
     <projectFile profileName="IIS Express">WebAPI/WebAPI.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aaabd197-24ba-4ddd-b825-1b51add124f8" name="Changes" comment="Solved conflict on merging" />
+    <list default="true" id="aaabd197-24ba-4ddd-b825-1b51add124f8" name="Changes" comment="Merged Abdumannon to Main">
+      <change afterPath="$PROJECT_DIR$/StorageBroker/Dto/GroupDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Backend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageBroker/StorageBroker.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/StorageBroker.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAPI/Controllers/GroupController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/Controllers/GroupController.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,7 +19,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="main" />
+        <entry key="$PROJECT_DIR$/.." value="Abdumannon" />
       </map>
     </option>
   </component>
@@ -226,7 +231,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671358533825</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Merged Abdumannon to Main">
+      <created>1671358807667</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1671358807667</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -294,6 +306,7 @@
     <MESSAGE value="some changes on TeacherController" />
     <MESSAGE value="Created DTO for ResponseDt" />
     <MESSAGE value="Solved conflict on merging" />
-    <option name="LAST_COMMIT_MESSAGE" value="Solved conflict on merging" />
+    <MESSAGE value="Merged Abdumannon to Main" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merged Abdumannon to Main" />
   </component>
 </project>

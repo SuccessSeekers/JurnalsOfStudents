@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using StorageBroker.Dto;
 using StorageBroker.Models;
 using StorageBroker.RepositoryManager;
+using WebAPI.Dto;
 
 namespace WebAPI.Controllers
 {
@@ -16,23 +18,36 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet]
-        [Produces(typeof(Group))]
-        public IActionResult GetGroups()
+        [Produces(typeof(ResponseDto<GroupDto>))]
+        public ResponseDto<GroupDto> GetGroups()
         {
-            return Ok(repositoryManager.GroupRepository.GetAll());
+            var groups = repositoryManager.GroupRepository.GetAll().Select(group => new GroupDto()
+            {
+                Name = group.Name,
+                Status = group.Status,
+                Students = group.Students,
+                Teachers = group.Teachers,
+                CountOfStudents = group.CountOfStudents
+            });
+            return new ResponseDto<GroupDto>(groups);
         }
 
-        [HttpGet("{GroupId:int}")]
-        [Produces(typeof(Group))]
-        public IActionResult GetGroupById(int id)
+        [HttpGet("{id:int}")]
+        [Produces(typeof(ResponseDto<GroupDto>))]
+        public ResponseDto<GroupDto> GetGroupById(int id)
         {
-            IQueryable<Group> group = repositoryManager.GroupRepository
-                .GetAllWithCondition(group => group.GroupId == id);
+            var groups = repositoryManager.GroupRepository
+                .GetAllWithCondition(group => group.GroupId == id)
+                .Select(group => new GroupDto()
+                {
+                    Name = group.Name,
+                    Status = group.Status,
+                    Students = group.Students,
+                    Teachers = group.Teachers,
+                    CountOfStudents = group.CountOfStudents
+                });
 
-            if (group is null)
-                throw new Exception("Group not found");
-
-            return Ok(group);
+            return new ResponseDto<GroupDto>(400, new Exception("Wrong id number"));
         }
 
         [HttpPost]
