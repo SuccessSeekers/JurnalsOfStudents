@@ -5,55 +5,7 @@
     <projectFile profileName="IIS Express">WebAPI/WebAPI.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aaabd197-24ba-4ddd-b825-1b51add124f8" name="Changes" comment="Added gradesLogRepository to RepositoryManager.cs">
-      <change beforePath="$PROJECT_DIR$/LoggerService/obj/Debug/net6.0/LoggerService.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/LoggerService/obj/Debug/net6.0/LoggerService.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LoggerService/obj/Debug/net6.0/LoggerService.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/LoggerService/obj/Debug/net6.0/LoggerService.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LoggerService/obj/LoggerService.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/LoggerService/obj/LoggerService.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LoggerService/obj/LoggerService.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/LoggerService/obj/LoggerService.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LoggerService/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/LoggerService/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LoggerService/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/LoggerService/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LoggerService/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/LoggerService/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageBroker/bin/Debug/net6.0/StorageBroker.dll" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/bin/Debug/net6.0/StorageBroker.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageBroker/bin/Debug/net6.0/StorageBroker.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/bin/Debug/net6.0/StorageBroker.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/StorageBroker.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/StorageBroker.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/StorageBroker.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/StorageBroker.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/StorageBroker.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/StorageBroker.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/StorageBroker.dll" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/StorageBroker.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/StorageBroker.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/StorageBroker.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/ref/StorageBroker.dll" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/ref/StorageBroker.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/refint/StorageBroker.dll" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/refint/StorageBroker.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageBroker/obj/StorageBroker.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/obj/StorageBroker.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageBroker/obj/StorageBroker.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/obj/StorageBroker.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageBroker/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageBroker/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageBroker/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/bin/Debug/net6.0/CoverletSourceRootsMapping" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/bin/Debug/net6.0/CoverletSourceRootsMapping" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/obj/Debug/net6.0/Tests.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/Debug/net6.0/Tests.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/obj/Debug/net6.0/Tests.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/Debug/net6.0/Tests.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/obj/Tests.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/Tests.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/obj/Tests.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/Tests.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/StorageBroker.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/StorageBroker.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/StorageBroker.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/StorageBroker.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/WebAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/WebAPI.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/WebAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/WebAPI.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/ref/WebAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/ref/WebAPI.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/refint/WebAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/refint/WebAPI.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/obj/WebAPI.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/WebAPI.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/obj/WebAPI.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/WebAPI.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/obj/staticwebassets.pack.sentinel" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/staticwebassets.pack.sentinel" afterDir="false" />
-    </list>
+    <list default="true" id="aaabd197-24ba-4ddd-b825-1b51add124f8" name="Changes" comment="Bugs fixed on GradesLogController.cs" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -95,7 +47,6 @@
     <setting file="file://$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebAPI/appsettings.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Abdumannon-PC/Desktop/JurnalsOfStudents/Backend/StorageBroker/RepositoryManager/IRepositoryManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebAPI/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebAPI/appsettings.Development.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
@@ -316,14 +267,7 @@
       <option name="project" value="LOCAL" />
       <updated>1671364597164</updated>
     </task>
-    <task id="LOCAL-00023" summary="Added gradesLogRepository to RepositoryManager.cs">
-      <created>1671365066260</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1671365066260</updated>
-    </task>
-    <option name="localTasksCounter" value="24" />
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -394,7 +338,6 @@
     <MESSAGE value="Merged Abdumannon to Main" />
     <MESSAGE value="added async method to RepositoryBase.cs" />
     <MESSAGE value="Bugs fixed on GradesLogController.cs" />
-    <MESSAGE value="Added gradesLogRepository to RepositoryManager.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added gradesLogRepository to RepositoryManager.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bugs fixed on GradesLogController.cs" />
   </component>
 </project>
