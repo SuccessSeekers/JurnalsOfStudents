@@ -39,7 +39,7 @@ public class StudentController : ControllerBase
 
     [HttpPost]
     [Produces(typeof(ResponseDto<Student>))]
-    public async Task CreateStudent([FromBody] CreateStudentDto student)
+    public async Task CreateStudent([FromBody] Student student)
     {
         var newStudent = new Student();
         newStudent.Name = student.Name;
@@ -48,7 +48,7 @@ public class StudentController : ControllerBase
 
         await repositoryManager.StudentRepository.CreateAsync(newStudent);
 
-         repositoryManager.Save();
+        repositoryManager.Save();
     }
 
     [HttpPut]

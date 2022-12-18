@@ -1,0 +1,19 @@
+﻿<changelist name="Uncommitted_changes_before_Update_at_12_18_2022_5_34_PM_[Changes]1" date="1671366878657" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/.idea.Backend/.idea/shelf/Uncommitted_changes_before_Update_at_12_18_2022_5_34_PM_[Changes]1/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 12/18/2022 5:34 PM [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="WebAPI/obj/Debug/net6.0/WebAPI.csproj.AssemblyReference.cache" />
+    <option name="AFTER_PATH" value="WebAPI/obj/Debug/net6.0/WebAPI.csproj.AssemblyReference.cache" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.Backend/.idea/shelf/Uncommitted_changes_before_Update_at_12_18_2022_5_34_PM_[Changes]1/WebAPI.csproj.AssemblyReference.cache" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="WebAPI/obj/Debug/net6.0/WebAPI.pdb" />
+    <option name="AFTER_PATH" value="WebAPI/obj/Debug/net6.0/WebAPI.pdb" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.Backend/.idea/shelf/Uncommitted_changes_before_Update_at_12_18_2022_5_34_PM_[Changes]1/WebAPI.pdb" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="WebAPI/bin/Debug/net6.0/WebAPI.dll" />
+    <option name="AFTER_PATH" value="WebAPI/bin/Debug/net6.0/WebAPI.dll" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.Backend/.idea/shelf/Uncommitted_changes_before_Update_at_12_18_2022_5_34_PM_[Changes]1/WebAPI.dll" />
+  </binary>
+</changelist>
