@@ -5,14 +5,10 @@
       "NLog/5.1.0": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/NLog.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/NLog.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/NLog.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/NLog.dll": {}
         }
       }
     }
@@ -49,26 +45,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\99890\\.nuget\\packages\\": {}
+    "C:\\Users\\Abdumannon-PC\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\99890\\Desktop\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj",
+      "projectUniqueName": "C:\\Users\\Abdumannon-PC\\Desktop\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj",
       "projectName": "LoggerService",
-      "projectPath": "C:\\Users\\99890\\Desktop\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj",
-      "packagesPath": "C:\\Users\\99890\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\99890\\Desktop\\JurnalsOfStudents\\Backend\\LoggerService\\obj\\",
+      "projectPath": "C:\\Users\\Abdumannon-PC\\Desktop\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj",
+      "packagesPath": "C:\\Users\\Abdumannon-PC\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Abdumannon-PC\\Desktop\\JurnalsOfStudents\\Backend\\LoggerService\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\99890\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Abdumannon-PC\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -108,7 +102,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }
