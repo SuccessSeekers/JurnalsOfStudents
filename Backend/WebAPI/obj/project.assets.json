@@ -2262,19 +2262,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\elchi\\.nuget\\packages\\": {}
+    "C:\\Users\\99890\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\WebAPI\\WebAPI.csproj",
+      "projectUniqueName": "C:\\Users\\99890\\Desktop\\JurnalsOfStudents\\Backend\\WebAPI\\WebAPI.csproj",
       "projectName": "WebAPI",
-      "projectPath": "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\WebAPI\\WebAPI.csproj",
-      "packagesPath": "C:\\Users\\elchi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\WebAPI\\obj\\",
+      "projectPath": "C:\\Users\\99890\\Desktop\\JurnalsOfStudents\\Backend\\WebAPI\\WebAPI.csproj",
+      "packagesPath": "C:\\Users\\99890\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\99890\\Desktop\\JurnalsOfStudents\\Backend\\WebAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\elchi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\99890\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2288,11 +2288,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj": {
-              "projectPath": "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj"
+            "C:\\Users\\99890\\Desktop\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj": {
+              "projectPath": "C:\\Users\\99890\\Desktop\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj"
             },
-            "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\StorageBroker\\StorageBroker.csproj": {
-              "projectPath": "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\StorageBroker\\StorageBroker.csproj"
+            "C:\\Users\\99890\\Desktop\\JurnalsOfStudents\\Backend\\StorageBroker\\StorageBroker.csproj": {
+              "projectPath": "C:\\Users\\99890\\Desktop\\JurnalsOfStudents\\Backend\\StorageBroker\\StorageBroker.csproj"
             }
           }
         }

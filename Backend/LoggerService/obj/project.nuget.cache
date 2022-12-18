@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Gcqyh5vOy1/w0+WUHOQj/oyv7RNutAJY39KBuk0Il8PVsf71uSMojYiW3mAFogXAPnWyIpESSsx3PaFBOvfHIg==",
+  "dgSpecHash": "82Cp9k2rS8r2++3B6HN3V2v68CTHpChq/y1BVBVit4ZCcYEwilPmTkt8O3RXKcfArFSJjNumtflBzPeOksyMbg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj",
+  "projectFilePath": "C:\\Users\\99890\\Desktop\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\elchi\\.nuget\\packages\\nlog\\5.1.0\\nlog.5.1.0.nupkg.sha512"
+    "C:\\Users\\99890\\.nuget\\packages\\nlog\\5.1.0\\nlog.5.1.0.nupkg.sha512"
   ],
   "logs": []
 }
