@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using StorageBroker.Models;
 using StorageBroker.RepositoryManager;
+using StorageBroker.Dto;
 using WebAPI.Dto;
 
 namespace WebAPI.Controllers
@@ -26,34 +27,44 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("{TeacherId:int}")]
-        [Produces(typeof(Teacher))]
-        public IActionResult GetTeacherById(int id)
+        [Produces(typeof(ResponseDto<Teacher>))]
+        public ResponseDto<Teacher> GetTeacherById(int id)
         {
-            IQueryable<Teacher> teacher = RepositoryManager.TeacherRepository
-                .GetAllWithCondition(teacher => teacher.TeacherId == id);
+            ResponseDto<Teacher> teacher =new ResponseDto<Teacher>(RepositoryManager.TeacherRepository
+                .GetAllWithCondition(teacher => teacher.TeacherId == id));
 
             if (teacher is null)
                 throw new Exception("Teacher not found");
 
-            return Ok(teacher);
+            return teacher;
         }
 
         [HttpPost]
-        [Produces(typeof(Teacher))]
-        public void CreateTeacher([FromBody] Teacher teacher)
+        [Produces(typeof(ResponseDto<Teacher>))]
+        public void CreateTeacher([FromBody] CreateTeacherDto teacher)
         {
-            RepositoryManager.TeacherRepository.Create(teacher);
+            var newTeacher = new Teacher();
+            newTeacher.Name = teacher.Name;
+
+            RepositoryManager.TeacherRepository.Create(newTeacher);
+
+            RepositoryManager.Save();
         }
 
         [HttpPut]
-        [Produces(typeof(Teacher))]
-        public void UpdateTeacher([FromBody] Teacher teacher)
+        [Produces(typeof(ResponseDto<Teacher>))]
+        public void UpdateTeacher([FromBody] UpdateTeacherDto teacher)
         {
-            RepositoryManager.TeacherRepository.Update(teacher);
+            var newTeacher = new Teacher();
+            newTeacher.Name = teacher.Name;
+
+            RepositoryManager.TeacherRepository.Update(newTeacher);
+
+            RepositoryManager.Save();
         }
 
         [HttpDelete]
-        [Produces(typeof(Teacher))]
+        [Produces(typeof(ResponseDto<Teacher>))]
         public void DeleteTeacherById(int id)
         {
             var oldTeacher = RepositoryManager.TeacherRepository.GetAll()
@@ -62,6 +73,8 @@ namespace WebAPI.Controllers
                 throw new Exception("Teacher not found");
 
             RepositoryManager.TeacherRepository.Delete(oldTeacher);
+
+            RepositoryManager.Save();
         }
     }
 }
