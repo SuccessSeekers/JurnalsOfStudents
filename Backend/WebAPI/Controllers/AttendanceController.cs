@@ -27,95 +27,133 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("{AttendanceLogId}")]
-        [Produces(typeof(ResponseDto<AttendanceLog>))]
-        public ResponseDto<AttendanceLog> GetAttendanceLogById(int id)
+        [Produces(typeof(ResponseDto<AttendanceDto>))]
+        public ResponseDto<AttendanceDto> GetAttendanceLogById(int id)
         {
-            ResponseDto<AttendanceLog> attendance = new ResponseDto<AttendanceLog>(repositoryManager
-                .AttendanceLogRepository
-                .GetAllWithCondition(attendance => attendance.AttendanceLogId == id));
+           var attendance = repositoryManager.AttendanceLogRepository
+                .GetAll()
+                .FirstOrDefault(attendance => attendance.AttendanceLogId == id);
 
             if (attendance is null)
-                throw new Exception("Attendance not found");
+                return new ResponseDto<AttendanceDto>(404, new Exception("Attendance not found"));
+            var attendanceDto = new AttendanceDto()
+            {
+                Date = attendance.Date,
+                LateTime = attendance.LateTime,
+                Status = attendance.Status,
+                StudentId = attendance.StudentId,
+                GroupId = attendance.GroupId
+            };
 
-            return attendance;
+            return new ResponseDto<AttendanceDto>(attendanceDto);
         }
 
         [HttpPost]
-        [Produces(typeof(ResponseDto<AttendanceLog>))]
-        public async Task<ResponseDto<AttendanceLog>> CreateAttendanceLog(
+        [Produces(typeof(ResponseDto<AttendanceDto>))]
+        public async Task<ResponseDto<AttendanceDto>> CreateAttendanceLog(
             [FromBody] CreateAttendanceLogDto attendanceLog)
         {
-            var currentGroup = repositoryManager.GroupRepository
-                .GetAll().FirstOrDefault(group => group.GroupId == attendanceLog.GroupId);
+            var student = repositoryManager.StudentRepository.GetAll()
+                .FirstOrDefault(student => student.StudentId == attendanceLog.StudentId);
+            var group = repositoryManager.GroupRepository.GetAll()
+                .FirstOrDefault(group => group.GroupId == attendanceLog.GroupId);
 
-            if (currentGroup is null)
-                throw new Exception("Group not found");
+            if (student is null)
+                return new ResponseDto<AttendanceDto>(404, new Exception("Student not found"));
+            if (group is null)
+                return new ResponseDto<AttendanceDto>(404, new Exception("Group not found"));
 
-            var currentStudent = repositoryManager.StudentRepository
-                .GetAll().FirstOrDefault(student => student.StudentId == attendanceLog.StudentId);
+            Group studentGroup = null;
 
-            if (currentStudent is null)
-                throw new Exception("Student not found");
+            try
+            {
+                studentGroup = student.StudentGroups.FirstOrDefault(gr => gr.GroupId == group.GroupId);
+            }
+            catch (Exception ex)
+            {
+                return new ResponseDto<AttendanceDto>(404, new Exception("This student does not exist in the group"));
+            }
 
-            var newAttendance = new AttendanceLog();
-            newAttendance.Date = attendanceLog.Date;
-            newAttendance.LateTime = attendanceLog.LateTime;
-            newAttendance.Status = attendanceLog.Status;
-            newAttendance.StudentId = attendanceLog.StudentId;
-            newAttendance.GroupId = attendanceLog.GroupId;
-            newAttendance.Group = currentGroup;
-            newAttendance.Student = currentStudent;
+            if (studentGroup is null)
+                return new ResponseDto<AttendanceDto>(404, new Exception("This student does not exist in the group"));
 
-            var createdAttendanceLog = repositoryManager.AttendanceLogRepository.Create(newAttendance);
+            var attendanceDto = new AttendanceDto()
+            {
+                Date = attendanceLog.Date,
+                LateTime = attendanceLog.LateTime,
+                Status = attendanceLog.Status,
+                StudentId = attendanceLog.StudentId,
+                GroupId = attendanceLog.GroupId
+            };
+            var ettendance = new AttendanceLog()
+            {
+                Date = attendanceDto.Date,
+                LateTime = attendanceDto.LateTime,
+                Status = attendanceDto.Status,
+                Student = student,
+                Group = group,
+                StudentId = attendanceLog.StudentId,
+                GroupId = attendanceLog.GroupId
+            };
+
+            var createdAttendanceLog = await repositoryManager.AttendanceLogRepository.CreateAsync(ettendance);
             await repositoryManager.SaveAsync();
 
-            return new ResponseDto<AttendanceLog>(createdAttendanceLog);
+            return new ResponseDto<AttendanceDto>(attendanceDto);
         }
 
         [HttpPut]
-        [Produces(typeof(ResponseDto<AttendanceLog>))]
-        public async Task<ResponseDto<AttendanceLog>> UpdateAttendance([FromBody] UpdateAttendanceLogDto attendanceLog)
+        [Produces(typeof(ResponseDto<AttendanceDto>))]
+        public async Task<ResponseDto<AttendanceDto>> UpdateAttendance([FromBody] UpdateAttendanceLogDto attendanceLog)
         {
-            var currentGroup = repositoryManager.GroupRepository
-                .GetAll().FirstOrDefault(group => group.GroupId == attendanceLog.GroupId);
+            var currentAttendance = repositoryManager.AttendanceLogRepository
+                .GetAll().FirstOrDefault(attendance => attendance.GroupId == attendanceLog.GroupId && attendance.StudentId == attendanceLog.StudentId);
 
-            if (currentGroup is null)
-                throw new Exception("Group not found");
+            if (currentAttendance is null)
+                return new ResponseDto<AttendanceDto>(404, new Exception("Attendance not found"));
 
-            var currentStudent = repositoryManager.StudentRepository
-                .GetAll().FirstOrDefault(student => student.StudentId == attendanceLog.StudentId);
+            currentAttendance.Status = attendanceLog.Status;
+            currentAttendance.Date = attendanceLog.Date;
+            currentAttendance.LateTime = attendanceLog.LateTime;
 
-            if (currentStudent is null)
-                throw new Exception("Student not found");
-
-            var newAttendance = new AttendanceLog();
-            newAttendance.Date = attendanceLog.Date;
-            newAttendance.LateTime = attendanceLog.LateTime;
-            newAttendance.Status = attendanceLog.Status;
-            newAttendance.StudentId = attendanceLog.StudentId;
-            newAttendance.GroupId = attendanceLog.GroupId;
-            newAttendance.Group = currentGroup;
-            newAttendance.Student = currentStudent;
-
-            var updatedAttendanceLog = repositoryManager.AttendanceLogRepository.Update(newAttendance);
+            repositoryManager.AttendanceLogRepository.Update(currentAttendance);
             await repositoryManager.SaveAsync();
 
-            return new ResponseDto<AttendanceLog>(updatedAttendanceLog);
+            var updateAttendance = new AttendanceDto()
+            {
+                Date = currentAttendance.Date,
+                LateTime = currentAttendance.LateTime,
+                Status = currentAttendance.Status,
+                StudentId = currentAttendance.StudentId,
+                GroupId = currentAttendance.GroupId
+            };
+
+            return new ResponseDto<AttendanceDto>(updateAttendance);
         }
 
         [HttpDelete]
-        [Produces(typeof(ResponseDto<AttendanceLog>))]
-        public async Task<ResponseDto<AttendanceLog>> DeleteAttendanceLogById(int id)
+        [Produces(typeof(ResponseDto<AttendanceDto>))]
+        public async Task<ResponseDto<AttendanceDto>> DeleteAttendanceLogById(int id)
         {
             var oldAttendanceLog = repositoryManager.AttendanceLogRepository.GetAll()
                 .FirstOrDefault(attendance => attendance.AttendanceLogId == id);
 
             if (oldAttendanceLog is null)
-                throw new Exception("AttendanceLog not found");
+                return new ResponseDto<AttendanceDto>(404, new Exception("Attendance not found"));
 
             var deleledAttendanceLog = repositoryManager.AttendanceLogRepository.Delete(oldAttendanceLog);
             await repositoryManager.SaveAsync();
-            return new ResponseDto<AttendanceLog>(deleledAttendanceLog);
+
+            var attendanceDto = new AttendanceDto()
+            {
+                Date = oldAttendanceLog.Date,
+                Status = oldAttendanceLog.Status,
+                StudentId = oldAttendanceLog.StudentId,
+                GroupId = oldAttendanceLog.GroupId,
+                LateTime = oldAttendanceLog.LateTime
+            };
+
+            return new ResponseDto<AttendanceDto>(attendanceDto);
         }
     }
 }
