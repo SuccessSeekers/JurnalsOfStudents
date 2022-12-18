@@ -1,0 +1,132 @@
+Index: LoggerService/obj/rider.project.restore.info
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>16713626635483345
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/LoggerService/obj/rider.project.restore.info b/LoggerService/obj/rider.project.restore.info
+--- a/LoggerService/obj/rider.project.restore.info	
++++ b/LoggerService/obj/rider.project.restore.info	
+@@ -1,1 +1,1 @@
+-16713626635483345
+\ No newline at end of file
++16713636544328662
+\ No newline at end of file
+Index: StorageBroker/obj/rider.project.restore.info
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>16713626636131259
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/StorageBroker/obj/rider.project.restore.info b/StorageBroker/obj/rider.project.restore.info
+--- a/StorageBroker/obj/rider.project.restore.info	
++++ b/StorageBroker/obj/rider.project.restore.info	
+@@ -1,1 +1,1 @@
+-16713626636131259
+\ No newline at end of file
++16713636545065943
+\ No newline at end of file
+Index: WebAPI/obj/WebAPI.csproj.nuget.dgspec.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\r\n  \"format\": 1,\r\n  \"restore\": {\r\n    \"C:\\\\Users\\\\99890\\\\Desktop\\\\JurnalsOfStudents\\\\Backend\\\\WebAPI\\\\WebAPI.csproj\": {}\r\n  },\r\n  \"projects\": {\r\n    \"C:\\\\Users\\\\99890\\\\Desktop\\\\JurnalsOfStudents\\\\Backend\\\\LoggerService\\\\LoggerService.csproj\": {\r\n      \"version\": \"1.0.0\",\r\n      \"restore\": {\r\n        \"projectUniqueName\": \"C:\\\\Users\\\\99890\\\\Desktop\\\\JurnalsOfStudents\\\\Backend\\\\LoggerService\\\\LoggerService.csproj\",\r\n        \"projectName\": \"LoggerService\",\r\n        \"projectPath\": \"C:\\\\Users\\\\99890\\\\Desktop\\\\JurnalsOfStudents\\\\Backend\\\\LoggerService\\\\LoggerService.csproj\",\r\n        \"packagesPath\": \"C:\\\\Users\\\\99890\\\\.nuget\\\\packages\\\\\",\r\n        \"outputPath\": \"C:\\\\Users\\\\99890\\\\Desktop\\\\JurnalsOfStudents\\\\Backend\\\\LoggerService\\\\obj\\\\\",\r\n        \"projectStyle\": \"PackageReference\",\r\n        \"configFilePaths\": [\r\n          \"C:\\\\Users\\\\99890\\\\AppData\\\\Roaming\\\\NuGet\\\\NuGet.Config\",\r\n          \"C:\\\\Program Files (x86)\\\\NuGet\\\\Config\\\\Microsoft.VisualStudio.Offline.config\"\r\n        ],\r\n        \"originalTargetFrameworks\": [\r\n          \"net6.0\"\r\n        ],\r\n        \"sources\": {\r\n          \"C:\\\\Program Files (x86)\\\\Microsoft SDKs\\\\NuGetPackages\\\\\": {},\r\n          \"https://api.nuget.org/v3/index.json\": {}\r\n        },\r\n        \"frameworks\": {\r\n          \"net6.0\": {\r\n            \"targetAlias\": \"net6.0\",\r\n            \"projectReferences\": {}\r\n          }\r\n        },\r\n        \"warningProperties\": {\r\n          \"warnAsError\": [\r\n            \"NU1605\"\r\n          ]\r\n        }\r\n      },\r\n      \"frameworks\": {\r\n        \"net6.0\": {\r\n          \"targetAlias\": \"net6.0\",\r\n          \"dependencies\": {\r\n            \"NLog\": {\r\n              \"target\": \"Package\",\r\n              \"version\": \"[5.1.0, )\"\r\n            }\r\n          },\r\n          \"imports\": [\r\n            \"net461\",\r\n            \"net462\",\r\n            \"net47\",\r\n            \"net471\",\r\n            \"net472\",\r\n            \"net48\",\r\n            \"net481\"\r\n          ],\r\n          \"assetTargetFallback\": true,\r\n          \"warn\": true,\r\n          \"frameworkReferences\": {\r\n            \"Microsoft.NETCore.App\": {\r\n              \"privateAssets\": \"all\"\r\n            }\r\n          },\r\n          \"runtimeIdentifierGraphPath\": \"C:\\\\Program Files\\\\dotnet\\\\sdk\\\\7.0.101\\\\RuntimeIdentifierGraph.json\"\r\n        }\r\n      }\r\n    },\r\n    \"C:\\\\Users\\\\99890\\\\Desktop\\\\JurnalsOfStudents\\\\Backend\\\\StorageBroker\\\\StorageBroker.csproj\": {\r\n      \"version\": \"1.0.0\",\r\n      \"restore\": {\r\n        \"projectUniqueName\": \"C:\\\\Users\\\\99890\\\\Desktop\\\\JurnalsOfStudents\\\\Backend\\\\StorageBroker\\\\StorageBroker.csproj\",\r\n        \"projectName\": \"StorageBroker\",\r\n        \"projectPath\": \"C:\\\\Users\\\\99890\\\\Desktop\\\\JurnalsOfStudents\\\\Backend\\\\StorageBroker\\\\StorageBroker.csproj\",\r\n        \"packagesPath\": \"C:\\\\Users\\\\99890\\\\.nuget\\\\packages\\\\\",\r\n        \"outputPath\": \"C:\\\\Users\\\\99890\\\\Desktop\\\\JurnalsOfStudents\\\\Backend\\\\StorageBroker\\\\obj\\\\\",\r\n        \"projectStyle\": \"PackageReference\",\r\n        \"configFilePaths\": [\r\n          \"C:\\\\Users\\\\99890\\\\AppData\\\\Roaming\\\\NuGet\\\\NuGet.Config\",\r\n          \"C:\\\\Program Files (x86)\\\\NuGet\\\\Config\\\\Microsoft.VisualStudio.Offline.config\"\r\n        ],\r\n        \"originalTargetFrameworks\": [\r\n          \"net6.0\"\r\n        ],\r\n        \"sources\": {\r\n          \"C:\\\\Program Files (x86)\\\\Microsoft SDKs\\\\NuGetPackages\\\\\": {},\r\n          \"https://api.nuget.org/v3/index.json\": {}\r\n        },\r\n        \"frameworks\": {\r\n          \"net6.0\": {\r\n            \"targetAlias\": \"net6.0\",\r\n            \"projectReferences\": {}\r\n          }\r\n        },\r\n        \"warningProperties\": {\r\n          \"warnAsError\": [\r\n            \"NU1605\"\r\n          ]\r\n        }\r\n      },\r\n      \"frameworks\": {\r\n        \"net6.0\": {\r\n          \"targetAlias\": \"net6.0\",\r\n          \"dependencies\": {\r\n            \"Microsoft.EntityFrameworkCore.SqlServer\": {\r\n              \"target\": \"Package\",\r\n              \"version\": \"[6.0.12, )\"\r\n            }\r\n          },\r\n          \"imports\": [\r\n            \"net461\",\r\n            \"net462\",\r\n            \"net47\",\r\n            \"net471\",\r\n            \"net472\",\r\n            \"net48\",\r\n            \"net481\"\r\n          ],\r\n          \"assetTargetFallback\": true,\r\n          \"warn\": true,\r\n          \"frameworkReferences\": {\r\n            \"Microsoft.NETCore.App\": {\r\n              \"privateAssets\": \"all\"\r\n            }\r\n          },\r\n          \"runtimeIdentifierGraphPath\": \"C:\\\\Program Files\\\\dotnet\\\\sdk\\\\7.0.101\\\\RuntimeIdentifierGraph.json\"\r\n        }\r\n      }\r\n    },\r\n    \"C:\\\\Users\\\\99890\\\\Desktop\\\\JurnalsOfStudents\\\\Backend\\\\WebAPI\\\\WebAPI.csproj\": {\r\n      \"version\": \"1.0.0\",\r\n      \"restore\": {\r\n        \"projectUniqueName\": \"C:\\\\Users\\\\99890\\\\Desktop\\\\JurnalsOfStudents\\\\Backend\\\\WebAPI\\\\WebAPI.csproj\",\r\n        \"projectName\": \"WebAPI\",\r\n        \"projectPath\": \"C:\\\\Users\\\\99890\\\\Desktop\\\\JurnalsOfStudents\\\\Backend\\\\WebAPI\\\\WebAPI.csproj\",\r\n        \"packagesPath\": \"C:\\\\Users\\\\99890\\\\.nuget\\\\packages\\\\\",\r\n        \"outputPath\": \"C:\\\\Users\\\\99890\\\\Desktop\\\\JurnalsOfStudents\\\\Backend\\\\WebAPI\\\\obj\\\\\",\r\n        \"projectStyle\": \"PackageReference\",\r\n        \"configFilePaths\": [\r\n          \"C:\\\\Users\\\\99890\\\\AppData\\\\Roaming\\\\NuGet\\\\NuGet.Config\",\r\n          \"C:\\\\Program Files (x86)\\\\NuGet\\\\Config\\\\Microsoft.VisualStudio.Offline.config\"\r\n        ],\r\n        \"originalTargetFrameworks\": [\r\n          \"net6.0\"\r\n        ],\r\n        \"sources\": {\r\n          \"C:\\\\Program Files (x86)\\\\Microsoft SDKs\\\\NuGetPackages\\\\\": {},\r\n          \"https://api.nuget.org/v3/index.json\": {}\r\n        },\r\n        \"frameworks\": {\r\n          \"net6.0\": {\r\n            \"targetAlias\": \"net6.0\",\r\n            \"projectReferences\": {\r\n              \"C:\\\\Users\\\\99890\\\\Desktop\\\\JurnalsOfStudents\\\\Backend\\\\LoggerService\\\\LoggerService.csproj\": {\r\n                \"projectPath\": \"C:\\\\Users\\\\99890\\\\Desktop\\\\JurnalsOfStudents\\\\Backend\\\\LoggerService\\\\LoggerService.csproj\"\r\n              },\r\n              \"C:\\\\Users\\\\99890\\\\Desktop\\\\JurnalsOfStudents\\\\Backend\\\\StorageBroker\\\\StorageBroker.csproj\": {\r\n                \"projectPath\": \"C:\\\\Users\\\\99890\\\\Desktop\\\\JurnalsOfStudents\\\\Backend\\\\StorageBroker\\\\StorageBroker.csproj\"\r\n              }\r\n            }\r\n          }\r\n        },\r\n        \"warningProperties\": {\r\n          \"warnAsError\": [\r\n            \"NU1605\"\r\n          ]\r\n        }\r\n      },\r\n      \"frameworks\": {\r\n        \"net6.0\": {\r\n          \"targetAlias\": \"net6.0\",\r\n          \"dependencies\": {\r\n            \"Microsoft.EntityFrameworkCore.Design\": {\r\n              \"include\": \"Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive\",\r\n              \"suppressParent\": \"All\",\r\n              \"target\": \"Package\",\r\n              \"version\": \"[6.0.12, )\"\r\n            },\r\n            \"Swashbuckle.AspNetCore\": {\r\n              \"target\": \"Package\",\r\n              \"version\": \"[6.2.3, )\"\r\n            }\r\n          },\r\n          \"imports\": [\r\n            \"net461\",\r\n            \"net462\",\r\n            \"net47\",\r\n            \"net471\",\r\n            \"net472\",\r\n            \"net48\",\r\n            \"net481\"\r\n          ],\r\n          \"assetTargetFallback\": true,\r\n          \"warn\": true,\r\n          \"frameworkReferences\": {\r\n            \"Microsoft.AspNetCore.App\": {\r\n              \"privateAssets\": \"none\"\r\n            },\r\n            \"Microsoft.NETCore.App\": {\r\n              \"privateAssets\": \"all\"\r\n            }\r\n          },\r\n          \"runtimeIdentifierGraphPath\": \"C:\\\\Program Files\\\\dotnet\\\\sdk\\\\7.0.101\\\\RuntimeIdentifierGraph.json\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/WebAPI/obj/WebAPI.csproj.nuget.dgspec.json b/WebAPI/obj/WebAPI.csproj.nuget.dgspec.json
+--- a/WebAPI/obj/WebAPI.csproj.nuget.dgspec.json	
++++ b/WebAPI/obj/WebAPI.csproj.nuget.dgspec.json	
+@@ -1,20 +1,20 @@
+ {
+   "format": 1,
+   "restore": {
+-    "C:\\Users\\99890\\Desktop\\JurnalsOfStudents\\Backend\\WebAPI\\WebAPI.csproj": {}
++    "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\WebAPI\\WebAPI.csproj": {}
+   },
+   "projects": {
+-    "C:\\Users\\99890\\Desktop\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj": {
++    "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj": {
+       "version": "1.0.0",
+       "restore": {
+-        "projectUniqueName": "C:\\Users\\99890\\Desktop\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj",
++        "projectUniqueName": "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj",
+         "projectName": "LoggerService",
+-        "projectPath": "C:\\Users\\99890\\Desktop\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj",
+-        "packagesPath": "C:\\Users\\99890\\.nuget\\packages\\",
+-        "outputPath": "C:\\Users\\99890\\Desktop\\JurnalsOfStudents\\Backend\\LoggerService\\obj\\",
++        "projectPath": "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj",
++        "packagesPath": "C:\\Users\\elchi\\.nuget\\packages\\",
++        "outputPath": "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\LoggerService\\obj\\",
+         "projectStyle": "PackageReference",
+         "configFilePaths": [
+-          "C:\\Users\\99890\\AppData\\Roaming\\NuGet\\NuGet.Config",
++          "C:\\Users\\elchi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+         ],
+         "originalTargetFrameworks": [
+@@ -65,17 +65,17 @@
+         }
+       }
+     },
+-    "C:\\Users\\99890\\Desktop\\JurnalsOfStudents\\Backend\\StorageBroker\\StorageBroker.csproj": {
++    "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\StorageBroker\\StorageBroker.csproj": {
+       "version": "1.0.0",
+       "restore": {
+-        "projectUniqueName": "C:\\Users\\99890\\Desktop\\JurnalsOfStudents\\Backend\\StorageBroker\\StorageBroker.csproj",
++        "projectUniqueName": "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\StorageBroker\\StorageBroker.csproj",
+         "projectName": "StorageBroker",
+-        "projectPath": "C:\\Users\\99890\\Desktop\\JurnalsOfStudents\\Backend\\StorageBroker\\StorageBroker.csproj",
+-        "packagesPath": "C:\\Users\\99890\\.nuget\\packages\\",
+-        "outputPath": "C:\\Users\\99890\\Desktop\\JurnalsOfStudents\\Backend\\StorageBroker\\obj\\",
++        "projectPath": "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\StorageBroker\\StorageBroker.csproj",
++        "packagesPath": "C:\\Users\\elchi\\.nuget\\packages\\",
++        "outputPath": "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\StorageBroker\\obj\\",
+         "projectStyle": "PackageReference",
+         "configFilePaths": [
+-          "C:\\Users\\99890\\AppData\\Roaming\\NuGet\\NuGet.Config",
++          "C:\\Users\\elchi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+         ],
+         "originalTargetFrameworks": [
+@@ -126,17 +126,17 @@
+         }
+       }
+     },
+-    "C:\\Users\\99890\\Desktop\\JurnalsOfStudents\\Backend\\WebAPI\\WebAPI.csproj": {
++    "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\WebAPI\\WebAPI.csproj": {
+       "version": "1.0.0",
+       "restore": {
+-        "projectUniqueName": "C:\\Users\\99890\\Desktop\\JurnalsOfStudents\\Backend\\WebAPI\\WebAPI.csproj",
++        "projectUniqueName": "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\WebAPI\\WebAPI.csproj",
+         "projectName": "WebAPI",
+-        "projectPath": "C:\\Users\\99890\\Desktop\\JurnalsOfStudents\\Backend\\WebAPI\\WebAPI.csproj",
+-        "packagesPath": "C:\\Users\\99890\\.nuget\\packages\\",
+-        "outputPath": "C:\\Users\\99890\\Desktop\\JurnalsOfStudents\\Backend\\WebAPI\\obj\\",
++        "projectPath": "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\WebAPI\\WebAPI.csproj",
++        "packagesPath": "C:\\Users\\elchi\\.nuget\\packages\\",
++        "outputPath": "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\WebAPI\\obj\\",
+         "projectStyle": "PackageReference",
+         "configFilePaths": [
+-          "C:\\Users\\99890\\AppData\\Roaming\\NuGet\\NuGet.Config",
++          "C:\\Users\\elchi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+         ],
+         "originalTargetFrameworks": [
+@@ -150,11 +150,11 @@
+           "net6.0": {
+             "targetAlias": "net6.0",
+             "projectReferences": {
+-              "C:\\Users\\99890\\Desktop\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj": {
+-                "projectPath": "C:\\Users\\99890\\Desktop\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj"
++              "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj": {
++                "projectPath": "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj"
+               },
+-              "C:\\Users\\99890\\Desktop\\JurnalsOfStudents\\Backend\\StorageBroker\\StorageBroker.csproj": {
+-                "projectPath": "C:\\Users\\99890\\Desktop\\JurnalsOfStudents\\Backend\\StorageBroker\\StorageBroker.csproj"
++              "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\StorageBroker\\StorageBroker.csproj": {
++                "projectPath": "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\StorageBroker\\StorageBroker.csproj"
+               }
+             }
+           }

@@ -1,6 +1,6 @@
-﻿
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using StorageBroker.Dto;
 using StorageBroker.Models;
 using StorageBroker.RepositoryManager;
 using WebAPI.Dto;
@@ -40,42 +40,47 @@ public class GradesLogController : ControllerBase
     }
 
     [HttpPost]
-    [Produces(typeof(GradesLog))]
-    public void CreateGradesLog([FromBody] GradesLog gradesLog)
+    [Produces(typeof(ResponseDto<GradesLog>))]
+    public async Task<ResponseDto<GradesLog>> CreateGradesLog([FromBody] CreateGradesLogDto createGradesLogDto)
     {
-        repositoryManager.GradesLogRepository.Create(gradesLog);
+        var newGradesLog = new GradesLog()
+        {
+            Grade = createGradesLogDto.Grade,
+            GroupId = createGradesLogDto.GroupId,
+            StudentId = createGradesLogDto.StudentId
+        };
+        var createdGradesLog = await repositoryManager.GradesLogRepository.CreateAsync(newGradesLog);
+        return new ResponseDto<GradesLog>(createdGradesLog);
     }
 
-    [HttpPut]
-    [Produces(typeof(GradesLog))]
-    public void UpdateGradesLog([FromBody] GradesLog gradesLog)
+    [HttpPut()]
+    [Produces(typeof(ResponseDto<GradesLog>))]
+    public ResponseDto<GradesLog> UpdateGradesLog(int gradeId, [FromBody] UpdateGradesLogDto updateGradesLogDto)
     {
-        repositoryManager.GradesLogRepository.Update(gradesLog);
+        var oldGradesLog = repositoryManager.GradesLogRepository.GetAll().FirstOrDefault(grade => grade.Id == gradeId);
+        if (oldGradesLog is null)
+            return new ResponseDto<GradesLog>(400, new Exception("Wrong grade Id number"));
+        var newGradeLog = new GradesLog()
+        {
+            Grade = updateGradesLogDto.Grade,
+            GroupId = updateGradesLogDto.GroupId,
+            StudentId = updateGradesLogDto.StudentId,
+        };
+        var updatedGradesLog = repositoryManager.GradesLogRepository.Update(newGradeLog);
+        return new ResponseDto<GradesLog>(updatedGradesLog);
     }
 
     [HttpDelete]
-    [Produces(typeof(int))]
-    public void DeleteGradesLogById(int id)
+    [Produces(typeof(ResponseDto<GradesLog>))]
+    public ResponseDto<GradesLog> DeleteGradesLogById(int id)
     {
         var oldGradesLog = repositoryManager.GradesLogRepository.GetAll()
             .FirstOrDefault(student => student.StudentId == id);
 
         if (oldGradesLog is null)
             throw new Exception("Student not found");
-
-        repositoryManager.GradesLogRepository.Delete(oldGradesLog);
+ 
+        var deletedStudent = repositoryManager.GradesLogRepository.Delete(oldGradesLog);
+        return new ResponseDto<GradesLog>(deletedStudent);
     }
-
-    [HttpDelete]
-    [Produces(typeof(int))]
-    public void DeleteGradesLogById(int id)
-    {
-        var oldGradesLog = repositoryManager.GradesLogRepository.GetAll()
-            .FirstOrDefault(student => student.StudentId == id);
-
-        if (oldGradesLog is null)
-            throw new Exception("Student not found");
-
-        repositoryManager.GradesLogRepository.Delete(oldGradesLog);
-    }
-}
+} 
