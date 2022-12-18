@@ -10,7 +10,7 @@ namespace WebAPI.Controllers
 
         public TeacherController(IRepositoryManager repositoryManager)
         {
-            thi`s.RepositoryManager = repositoryManager;
+            this.RepositoryManager = repositoryManager;
         }
 
         [HttpGet]

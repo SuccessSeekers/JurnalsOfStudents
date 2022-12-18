@@ -1,0 +1,19 @@
+﻿<changelist name="Uncommitted_changes_before_Merge_at_12_18_2022_2_31_PM_[Changes]" date="1671355891222" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/.idea.Backend/.idea/shelf/Uncommitted_changes_before_Merge_at_12_18_2022_2_31_PM_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Merge at 12/18/2022 2:31 PM [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="WebAPI/obj/Debug/net6.0/WebAPI.csproj.AssemblyReference.cache" />
+    <option name="AFTER_PATH" value="WebAPI/obj/Debug/net6.0/WebAPI.csproj.AssemblyReference.cache" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.Backend/.idea/shelf/Uncommitted_changes_before_Merge_at_12_18_2022_2_31_PM_[Changes]/WebAPI.csproj.AssemblyReference.cache" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="WebAPI/obj/Debug/net6.0/apphost.exe" />
+    <option name="AFTER_PATH" value="WebAPI/obj/Debug/net6.0/apphost.exe" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.Backend/.idea/shelf/Uncommitted_changes_before_Merge_at_12_18_2022_2_31_PM_[Changes]/apphost.exe" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="WebAPI/obj/Debug/net6.0/WebAPI.assets.cache" />
+    <option name="AFTER_PATH" value="WebAPI/obj/Debug/net6.0/WebAPI.assets.cache" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.Backend/.idea/shelf/Uncommitted_changes_before_Merge_at_12_18_2022_2_31_PM_[Changes]/WebAPI.assets.cache" />
+  </binary>
+</changelist>
