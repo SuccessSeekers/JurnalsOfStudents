@@ -1,4 +1,5 @@
 using LoggerService;
+using ILogger = LoggerService.ILogger;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 //Logging service
-builder.Services.AddSingleton<ILogManager, LogManager>();
+builder.Services.AddSingleton<ILogger, Logger>();
 
 var app = builder.Build();
 

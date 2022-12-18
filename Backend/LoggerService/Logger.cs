@@ -1,26 +1,27 @@
 ﻿using NLog;
-using NLog.Layouts;
+using NLog.Config;
+using NLog.Targets;
 
 namespace LoggerService;
 
-public class LogManager : ILogManager
+public class Logger : ILogger
 {
-    private readonly Logger _logger;
+    private readonly NLog.Logger _logger;
 
-    public LogManager(string loggerFilePath = null)
+    public Logger(string loggerFilePath = null)
     {
-        var loggingConfiguration = new NLog.Config.LoggingConfiguration();
-        var logTargetToConsole = new NLog.Targets.ColoredConsoleTarget("logConsole");
+        var loggingConfiguration = new LoggingConfiguration();
+        var logTargetToConsole = new ColoredConsoleTarget("logConsole");
         loggingConfiguration.AddRule(LogLevel.Info, LogLevel.Fatal, logTargetToConsole);
         if (loggerFilePath != null)
         {
-            var logTargetToSpecificFilePath = new NLog.Targets.FileTarget("logFile") {FileName = loggerFilePath};
+            var logTargetToSpecificFilePath = new FileTarget("logFile") {FileName = loggerFilePath};
             loggingConfiguration.AddRule(LogLevel.Info, LogLevel.Fatal, logTargetToSpecificFilePath);
         }
 
-        NLog.LogManager.Configuration = loggingConfiguration;
-        NLog.LogManager.Setup();
-        this._logger = NLog.LogManager.GetCurrentClassLogger();
+        LogManager.Configuration = loggingConfiguration;
+        LogManager.Setup();
+        _logger = LogManager.GetCurrentClassLogger();
     }
 
     public void LogInfo(string message)

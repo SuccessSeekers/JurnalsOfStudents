@@ -1,0 +1,12 @@
+C:\Users\Abdumannon-PC\Desktop\JurnalsOfStudents\Backend\StorageBroker\bin\Debug\net6.0\StorageBroker.deps.json
+C:\Users\Abdumannon-PC\Desktop\JurnalsOfStudents\Backend\StorageBroker\bin\Debug\net6.0\StorageBroker.dll
+C:\Users\Abdumannon-PC\Desktop\JurnalsOfStudents\Backend\StorageBroker\bin\Debug\net6.0\StorageBroker.pdb
+C:\Users\Abdumannon-PC\Desktop\JurnalsOfStudents\Backend\StorageBroker\obj\Debug\net6.0\StorageBroker.csproj.AssemblyReference.cache
+C:\Users\Abdumannon-PC\Desktop\JurnalsOfStudents\Backend\StorageBroker\obj\Debug\net6.0\StorageBroker.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Abdumannon-PC\Desktop\JurnalsOfStudents\Backend\StorageBroker\obj\Debug\net6.0\StorageBroker.AssemblyInfoInputs.cache
+C:\Users\Abdumannon-PC\Desktop\JurnalsOfStudents\Backend\StorageBroker\obj\Debug\net6.0\StorageBroker.AssemblyInfo.cs
+C:\Users\Abdumannon-PC\Desktop\JurnalsOfStudents\Backend\StorageBroker\obj\Debug\net6.0\StorageBroker.csproj.CoreCompileInputs.cache
+C:\Users\Abdumannon-PC\Desktop\JurnalsOfStudents\Backend\StorageBroker\obj\Debug\net6.0\StorageBroker.dll
+C:\Users\Abdumannon-PC\Desktop\JurnalsOfStudents\Backend\StorageBroker\obj\Debug\net6.0\refint\StorageBroker.dll
+C:\Users\Abdumannon-PC\Desktop\JurnalsOfStudents\Backend\StorageBroker\obj\Debug\net6.0\StorageBroker.pdb
+C:\Users\Abdumannon-PC\Desktop\JurnalsOfStudents\Backend\StorageBroker\obj\Debug\net6.0\ref\StorageBroker.dll

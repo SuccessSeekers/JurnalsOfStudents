@@ -6,8 +6,8 @@ public class Group
     public string Name { get; set; }
     public GroupStatus Status { get; set; }
     public int CountOfStudents { get; set; }
-    public IEnumerable<Student> Students { get; set; }
-    public IEnumerable<TeacherWithPositionForPerGroup> TeacherWithPosition { get; set; }
+    public IQueryable<Student> Students { get; set; }
+    public IQueryable<Student> Teachers { get; set; }
 }
 
 public enum GroupStatus

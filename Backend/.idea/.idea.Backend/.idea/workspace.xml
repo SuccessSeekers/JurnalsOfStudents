@@ -6,11 +6,47 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aaabd197-24ba-4ddd-b825-1b51add124f8" name="Changes" comment="refixed project structure">
-      <change afterPath="$PROJECT_DIR$/StorageBroker/DataBaseContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Backend/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LoggerService/ILogger.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LoggerService/Logger.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StorageBroker/IMigrator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StorageBroker/Migrations/20221217193838_Initial.Designer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StorageBroker/Migrations/20221217193838_Initial.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StorageBroker/Migrations/20221217194938_StudentModelChanged.Designer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StorageBroker/Migrations/20221217194938_StudentModelChanged.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StorageBroker/Migrations/DataBaseContextModelSnapshot.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StorageBroker/Migrator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StorageBroker/RepositoryManager/AttendanceLogRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StorageBroker/RepositoryManager/GradesLogRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StorageBroker/RepositoryManager/GroupRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StorageBroker/RepositoryManager/IRepositoryManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StorageBroker/RepositoryManager/IRepositryBase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StorageBroker/RepositoryManager/RepositoryBase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StorageBroker/RepositoryManager/RepositoryManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StorageBroker/RepositoryManager/StudentRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StorageBroker/RepositoryManager/TeacherRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebAPI/Controllers/Home.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebAPI/ServiceExtensions/AppExtensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebAPI/ServiceExtensions/ServiceExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Backend/.idea/shelf/Uncommitted_changes_before_Checkout_at_12_17_2022_8_21_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Backend/.idea/shelf/Uncommitted_changes_before_Checkout_at_12_17_2022_8_21_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Backend/.idea/shelf/Uncommitted_changes_before_Merge_at_12_17_2022_9_40_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Backend/.idea/shelf/Uncommitted_changes_before_Merge_at_12_17_2022_9_40_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Backend/.idea/shelf/Uncommitted_changes_before_Update_at_12_17_2022_6_07_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Backend/.idea/shelf/Uncommitted_changes_before_Update_at_12_17_2022_6_07_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoggerService/ILogManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoggerService/LogManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoggerService/LoggerService.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/LoggerService/LoggerService.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoggerService/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/LoggerService/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageBroker/DataBaseContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/DataBaseContext.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StorageBroker/Models/AttendanceLog.cs" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/Models/AttendanceLog.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageBroker/Models/GradesLog.cs" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/Models/GradesLog.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StorageBroker/Models/Group.cs" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/Models/Group.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageBroker/Models/Student.cs" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/Models/Student.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageBroker/Models/Teacher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/Models/Teacher.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageBroker/StorageBroker.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/StorageBroker.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageBroker/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/LogManagerTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/LogManagerTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/obj/Debug/net6.0/Tests.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/Debug/net6.0/Tests.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAPI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAPI/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,7 +56,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="Model_Reletioning" />
+        <entry key="$PROJECT_DIR$/.." value="main" />
       </map>
     </option>
   </component>
@@ -86,6 +122,7 @@
       <option name="presentableId" value="Default" />
       <updated>1671273410384</updated>
       <workItem from="1671273416701" duration="3916000" />
+      <workItem from="1671344639382" duration="312000" />
     </task>
     <task id="LOCAL-00001" summary="Project Initialized">
       <created>1671273435653</created>
@@ -192,7 +229,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="Model_Reletioning" />
+                        <option value="Restoring" />
                       </list>
                     </value>
                   </entry>

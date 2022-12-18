@@ -1,5 +1,4 @@
-﻿
-namespace StorageBroker.Models;
+﻿namespace StorageBroker.Models;
 
 public class Teacher
 {

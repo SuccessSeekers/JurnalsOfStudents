@@ -1,6 +1,6 @@
 ﻿namespace LoggerService;
 
-public interface ILogManager
+public interface ILogger
 {
     void LogInfo(string message);
     void LogDebug(string message);

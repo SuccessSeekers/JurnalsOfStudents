@@ -4,11 +4,11 @@ namespace LoggerService.Test;
 
 public class LogManagerTests
 {
-    private readonly LogManager _logger;
+    private readonly Logger _logger;
 
     public LogManagerTests()
     {
-        this._logger = new LogManager();
+        this._logger = new Logger();
     }
 
     [Fact]
