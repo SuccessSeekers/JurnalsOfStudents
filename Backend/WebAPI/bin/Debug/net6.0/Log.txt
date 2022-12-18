@@ -9,3 +9,7 @@
 2022-12-18 20:50:42.2192|INFO|LoggerService.Logger|A possible object cycle was detected. This can either be due to a cycle or if the object depth is larger than the maximum allowed depth of 32. Consider using ReferenceHandler.Preserve on JsonSerializerOptions to support cycles. Path: $.Data.Student.Attendances.Student.Attendances.Student.Attendances.Student.Attendances.Student.Attendances.Student.Attendances.Student.Attendances.Student.Attendances.Student.Attendances.Student.Attendances.. PATH: WebAPI.Controllers.AttendanceController.CreateAttendanceLog (WebAPI)
 2022-12-18 21:06:32.9042|INFO|LoggerService.Logger|Value cannot be null. (Parameter 'source'). PATH: WebAPI.Controllers.AttendanceController.CreateAttendanceLog (WebAPI)
 2022-12-18 21:09:07.0656|INFO|LoggerService.Logger|Value cannot be null. (Parameter 'source'). PATH: WebAPI.Controllers.AttendanceController.CreateAttendanceLog (WebAPI)
+2022-12-18 21:49:50.8578|INFO|LoggerService.Logger|Value cannot be null. (Parameter 'source'). PATH: WebAPI.Controllers.GroupController.GetGroupById (WebAPI)
+2022-12-18 21:57:55.2409|INFO|LoggerService.Logger|Value cannot be null. (Parameter 'source'). PATH: WebAPI.Controllers.GroupController.GetGroupById (WebAPI)
+2022-12-18 22:03:15.7574|INFO|LoggerService.Logger|Invalid object name 'Groups'.. PATH: WebAPI.Controllers.GroupController.GetGroupById (WebAPI)
+2022-12-18 22:08:12.2906|INFO|LoggerService.Logger|Value cannot be null. (Parameter 'source'). PATH: WebAPI.Controllers.GroupController.GetGroupById (WebAPI)

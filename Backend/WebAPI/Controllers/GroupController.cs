@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using StorageBroker.Dto;
 using StorageBroker.Models;
 using StorageBroker.RepositoryManager;
@@ -41,14 +42,17 @@ namespace WebAPI.Controllers
         {
             var group = repositoryManager.GroupRepository
                 .GetAll()
-                .FirstOrDefault(group => group.GroupId == id);
+                .Where(x => x.GroupId == id)
+                .FirstOrDefault(x => x.GroupId == id);
             if (group == null)
                 return new ResponseDto<GroupDto>(StatusCodes.Status400BadRequest, new Exception("Group not found"));
             var groupDto = new GroupDto()
             {
                 Name = group.Name,
                 Status = group.Status,
-                Students = group.StudentGroups.Select(x => x.Student).ToList(),
+                Students = group.StudentGroups.AsQueryable()
+                    .Include(x => x.Student)
+                    .Select(x => x.Student).ToList(),
                 Teachers = group.Teachers,
                 CountOfStudents = group.CountOfStudents
             };

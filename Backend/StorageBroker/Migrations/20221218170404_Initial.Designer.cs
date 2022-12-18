@@ -12,7 +12,7 @@ using StorageBroker;
 namespace StorageBroker.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20221218154214_Initial")]
+    [Migration("20221218170404_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
