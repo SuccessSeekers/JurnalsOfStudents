@@ -1,17 +1,16 @@
-using LoggerService;
-using ILogger = LoggerService.ILogger;
+using WebAPI.ServiceExtensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.Services.ConfigureDatabaseContext(builder.Configuration);
+builder.Services.ConfigureRepositoryManager();
+builder.Services.ConfigureLoggingService(builder.Configuration);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//Logging service
-builder.Services.AddSingleton<ILogger, Logger>();
 
 var app = builder.Build();
 
@@ -24,8 +23,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
-
 app.MapControllers();
+
+//Migration Process, maybe app terminate there
+app.MigrateDataBase();
 
 app.Run();
