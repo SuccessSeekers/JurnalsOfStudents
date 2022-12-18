@@ -2,27 +2,25 @@
 
 namespace WebAPI.Dto;
 
-public class ResponseDto
+public class ResponseDto<T>
 {
-    public Boolean Success { get; set; }
-    public int Code { get; set; }
-    public Object[] Data { get; set; }
-    public Exception Error { get; set; }
+    public Boolean Success { get; set; } = true;
+    public int Code { get; set; } = 200;
+    public T[] Data { get; set; } = null;
+    public string Message { get; set; } = null;
 
-    public ResponseDto(bool success = true, int code = 200, Exception error = null, params Object[] data)
-    {
-        this.Success = success;
-        this.Code = code;
-        this.Data = data;
-        this.Error = error;
-    }
-
-    public ResponseDto(params Object[] data)
+    public ResponseDto(params T[] data)
     {
         this.Success = true;
         this.Code = 200;
         this.Data = data;
-        this.Error = null;
+    }
+
+    public ResponseDto(IEnumerable<T> data)
+    {
+        this.Success = true;
+        this.Code = 200;
+        this.Data = data.ToArray();
     }
 
     public ResponseDto(int code, Exception error)
@@ -30,7 +28,7 @@ public class ResponseDto
         this.Success = false;
         this.Code = code;
         this.Data = null;
-        this.Error = error;
+        this.Message = error.Message;
     }
 
     public override string ToString()

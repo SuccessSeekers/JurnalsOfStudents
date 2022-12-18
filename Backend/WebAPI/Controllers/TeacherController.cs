@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using StorageBroker.Models;
 using StorageBroker.RepositoryManager;
+using WebAPI.Dto;
 
 namespace WebAPI.Controllers
 {
@@ -17,10 +18,10 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet]
-        [Produces(typeof(Teacher))]
-        public IActionResult GetTeachers()
+        [Produces(typeof(ResponseDto<Teacher>))]
+        public ResponseDto<Teacher> GetTeachers()
         {
-            return Ok(RepositoryManager.TeacherRepository.GetAll()
+            return new ResponseDto<Teacher>(RepositoryManager.TeacherRepository.GetAll()
                 .Include(teacher => teacher.TeacherGroups));
         }
 

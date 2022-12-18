@@ -5,6 +5,7 @@ public class RepositoryManager : IRepositoryManager
     private readonly DataBaseContext _context;
     private TeacherRepository _teacherRepository;
     private StudentRepository _studentRepository;
+    private GroupRepository _groupRepository;
 
     public RepositoryManager(DataBaseContext context)
     {
@@ -28,6 +29,16 @@ public class RepositoryManager : IRepositoryManager
             if (_studentRepository == null)
                 _studentRepository = new StudentRepository(_context);
             return _studentRepository;
+        }
+    }
+
+    public GroupRepository GroupRepository
+    {
+        get
+        {
+            if (_groupRepository is null)
+                _groupRepository = new GroupRepository(_context);
+            return _groupRepository;
         }
     }
 

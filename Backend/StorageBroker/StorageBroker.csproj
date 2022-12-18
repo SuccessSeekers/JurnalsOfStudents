@@ -18,4 +18,8 @@
         <Content Include="obj\StorageBroker.csproj.EntityFrameworkCore.targets" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Dto" />
+    </ItemGroup>
+
 </Project>

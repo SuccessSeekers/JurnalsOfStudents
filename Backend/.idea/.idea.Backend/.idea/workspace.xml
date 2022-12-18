@@ -5,34 +5,7 @@
     <projectFile profileName="IIS Express">WebAPI/WebAPI.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aaabd197-24ba-4ddd-b825-1b51add124f8" name="Changes" comment="Techer controller issue fixed">
-      <change afterPath="$PROJECT_DIR$/StorageBroker/Migrations/20221218095846_third.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StorageBroker/Migrations/20221218095846_third.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StorageBroker/obj/StorageBroker.csproj.EntityFrameworkCore.targets" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebAPI/obj/WebAPI.csproj.EntityFrameworkCore.targets" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageBroker/Migrations/DataBaseContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/Migrations/DataBaseContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageBroker/bin/Debug/net6.0/StorageBroker.dll" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/bin/Debug/net6.0/StorageBroker.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageBroker/bin/Debug/net6.0/StorageBroker.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/bin/Debug/net6.0/StorageBroker.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/StorageBroker.dll" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/StorageBroker.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/StorageBroker.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/StorageBroker.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/ref/StorageBroker.dll" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/ref/StorageBroker.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/refint/StorageBroker.dll" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/refint/StorageBroker.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/Controllers/TeacherController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/Controllers/TeacherController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/appsettings.Development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/Log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/Log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/StorageBroker.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/StorageBroker.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/StorageBroker.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/StorageBroker.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/WebAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/WebAPI.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/WebAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/WebAPI.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/appsettings.Development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/ref/WebAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/ref/WebAPI.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/refint/WebAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/refint/WebAPI.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/obj/staticwebassets.pack.sentinel" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/staticwebassets.pack.sentinel" afterDir="false" />
-    </list>
+    <list default="true" id="aaabd197-24ba-4ddd-b825-1b51add124f8" name="Changes" comment="Solved conflict on merging" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,7 +14,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="Abdumannon" />
+        <entry key="$PROJECT_DIR$/.." value="main" />
       </map>
     </option>
   </component>
@@ -55,6 +28,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/df71358f7b7337a1eee3a65abe6d678dd9a065e256b8cc3fd44a2949754/Object.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Abdumannon-PC/Desktop/JurnalsOfStudents/Backend/StorageBroker/Migrations/20221218095846_third.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Abdumannon-PC/Desktop/JurnalsOfStudents/Backend/WebAPI/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebAPI/Controllers/TeacherController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebAPI/Properties/launchSettings.json" root0="FORCE_HIGHLIGHTING" />
@@ -231,7 +205,28 @@
       <option name="project" value="LOCAL" />
       <updated>1671356900459</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="some changes on TeacherController">
+      <created>1671357698696</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1671357698696</updated>
+    </task>
+    <task id="LOCAL-00017" summary="some changes on TeacherController">
+      <created>1671357724885</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1671357724885</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Solved conflict on merging">
+      <created>1671358533825</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1671358533825</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -266,7 +261,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="Abdumannon" />
+                        <option value="main" />
                       </list>
                     </value>
                   </entry>
@@ -296,6 +291,9 @@
     <MESSAGE value="Project fully restored and got ready for developing" />
     <MESSAGE value="unversioned files staged" />
     <MESSAGE value="Techer controller issue fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Techer controller issue fixed" />
+    <MESSAGE value="some changes on TeacherController" />
+    <MESSAGE value="Created DTO for ResponseDt" />
+    <MESSAGE value="Solved conflict on merging" />
+    <option name="LAST_COMMIT_MESSAGE" value="Solved conflict on merging" />
   </component>
 </project>
