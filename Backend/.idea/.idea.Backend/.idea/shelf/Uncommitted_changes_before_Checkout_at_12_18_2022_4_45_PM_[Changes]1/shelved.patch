@@ -1,0 +1,49 @@
+Index: StorageBroker/RepositoryManager/RepositoryManager.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>namespace StorageBroker.RepositoryManager;\r\n\r\npublic class RepositoryManager : IRepositoryManager\r\n{\r\n    private readonly DataBaseContext _context;\r\n    private TeacherRepository _teacherRepository;\r\n    private StudentRepository _studentRepository;\r\n    private GroupRepository _groupRepository;\r\n    private AttendanceLogRepository _attendanceLogRepository;\r\n\r\n    public RepositoryManager(DataBaseContext context)\r\n    {\r\n        _context = context;\r\n    }\r\n\r\n    public TeacherRepository TeacherRepository\r\n    {\r\n        get\r\n        {\r\n            if (_teacherRepository == null)\r\n                _teacherRepository = new TeacherRepository(_context);\r\n            return _teacherRepository;\r\n        }\r\n    }\r\n\r\n    public StudentRepository StudentRepository\r\n    {\r\n        get\r\n        {\r\n            if (_studentRepository == null)\r\n                _studentRepository = new StudentRepository(_context);\r\n            return _studentRepository;\r\n        }\r\n    }\r\n\r\n    public GroupRepository GroupRepository\r\n    {\r\n        get\r\n        {\r\n            if (_groupRepository is null)\r\n                _groupRepository = new GroupRepository(_context);\r\n            return _groupRepository;\r\n        }\r\n    }\r\n\r\n    public AttendanceLogRepository AttendanceLogRepository\r\n    {\r\n        get\r\n        {\r\n            if (_attendanceLogRepository is null)\r\n                _attendanceLogRepository = new AttendanceLogRepository(_context);\r\n            return _attendanceLogRepository;\r\n        }\r\n    }\r\n\r\n    public void Save()\r\n    {\r\n        _context.SaveChanges();\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/StorageBroker/RepositoryManager/RepositoryManager.cs b/StorageBroker/RepositoryManager/RepositoryManager.cs
+--- a/StorageBroker/RepositoryManager/RepositoryManager.cs	
++++ b/StorageBroker/RepositoryManager/RepositoryManager.cs	
+@@ -53,6 +53,8 @@
+         }
+     }
+ 
++    public GradesLogRepository GradesLogRepository { get; }
++
+     public void Save()
+     {
+         _context.SaveChanges();
+Index: WebAPI/obj/rider.project.restore.info
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>16713626636131259
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/WebAPI/obj/rider.project.restore.info b/WebAPI/obj/rider.project.restore.info
+--- a/WebAPI/obj/rider.project.restore.info	
++++ b/WebAPI/obj/rider.project.restore.info	
+@@ -1,1 +1,1 @@
+-16713626636131259
+\ No newline at end of file
++16713636545065943
+\ No newline at end of file
+Index: Tests/obj/rider.project.restore.info
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>16713626637091274
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Tests/obj/rider.project.restore.info b/Tests/obj/rider.project.restore.info
+--- a/Tests/obj/rider.project.restore.info	
++++ b/Tests/obj/rider.project.restore.info	
+@@ -1,1 +1,1 @@
+-16713626637091274
+\ No newline at end of file
++16713636546017259
+\ No newline at end of file
