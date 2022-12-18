@@ -34,3 +34,15 @@ C:\Users\elchi\Source\Repos\JurnalsOfStudents\Backend\LoggerService\obj\Debug\ne
 C:\Users\elchi\Source\Repos\JurnalsOfStudents\Backend\LoggerService\obj\Debug\net6.0\refint\LoggerService.dll
 C:\Users\elchi\Source\Repos\JurnalsOfStudents\Backend\LoggerService\obj\Debug\net6.0\LoggerService.pdb
 C:\Users\elchi\Source\Repos\JurnalsOfStudents\Backend\LoggerService\obj\Debug\net6.0\ref\LoggerService.dll
+C:\Users\99890\Documents\JurnalsOfStudents\Backend\LoggerService\bin\Debug\net6.0\LoggerService.deps.json
+C:\Users\99890\Documents\JurnalsOfStudents\Backend\LoggerService\bin\Debug\net6.0\LoggerService.dll
+C:\Users\99890\Documents\JurnalsOfStudents\Backend\LoggerService\bin\Debug\net6.0\LoggerService.pdb
+C:\Users\99890\Documents\JurnalsOfStudents\Backend\LoggerService\obj\Debug\net6.0\LoggerService.csproj.AssemblyReference.cache
+C:\Users\99890\Documents\JurnalsOfStudents\Backend\LoggerService\obj\Debug\net6.0\LoggerService.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\99890\Documents\JurnalsOfStudents\Backend\LoggerService\obj\Debug\net6.0\LoggerService.AssemblyInfoInputs.cache
+C:\Users\99890\Documents\JurnalsOfStudents\Backend\LoggerService\obj\Debug\net6.0\LoggerService.AssemblyInfo.cs
+C:\Users\99890\Documents\JurnalsOfStudents\Backend\LoggerService\obj\Debug\net6.0\LoggerService.csproj.CoreCompileInputs.cache
+C:\Users\99890\Documents\JurnalsOfStudents\Backend\LoggerService\obj\Debug\net6.0\LoggerService.dll
+C:\Users\99890\Documents\JurnalsOfStudents\Backend\LoggerService\obj\Debug\net6.0\refint\LoggerService.dll
+C:\Users\99890\Documents\JurnalsOfStudents\Backend\LoggerService\obj\Debug\net6.0\LoggerService.pdb
+C:\Users\99890\Documents\JurnalsOfStudents\Backend\LoggerService\obj\Debug\net6.0\ref\LoggerService.dll

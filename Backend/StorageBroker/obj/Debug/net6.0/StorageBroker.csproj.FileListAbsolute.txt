@@ -34,3 +34,15 @@ C:\Users\elchi\Source\Repos\JurnalsOfStudents\Backend\StorageBroker\obj\Debug\ne
 C:\Users\elchi\Source\Repos\JurnalsOfStudents\Backend\StorageBroker\obj\Debug\net6.0\refint\StorageBroker.dll
 C:\Users\elchi\Source\Repos\JurnalsOfStudents\Backend\StorageBroker\obj\Debug\net6.0\StorageBroker.pdb
 C:\Users\elchi\Source\Repos\JurnalsOfStudents\Backend\StorageBroker\obj\Debug\net6.0\ref\StorageBroker.dll
+C:\Users\99890\Documents\JurnalsOfStudents\Backend\StorageBroker\bin\Debug\net6.0\StorageBroker.deps.json
+C:\Users\99890\Documents\JurnalsOfStudents\Backend\StorageBroker\bin\Debug\net6.0\StorageBroker.dll
+C:\Users\99890\Documents\JurnalsOfStudents\Backend\StorageBroker\bin\Debug\net6.0\StorageBroker.pdb
+C:\Users\99890\Documents\JurnalsOfStudents\Backend\StorageBroker\obj\Debug\net6.0\StorageBroker.csproj.AssemblyReference.cache
+C:\Users\99890\Documents\JurnalsOfStudents\Backend\StorageBroker\obj\Debug\net6.0\StorageBroker.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\99890\Documents\JurnalsOfStudents\Backend\StorageBroker\obj\Debug\net6.0\StorageBroker.AssemblyInfoInputs.cache
+C:\Users\99890\Documents\JurnalsOfStudents\Backend\StorageBroker\obj\Debug\net6.0\StorageBroker.AssemblyInfo.cs
+C:\Users\99890\Documents\JurnalsOfStudents\Backend\StorageBroker\obj\Debug\net6.0\StorageBroker.csproj.CoreCompileInputs.cache
+C:\Users\99890\Documents\JurnalsOfStudents\Backend\StorageBroker\obj\Debug\net6.0\StorageBroker.dll
+C:\Users\99890\Documents\JurnalsOfStudents\Backend\StorageBroker\obj\Debug\net6.0\refint\StorageBroker.dll
+C:\Users\99890\Documents\JurnalsOfStudents\Backend\StorageBroker\obj\Debug\net6.0\StorageBroker.pdb
+C:\Users\99890\Documents\JurnalsOfStudents\Backend\StorageBroker\obj\Debug\net6.0\ref\StorageBroker.dll

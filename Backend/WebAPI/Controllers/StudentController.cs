@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using StorageBroker.Dto;
 using StorageBroker.Models;
 using StorageBroker.RepositoryManager;
@@ -19,14 +20,15 @@ public class StudentController : ControllerBase
 
     [HttpGet]
     [Produces(typeof(ResponseDto<Student>))]
-    public IActionResult GetStudents()
+    public ResponseDto<Student> GetStudents()
     {
-        return Ok(repositoryManager.StudentRepository.GetAll());
+        return new ResponseDto<Student>(repositoryManager.StudentRepository.GetAll()
+            .Include(student => student.StudentGroups));
     }
 
     [HttpGet("{StudentId:int}")]
     [Produces(typeof(ResponseDto<Student>))]
-    public IActionResult GetStudentById(int id)
+    public ResponseDto<Student> GetStudentById(int id)
     {
         var student = repositoryManager.StudentRepository
             .GetAllWithCondition(student => student.StudentId == id);
@@ -34,12 +36,12 @@ public class StudentController : ControllerBase
         if (student is null)
             throw new Exception("Student not found");
 
-        return Ok(student);
+        return new ResponseDto<Student>(student);
     }
 
     [HttpPost]
     [Produces(typeof(ResponseDto<Student>))]
-    public async Task CreateStudent([FromBody] Student student)
+    public async Task CreateStudent([FromBody] CreateStudentDto student)
     {
         var newStudent = new Student();
         newStudent.Name = student.Name;
@@ -53,7 +55,7 @@ public class StudentController : ControllerBase
 
     [HttpPut]
     [Produces(typeof(ResponseDto<Student>))]
-    public void UpdateStudent([FromBody] Student student)
+    public void UpdateStudent([FromBody] UpdateStudentDto student)
     {
         var newStudent = new Student();
         newStudent.Name = student.Name;
