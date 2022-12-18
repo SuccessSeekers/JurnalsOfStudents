@@ -4,6 +4,7 @@ public class RepositoryManager : IRepositoryManager
 {
     private readonly DataBaseContext _context;
     private TeacherRepository _teacherRepository;
+    private StudentRepository _studentRepository;
 
     public RepositoryManager(DataBaseContext context)
     {
@@ -17,6 +18,16 @@ public class RepositoryManager : IRepositoryManager
             if (_teacherRepository == null)
                 _teacherRepository = new TeacherRepository(_context);
             return _teacherRepository;
+        }
+    }
+
+    public StudentRepository StudentRepository
+    {
+        get
+        {
+            if (_studentRepository == null)
+                _studentRepository = new StudentRepository(_context);
+            return _studentRepository;
         }
     }
 
