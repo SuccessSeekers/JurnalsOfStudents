@@ -52,21 +52,27 @@ namespace WebAPI.Controllers
 
         [HttpPost]
         [Produces(typeof(Group))]
-        public void CreateGroup([FromBody] Group group)
+        public async Task<ResponseDto<Group>> CreateGroup([FromBody] Group group)
         {
-            repositoryManager.GroupRepository.Create(group);
+            var groups = await repositoryManager.GroupRepository.CreateAsync(group);
+
+            await repositoryManager.SaveAsync();
+
+            return new ResponseDto<Group>(groups);
         }
 
         [HttpPut]
         [Produces(typeof(Group))]
-        public void UpdateGroup([FromBody] Group group)
+        public async Task UpdateGroup([FromBody] Group group)
         {
             repositoryManager.GroupRepository.Update(group);
+
+            await repositoryManager.SaveAsync();
         }
 
         [HttpDelete]
         [Produces(typeof(Group))]
-        public void DeleteGroupById(int id)
+        public async Task DeleteGroupById(int id)
         {
             var oldGroup = repositoryManager.GroupRepository.GetAll()
                 .FirstOrDefault(group => group.GroupId == id);
@@ -74,6 +80,8 @@ namespace WebAPI.Controllers
                 throw new Exception("Group not found");
 
             repositoryManager.GroupRepository.Delete(oldGroup);
+
+            await repositoryManager.SaveAsync();
         }
     }
 }
