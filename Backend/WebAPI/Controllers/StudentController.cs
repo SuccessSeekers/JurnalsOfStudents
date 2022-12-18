@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using StorageBroker.Dto;
 using StorageBroker.Models;
 using StorageBroker.RepositoryManager;
@@ -20,33 +19,10 @@ public class StudentController : ControllerBase
     }
 
     [HttpGet]
-<<<<<<< HEAD
-<<<<<<< HEAD
-    [Produces(typeof(ResponseDto<StudentDto>))]
-    public ResponseDto<StudentDto> GetStudents()
-    {
-        return new ResponseDto<StudentDto>(repositoryManager.StudentRepository.GetAll()
-            .Select(student => new StudentDto()
-            {
-                StudentId = student.StudentId,
-                Attendances = student.Attendances,
-                Grades = student.Grades,
-                Groups = student.StudentGroups.Select(x => x.Group).ToList(),
-                Name = student.Name,
-                Surname = student.Surname
-            }));
-=======
     [Produces(typeof(ResponseDto<Student>))]
     public ResponseDto<Student> GetStudents()
     {
         return new ResponseDto<Student>(repositoryManager.StudentRepository.GetAll());
->>>>>>> origin/main
-=======
-    [Produces(typeof(ResponseDto<Student>))]
-    public ResponseDto<Student> GetStudents()
-    {
-        return new ResponseDto<Student>(repositoryManager.StudentRepository.GetAll());
->>>>>>> origin/main
     }
 
     [HttpGet("{StudentId:int}")]
@@ -63,18 +39,8 @@ public class StudentController : ControllerBase
     }
 
     [HttpPost]
-<<<<<<< HEAD
-<<<<<<< HEAD
-    [Produces(typeof(ResponseDto<Student>))]
-    public async Task CreateStudent([FromBody] CreateStudentDto student)
-=======
     [Produces(typeof(ResponseDto<StudentDto>))]
     public async Task<ResponseDto<StudentDto>> CreateStudent([FromBody] CreateStudentDto createStudentDto)
->>>>>>> origin/main
-=======
-    [Produces(typeof(ResponseDto<StudentDto>))]
-    public async Task<ResponseDto<StudentDto>> CreateStudent([FromBody] CreateStudentDto createStudentDto)
->>>>>>> origin/main
     {
         var newStudent = new Student();
         newStudent.Name = createStudentDto.Name;
@@ -98,31 +64,8 @@ public class StudentController : ControllerBase
     }
 
     [HttpPut]
-<<<<<<< HEAD
-<<<<<<< HEAD
-    [Produces(typeof(ResponseDto<Student>))]
-    public void UpdateStudent([FromBody] UpdateStudentDto student)
-    {
-        var newStudent = new Student();
-        newStudent.Name = student.Name;
-        newStudent.Surname = student.Surname;
-
-        repositoryManager.StudentRepository.Update(newStudent);
-
-        repositoryManager.Save();
-    }
-
-    [HttpDelete]
-    [Produces(typeof(int))]
-    public void DeleteStudentById(int id)
-=======
     [Produces(typeof(ResponseDto<StudentDto>))]
     public async Task<ResponseDto<StudentDto>> UpdateStudentById(int id, [FromBody] UpdateStudentDto updateStudent)
->>>>>>> origin/main
-=======
-    [Produces(typeof(ResponseDto<StudentDto>))]
-    public async Task<ResponseDto<StudentDto>> UpdateStudentById(int id, [FromBody] UpdateStudentDto updateStudent)
->>>>>>> origin/main
     {
         var oldStudent = repositoryManager.StudentRepository.GetAll()
             .FirstOrDefault(student => student.StudentId == id);
