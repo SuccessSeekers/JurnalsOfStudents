@@ -55,9 +55,9 @@ namespace WebAPI.Controllers
                 CountOfStudents = group.CountOfStudents
             };
             return new ResponseDto<GroupDto>(groupDto);
-        }
+        } 
 
-        [HttpPost]
+        [HttpPost] 
         [Produces(typeof(ResponseDto<GroupDto>))]
         public async Task<ResponseDto<GroupDto>> CreateGroupById([FromBody] CreateGroupDto createGroupDto)
         {
