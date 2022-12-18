@@ -1,0 +1,2 @@
+2022-12-18 12:00:14.4943|INFO|LoggerService.Logger|Info log
+2022-12-18 12:37:10.0525|INFO|LoggerService.Logger|Info log

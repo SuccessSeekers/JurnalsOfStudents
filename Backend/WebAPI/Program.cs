@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Diagnostics;
 using WebAPI.ServiceExtensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,6 +21,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+//Configuring global exception handler
+app.ConfigureExceptionHandler(app.Environment);
 
 app.UseHttpsRedirection();
 

@@ -23,6 +23,7 @@ public class Home : ControllerBase
     public IActionResult Teachers()
     {
         _logger.LogInfo("Info log");
+        throw new Exception("Not found");
         return Ok(_repositoryManager.TeacherRepository.GetAll().Count());
     }
 }
