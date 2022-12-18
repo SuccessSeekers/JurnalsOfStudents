@@ -63,7 +63,7 @@ namespace WebAPI.Controllers
             if (group is null)
                 return new ResponseDto<AttendanceDto>(404, new Exception("Group not found"));
 
-            Group studentGroup = null;
+            StudentGroup studentGroup = null;
 
             try
             {
