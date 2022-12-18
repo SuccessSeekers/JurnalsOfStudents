@@ -5,16 +5,7 @@
     <projectFile profileName="IIS Express">WebAPI/WebAPI.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aaabd197-24ba-4ddd-b825-1b51add124f8" name="Changes" comment="Finally">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/Controllers/GroupController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/Controllers/GroupController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/Log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/Log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/WebAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/WebAPI.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/WebAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/WebAPI.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/obj/staticwebassets.pack.sentinel" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/staticwebassets.pack.sentinel" afterDir="false" />
-    </list>
+    <list default="true" id="aaabd197-24ba-4ddd-b825-1b51add124f8" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,41 +27,14 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Users/Abdumannon-PC/Desktop/JurnalsOfStudents/Backend/WebAPI/Controllers/GradesLogController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/df71358f7b7337a1eee3a65abe6d678dd9a065e256b8cc3fd44a2949754/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebAPI/Controllers/TeacherController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Abdumannon-PC/Desktop/JurnalsOfStudents/Backend/WebAPI/Controllers/GradesLogController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Abdumannon-PC/Desktop/JurnalsOfStudents/Backend/StorageBroker/Migrations/20221218095846_third.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Abdumannon-PC/Desktop/JurnalsOfStudents/Backend/StorageBroker/Dto/UpdateGradesLogDto.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebAPI/Properties/launchSettings.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebAPI/appsettings.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Abdumannon-PC/Desktop/JurnalsOfStudents/Backend/StorageBroker/RepositoryManager/IRepositoryManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Abdumannon-PC/Desktop/JurnalsOfStudents/Backend/WebAPI/Controllers/GroupController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebAPI/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebAPI/appsettings.Development.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Abdumannon-PC/Desktop/JurnalsOfStudents/Backend/WebAPI/Controllers/AttendanceController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Abdumannon-PC/Desktop/JurnalsOfStudents/Backend/WebAPI/ServiceExtensions/AppExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Abdumannon-PC/Desktop/JurnalsOfStudents/Backend/WebAPI/Controllers/GradesLogController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/df71358f7b7337a1eee3a65abe6d678dd9a065e256b8cc3fd44a2949754/Object.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Abdumannon-PC/Desktop/JurnalsOfStudents/Backend/WebAPI/Controllers/AttendanceController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Abdumannon-PC/Desktop/JurnalsOfStudents/Backend/WebAPI/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Abdumannon-PC/Desktop/JurnalsOfStudents/Backend/StorageBroker/Dto/StudentDto.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Abdumannon-PC/Desktop/JurnalsOfStudents/Backend/WebAPI/Controllers/GroupController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Abdumannon-PC/Desktop/JurnalsOfStudents/Backend/WebAPI/Controllers/StudentController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Abdumannon-PC/Desktop/JurnalsOfStudents/Backend/WebAPI/Controllers/StudentController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -133,6 +97,7 @@
       <updated>1671273410384</updated>
       <workItem from="1671273416701" duration="3916000" />
       <workItem from="1671344639382" duration="312000" />
+      <workItem from="1671384381792" duration="149000" />
     </task>
     <task id="LOCAL-00001" summary="Project Initialized">
       <created>1671273435653</created>
@@ -323,7 +288,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671383327566</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="..">
+      <created>1671384514687</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1671384514687</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -373,7 +345,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Project fixed for developing" />
     <MESSAGE value="Created StorageBroker layer" />
     <MESSAGE value="Recreated StorageBroker layer" />
     <MESSAGE value="Storage broker referenced to main project" />
@@ -398,6 +369,7 @@
     <MESSAGE value="Created finally group controller" />
     <MESSAGE value="Some changes on GroupController" />
     <MESSAGE value="Finally" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finally" />
+    <MESSAGE value=".." />
+    <option name="LAST_COMMIT_MESSAGE" value=".." />
   </component>
 </project>

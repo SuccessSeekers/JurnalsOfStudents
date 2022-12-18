@@ -40,24 +40,31 @@ namespace WebAPI.Controllers
         [Produces(typeof(ResponseDto<GroupDto>))]
         public ResponseDto<GroupDto> GetGroupById(int id)
         {
-            var group = repositoryManager.GroupRepository
-                .GetAll()
-                .Include(x => x.StudentGroups)
-                .FirstOrDefault(x => x.GroupId == id);
+            var group = repositoryManager.GroupRepository.GetAll().Select(group =>
+                new GroupDto()
+                {
+                    Id = group.GroupId,
+                    Name = group.Name,
+                    Status = group.Status,
+                    Students = group.StudentGroups.Select(x => x.Student).ToList(),
+                    Teachers = group.Teachers,
+                    CountOfStudents = group.CountOfStudents
+                }
+            ).ToList().Find(x => x.Id == id);
             if (group == null)
                 return new ResponseDto<GroupDto>(StatusCodes.Status400BadRequest, new Exception("Group not found"));
             var groupDto = new GroupDto()
             {
                 Name = group.Name,
                 Status = group.Status,
-                Students = group.StudentGroups?.Select(studentGroup => studentGroup.Student).ToList(),
+                Students = group.Students,
                 Teachers = group.Teachers,
                 CountOfStudents = group.CountOfStudents
             };
             return new ResponseDto<GroupDto>(groupDto);
-        } 
+        }
 
-        [HttpPost] 
+        [HttpPost]
         [Produces(typeof(ResponseDto<GroupDto>))]
         public async Task<ResponseDto<GroupDto>> CreateGroupById([FromBody] CreateGroupDto createGroupDto)
         {
