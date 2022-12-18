@@ -19,10 +19,18 @@ public class StudentController : ControllerBase
     }
 
     [HttpGet]
-    [Produces(typeof(ResponseDto<Student>))]
-    public ResponseDto<Student> GetStudents()
+    [Produces(typeof(ResponseDto<StudentDto>))]
+    public ResponseDto<StudentDto> GetStudents()
     {
-        return new ResponseDto<Student>(repositoryManager.StudentRepository.GetAll());
+        return new ResponseDto<StudentDto>(repositoryManager.StudentRepository.GetAll()
+            .Select(student => new StudentDto()
+            {
+                Name = student.Name,
+                Surname = student.Surname,
+                Grades = student.Grades,
+                Attendances = student.Attendances,
+                StudentGroups = student.StudentGroups.Select(x => x.Group).ToList()
+            }));
     }
 
     [HttpGet("{StudentId:int}")]
@@ -57,7 +65,7 @@ public class StudentController : ControllerBase
             Surname = createdStudent.Surname,
             Grades = createdStudent.Grades,
             Attendances = createdStudent.Attendances,
-            StudentGroups = createdStudent.StudentGroups
+            StudentGroups = createdStudent.StudentGroups.Select(x => x.Group).ToList()
         };
 
         return new ResponseDto<StudentDto>(studentDto);
@@ -86,7 +94,7 @@ public class StudentController : ControllerBase
             Surname = oldStudent.Surname,
             Grades = oldStudent.Grades,
             Attendances = oldStudent.Attendances,
-            StudentGroups = oldStudent.StudentGroups
+            StudentGroups = oldStudent.StudentGroups.Select(x => x.Group).ToList()
         };
 
         return new ResponseDto<StudentDto>(studentDto);
@@ -112,7 +120,7 @@ public class StudentController : ControllerBase
             Surname = oldStudent.Surname,
             Grades = oldStudent.Grades,
             Attendances = oldStudent.Attendances,
-            StudentGroups = oldStudent.StudentGroups
+            StudentGroups = oldStudent.StudentGroups.Select(x => x.Group).ToList()
         };
         return new ResponseDto<StudentDto>(studentDto);
     }

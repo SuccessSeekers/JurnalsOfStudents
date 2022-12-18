@@ -6,10 +6,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aaabd197-24ba-4ddd-b825-1b51add124f8" name="Changes" comment="Created finally group controller">
-      <change afterPath="$PROJECT_DIR$/StorageBroker/Dto/GradesLogDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StorageBroker/Dto/StudentDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StorageBroker/Models/StudentGroup.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StorageBroker/RepositoryManager/StudentGroupRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Backend/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LoggerService/bin/Debug/net6.0/LoggerService.dll" beforeDir="false" afterPath="$PROJECT_DIR$/LoggerService/bin/Debug/net6.0/LoggerService.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LoggerService/bin/Debug/net6.0/LoggerService.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/LoggerService/bin/Debug/net6.0/LoggerService.pdb" afterDir="false" />
@@ -23,18 +19,6 @@
       <change beforePath="$PROJECT_DIR$/LoggerService/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/LoggerService/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LoggerService/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/LoggerService/obj/project.nuget.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LoggerService/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/LoggerService/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageBroker/DataBaseContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/DataBaseContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageBroker/Migrations/20221217193838_Initial.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageBroker/Migrations/20221217193838_Initial.cs" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/Migrations/20221218154214_Initial.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageBroker/Migrations/20221217194938_StudentModelChanged.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageBroker/Migrations/20221217194938_StudentModelChanged.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageBroker/Migrations/20221218095846_third.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/Migrations/20221218154214_Initial.Designer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageBroker/Migrations/20221218095846_third.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageBroker/Migrations/DataBaseContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/Migrations/DataBaseContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageBroker/Models/Group.cs" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/Models/Group.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageBroker/Models/Student.cs" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/Models/Student.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageBroker/RepositoryManager/IRepositoryManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/RepositoryManager/IRepositoryManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageBroker/RepositoryManager/RepositoryManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/RepositoryManager/RepositoryManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StorageBroker/bin/Debug/net6.0/StorageBroker.dll" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/bin/Debug/net6.0/StorageBroker.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StorageBroker/bin/Debug/net6.0/StorageBroker.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/bin/Debug/net6.0/StorageBroker.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/StorageBroker.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/StorageBroker.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
@@ -58,11 +42,8 @@
       <change beforePath="$PROJECT_DIR$/Tests/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/project.nuget.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/Controllers/GradesLogController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/Controllers/GradesLogController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/Controllers/GroupController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/Controllers/GroupController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebAPI/Controllers/StudentController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/Controllers/StudentController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/ServiceExtensions/AppExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/ServiceExtensions/AppExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/Log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/Log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAPI/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/appsettings.Development.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/LoggerService.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/LoggerService.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/LoggerService.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/LoggerService.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/StorageBroker.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/StorageBroker.dll" afterDir="false" />
@@ -70,6 +51,7 @@
       <change beforePath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/WebAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/WebAPI.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/WebAPI.exe" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/WebAPI.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/WebAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/WebAPI.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/appsettings.Development.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.MvcApplicationPartsAssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.MvcApplicationPartsAssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.assets.cache" afterDir="false" />
@@ -96,7 +78,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="main" />
+        <entry key="$PROJECT_DIR$/.." value="Abdumannon" />
       </map>
     </option>
   </component>
@@ -115,6 +97,7 @@
     <setting file="mock://C:/Users/Abdumannon-PC/Desktop/JurnalsOfStudents/Backend/WebAPI/Controllers/GradesLogController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Abdumannon-PC/Desktop/JurnalsOfStudents/Backend/StorageBroker/Migrations/20221218095846_third.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Abdumannon-PC/Desktop/JurnalsOfStudents/Backend/StorageBroker/Dto/UpdateGradesLogDto.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebAPI/Properties/launchSettings.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebAPI/appsettings.json" root0="FORCE_HIGHLIGHTING" />
@@ -131,9 +114,13 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/df71358f7b7337a1eee3a65abe6d678dd9a065e256b8cc3fd44a2949754/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Abdumannon-PC/Desktop/JurnalsOfStudents/Backend/WebAPI/Controllers/AttendanceController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Abdumannon-PC/Desktop/JurnalsOfStudents/Backend/WebAPI/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Abdumannon-PC/Desktop/JurnalsOfStudents/Backend/StorageBroker/Dto/StudentDto.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Abdumannon-PC/Desktop/JurnalsOfStudents/Backend/WebAPI/Controllers/GroupController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Abdumannon-PC/Desktop/JurnalsOfStudents/Backend/WebAPI/Controllers/StudentController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Abdumannon-PC/Desktop/JurnalsOfStudents/Backend/WebAPI/Controllers/StudentController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
