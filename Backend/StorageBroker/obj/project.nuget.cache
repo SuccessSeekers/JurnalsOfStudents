@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qNnlUrmH8rQgp+gS93OQBIeAp+Nb6Lj0hzpMOqTFSJJZxNYyVVzjzWKDU2Qa8OBYcntbyy46rlPYUUoPOEwt4A==",
+  "dgSpecHash": "LJ/wVeUzEWH8IXxPkS0vPDYsg5Hvy48cg3q53vXr7h0SBlubVlMQJmnm+qXXhIvdNYgg4ZBJaJEOU6JV3s747A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\StorageBroker\\StorageBroker.csproj",
+  "projectFilePath": "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\StorageBroker\\StorageBroker.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\elchi\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\elchi\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",

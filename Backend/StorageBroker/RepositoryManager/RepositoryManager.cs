@@ -6,6 +6,7 @@ public class RepositoryManager : IRepositoryManager
     private TeacherRepository _teacherRepository;
     private StudentRepository _studentRepository;
     private GroupRepository _groupRepository;
+    private AttendanceLogRepository _attendanceLogRepository;
 
     public RepositoryManager(DataBaseContext context)
     {
@@ -39,6 +40,16 @@ public class RepositoryManager : IRepositoryManager
             if (_groupRepository is null)
                 _groupRepository = new GroupRepository(_context);
             return _groupRepository;
+        }
+    }
+
+    public AttendanceLogRepository AttendanceLogRepository
+    {
+        get
+        {
+            if (_attendanceLogRepository is null)
+                _attendanceLogRepository = new AttendanceLogRepository(_context);
+            return _attendanceLogRepository;
         }
     }
 

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "IKUbUYT6QKdYnGqI1CiCH4qlHo/76QJXZA7DoAAxOZ9PAPXUHCCsrJ7thEqjDwyzrXuAZRblrabCw+yzGE+I0A==",
+  "dgSpecHash": "iKkE2c/4Atx6oGi5OR9lUkqA6zCL1JwIeQPApcsxcD84SzkT5WzzjbqOW4GI0lyIS3qy2MURvpcSANCefcKdHg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\Tests\\Tests.csproj",
+  "projectFilePath": "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\Tests\\Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\elchi\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\elchi\\.nuget\\packages\\microsoft.codecoverage\\17.1.0\\microsoft.codecoverage.17.1.0.nupkg.sha512",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\StorageBroker\\StorageBroker.csproj": {}
+    "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\StorageBroker\\StorageBroker.csproj": {}
   },
   "projects": {
-    "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\StorageBroker\\StorageBroker.csproj": {
+    "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\StorageBroker\\StorageBroker.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\StorageBroker\\StorageBroker.csproj",
+        "projectUniqueName": "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\StorageBroker\\StorageBroker.csproj",
         "projectName": "StorageBroker",
-        "projectPath": "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\StorageBroker\\StorageBroker.csproj",
+        "projectPath": "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\StorageBroker\\StorageBroker.csproj",
         "packagesPath": "C:\\Users\\elchi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\StorageBroker\\obj\\",
+        "outputPath": "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\StorageBroker\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\elchi\\AppData\\Roaming\\NuGet\\NuGet.Config",

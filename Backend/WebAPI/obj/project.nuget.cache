@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "d0MeIV0FzN4zPMsYZn1RFOpTL7nLXEiu/qNoCrqi8lKEkeFw9M57Qrp4Lljc9YaOSWzkN4P8n4Vdb5Xgi9c9kw==",
+  "dgSpecHash": "DkLMJAdh3jKSW1dK56AdUY6KZ18DELE+D/YIY3fST+ahQIf5Ov35uoVMOPoN+hPnO7JC0jre10bjfVvCOK2b5g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\WebAPI\\WebAPI.csproj",
+  "projectFilePath": "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\WebAPI\\WebAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\elchi\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\elchi\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

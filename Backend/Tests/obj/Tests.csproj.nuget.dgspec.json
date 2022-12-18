@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\Tests\\Tests.csproj": {}
+    "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\Tests\\Tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj": {
+    "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj",
+        "projectUniqueName": "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj",
         "projectName": "LoggerService",
-        "projectPath": "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj",
+        "projectPath": "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj",
         "packagesPath": "C:\\Users\\elchi\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\LoggerService\\obj\\",
         "projectStyle": "PackageReference",
@@ -65,14 +65,14 @@
         }
       }
     },
-    "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\Tests\\Tests.csproj": {
+    "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\Tests\\Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\Tests\\Tests.csproj",
+        "projectUniqueName": "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\Tests\\Tests.csproj",
         "projectName": "Tests",
-        "projectPath": "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\Tests\\Tests.csproj",
+        "projectPath": "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\Tests\\Tests.csproj",
         "packagesPath": "C:\\Users\\elchi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\Tests\\obj\\",
+        "outputPath": "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\Tests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\elchi\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -89,8 +89,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj": {
-                "projectPath": "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj"
+              "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj": {
+                "projectPath": "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj"
               }
             }
           }

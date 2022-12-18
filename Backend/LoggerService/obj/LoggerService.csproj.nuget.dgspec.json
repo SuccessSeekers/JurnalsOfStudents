@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj": {}
+    "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj": {}
   },
   "projects": {
-    "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj": {
+    "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj",
+        "projectUniqueName": "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj",
         "projectName": "LoggerService",
-        "projectPath": "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj",
+        "projectPath": "C:\\Users\\elchi\\source\\repos\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj",
         "packagesPath": "C:\\Users\\elchi\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\LoggerService\\obj\\",
         "projectStyle": "PackageReference",
