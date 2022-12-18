@@ -42,7 +42,8 @@ namespace WebAPI.Controllers
 
         [HttpPost]
         [Produces(typeof(ResponseDto<AttendanceLog>))]
-        public void CreateAttendanceLog([FromBody] CreateAttendanceLogDto attendanceLog)
+        public async Task<ResponseDto<AttendanceLog>> CreateAttendanceLog(
+            [FromBody] CreateAttendanceLogDto attendanceLog)
         {
             var currentGroup = repositoryManager.GroupRepository
                 .GetAll().FirstOrDefault(group => group.GroupId == attendanceLog.GroupId);
@@ -65,14 +66,15 @@ namespace WebAPI.Controllers
             newAttendance.Group = currentGroup;
             newAttendance.Student = currentStudent;
 
-            repositoryManager.AttendanceLogRepository.Create(newAttendance);
+            var createdAttendanceLog = repositoryManager.AttendanceLogRepository.Create(newAttendance);
+            await repositoryManager.SaveAsync();
 
-            repositoryManager.Save();
+            return new ResponseDto<AttendanceLog>(createdAttendanceLog);
         }
 
         [HttpPut]
         [Produces(typeof(ResponseDto<AttendanceLog>))]
-        public void UpdateAttendance([FromBody] UpdateAttendanceLogDto attendanceLog)
+        public async Task<ResponseDto<AttendanceLog>> UpdateAttendance([FromBody] UpdateAttendanceLogDto attendanceLog)
         {
             var currentGroup = repositoryManager.GroupRepository
                 .GetAll().FirstOrDefault(group => group.GroupId == attendanceLog.GroupId);
@@ -96,13 +98,14 @@ namespace WebAPI.Controllers
             newAttendance.Student = currentStudent;
 
             var updatedAttendanceLog = repositoryManager.AttendanceLogRepository.Update(newAttendance);
+            await repositoryManager.SaveAsync();
 
-            repositoryManager.SaveAsync();
+            return new ResponseDto<AttendanceLog>(updatedAttendanceLog);
         }
 
         [HttpDelete]
         [Produces(typeof(ResponseDto<AttendanceLog>))]
-        public void DeleteAttendanceLogById(int id)
+        public async Task<ResponseDto<AttendanceLog>> DeleteAttendanceLogById(int id)
         {
             var oldAttendanceLog = repositoryManager.AttendanceLogRepository.GetAll()
                 .FirstOrDefault(attendance => attendance.AttendanceLogId == id);
@@ -110,9 +113,9 @@ namespace WebAPI.Controllers
             if (oldAttendanceLog is null)
                 throw new Exception("AttendanceLog not found");
 
-            repositoryManager.AttendanceLogRepository.Delete(oldAttendanceLog);
-
-            repositoryManager.Save();
+            var deleledAttendanceLog = repositoryManager.AttendanceLogRepository.Delete(oldAttendanceLog);
+            await repositoryManager.SaveAsync();
+            return new ResponseDto<AttendanceLog>(deleledAttendanceLog);
         }
     }
 }
