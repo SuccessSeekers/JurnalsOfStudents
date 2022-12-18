@@ -1,0 +1,16 @@
+Index: WebAPI/obj/staticwebassets.pack.sentinel
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/WebAPI/obj/staticwebassets.pack.sentinel b/WebAPI/obj/staticwebassets.pack.sentinel
+--- a/WebAPI/obj/staticwebassets.pack.sentinel	
++++ b/WebAPI/obj/staticwebassets.pack.sentinel	
+@@ -39,3 +39,5 @@
+ 2.0
+ 2.0
+ 2.0
++2.0
++2.0

@@ -1,0 +1,34 @@
+﻿<changelist name="Uncommitted_changes_before_Update_at_12_18_2022_3_41_PM_[Changes]1" date="1671360079671" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/.idea.Backend/.idea/shelf/Uncommitted_changes_before_Update_at_12_18_2022_3_41_PM_[Changes]1/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 12/18/2022 3:41 PM [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="WebAPI/obj/Debug/net6.0/WebAPI.csproj.AssemblyReference.cache" />
+    <option name="AFTER_PATH" value="WebAPI/obj/Debug/net6.0/WebAPI.csproj.AssemblyReference.cache" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.Backend/.idea/shelf/Uncommitted_changes_before_Update_at_12_18_2022_3_41_PM_[Changes]1/WebAPI.csproj.AssemblyReference.cache" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="WebAPI/bin/Debug/net6.0/StorageBroker.dll" />
+    <option name="AFTER_PATH" value="WebAPI/bin/Debug/net6.0/StorageBroker.dll" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.Backend/.idea/shelf/Uncommitted_changes_before_Update_at_12_18_2022_3_41_PM_[Changes]1/StorageBroker.dll" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="StorageBroker/bin/Debug/net6.0/StorageBroker.pdb" />
+    <option name="AFTER_PATH" value="StorageBroker/bin/Debug/net6.0/StorageBroker.pdb" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.Backend/.idea/shelf/Uncommitted_changes_before_Update_at_12_18_2022_3_41_PM_[Changes]1/StorageBroker.pdb" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="WebAPI/obj/Debug/net6.0/WebAPI.dll" />
+    <option name="AFTER_PATH" value="WebAPI/obj/Debug/net6.0/WebAPI.dll" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.Backend/.idea/shelf/Uncommitted_changes_before_Update_at_12_18_2022_3_41_PM_[Changes]1/WebAPI.dll" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="WebAPI/obj/Debug/net6.0/WebAPI.pdb" />
+    <option name="AFTER_PATH" value="WebAPI/obj/Debug/net6.0/WebAPI.pdb" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.Backend/.idea/shelf/Uncommitted_changes_before_Update_at_12_18_2022_3_41_PM_[Changes]1/WebAPI.pdb" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="StorageBroker/obj/Debug/net6.0/StorageBroker.csproj.CoreCompileInputs.cache" />
+    <option name="AFTER_PATH" value="StorageBroker/obj/Debug/net6.0/StorageBroker.csproj.CoreCompileInputs.cache" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.Backend/.idea/shelf/Uncommitted_changes_before_Update_at_12_18_2022_3_41_PM_[Changes]1/StorageBroker.csproj.CoreCompileInputs.cache" />
+  </binary>
+</changelist>
