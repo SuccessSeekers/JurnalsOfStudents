@@ -16,7 +16,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet]
-        [Produces(nameof(Teacher))]
+        [Produces(typeof(Teacher))]
         public IActionResult GetTeachers()
         {
             return Ok(RepositoryManager.TeacherRepository.GetAll());
