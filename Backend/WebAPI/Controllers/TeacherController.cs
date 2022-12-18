@@ -4,6 +4,8 @@ using StorageBroker.RepositoryManager;
 
 namespace WebAPI.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class TeacherController : ControllerBase
     {
         private readonly IRepositoryManager RepositoryManager;
