@@ -1,0 +1,268 @@
+Index: WebAPI/Controllers/StudentController.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>using Microsoft.AspNetCore.Mvc;\r\nusing Microsoft.EntityFrameworkCore;\r\nusing StorageBroker.Dto;\r\nusing StorageBroker.Models;\r\nusing StorageBroker.RepositoryManager;\r\nusing System.Security.Cryptography;\r\nusing WebAPI.Dto;\r\n\r\nnamespace WebAPI.Controllers;\r\n\r\n[ApiController]\r\n[Route(\"api/[controller]\")]\r\npublic class StudentController : ControllerBase\r\n{\r\n    private readonly IRepositoryManager repositoryManager;\r\n\r\n    public StudentController(IRepositoryManager repositoryManager)\r\n    {\r\n        this.repositoryManager = repositoryManager;\r\n    }\r\n\r\n    [HttpGet]\r\n<<<<<<< HEAD\r\n<<<<<<< HEAD\r\n    [Produces(typeof(ResponseDto<StudentDto>))]\r\n    public ResponseDto<StudentDto> GetStudents()\r\n    {\r\n        return new ResponseDto<StudentDto>(repositoryManager.StudentRepository.GetAll()\r\n            .Select(student => new StudentDto()\r\n            {\r\n                StudentId = student.StudentId,\r\n                Attendances = student.Attendances,\r\n                Grades = student.Grades,\r\n                Groups = student.StudentGroups.Select(x => x.Group).ToList(),\r\n                Name = student.Name,\r\n                Surname = student.Surname\r\n            }));\r\n=======\r\n    [Produces(typeof(ResponseDto<Student>))]\r\n    public ResponseDto<Student> GetStudents()\r\n    {\r\n        return new ResponseDto<Student>(repositoryManager.StudentRepository.GetAll());\r\n>>>>>>> origin/main\r\n=======\r\n    [Produces(typeof(ResponseDto<Student>))]\r\n    public ResponseDto<Student> GetStudents()\r\n    {\r\n        return new ResponseDto<Student>(repositoryManager.StudentRepository.GetAll());\r\n>>>>>>> origin/main\r\n    }\r\n\r\n    [HttpGet(\"{StudentId:int}\")]\r\n    [Produces(typeof(ResponseDto<Student>))]\r\n    public ResponseDto<Student> GetStudentById(int id)\r\n    {\r\n        var student = repositoryManager.StudentRepository\r\n            .GetAllWithCondition(student => student.StudentId == id);\r\n\r\n        if (student is null)\r\n            return new ResponseDto<Student>(StatusCodes.Status400BadRequest, new Exception(\"Student not found\"));\r\n\r\n        return new ResponseDto<Student>(student);\r\n    }\r\n\r\n    [HttpPost]\r\n<<<<<<< HEAD\r\n<<<<<<< HEAD\r\n    [Produces(typeof(ResponseDto<Student>))]\r\n    public async Task CreateStudent([FromBody] CreateStudentDto student)\r\n=======\r\n    [Produces(typeof(ResponseDto<StudentDto>))]\r\n    public async Task<ResponseDto<StudentDto>> CreateStudent([FromBody] CreateStudentDto createStudentDto)\r\n>>>>>>> origin/main\r\n=======\r\n    [Produces(typeof(ResponseDto<StudentDto>))]\r\n    public async Task<ResponseDto<StudentDto>> CreateStudent([FromBody] CreateStudentDto createStudentDto)\r\n>>>>>>> origin/main\r\n    {\r\n        var newStudent = new Student();\r\n        newStudent.Name = createStudentDto.Name;\r\n        newStudent.Surname = createStudentDto.Surname;\r\n\r\n        var createdStudent = await repositoryManager.StudentRepository\r\n            .CreateAsync(newStudent);\r\n\r\n        await repositoryManager.SaveAsync();\r\n\r\n        var studentDto = new StudentDto()\r\n        {\r\n            Name = createdStudent.Name,\r\n            Surname = createdStudent.Surname,\r\n            Grades = createdStudent.Grades,\r\n            Attendances = createdStudent.Attendances,\r\n            StudentGroups = createdStudent.StudentGroups\r\n        };\r\n\r\n        return new ResponseDto<StudentDto>(studentDto);\r\n    }\r\n\r\n    [HttpPut]\r\n<<<<<<< HEAD\r\n<<<<<<< HEAD\r\n    [Produces(typeof(ResponseDto<Student>))]\r\n    public void UpdateStudent([FromBody] UpdateStudentDto student)\r\n    {\r\n        var newStudent = new Student();\r\n        newStudent.Name = student.Name;\r\n        newStudent.Surname = student.Surname;\r\n\r\n        repositoryManager.StudentRepository.Update(newStudent);\r\n\r\n        repositoryManager.Save();\r\n    }\r\n\r\n    [HttpDelete]\r\n    [Produces(typeof(int))]\r\n    public void DeleteStudentById(int id)\r\n=======\r\n    [Produces(typeof(ResponseDto<StudentDto>))]\r\n    public async Task<ResponseDto<StudentDto>> UpdateStudentById(int id, [FromBody] UpdateStudentDto updateStudent)\r\n>>>>>>> origin/main\r\n=======\r\n    [Produces(typeof(ResponseDto<StudentDto>))]\r\n    public async Task<ResponseDto<StudentDto>> UpdateStudentById(int id, [FromBody] UpdateStudentDto updateStudent)\r\n>>>>>>> origin/main\r\n    {\r\n        var oldStudent = repositoryManager.StudentRepository.GetAll()\r\n            .FirstOrDefault(student => student.StudentId == id);\r\n\r\n        if (oldStudent is null)\r\n            return new ResponseDto<StudentDto>(404, new Exception(\"Student not found\"));\r\n\r\n        oldStudent.Name = updateStudent.Name;\r\n        oldStudent.Surname = updateStudent.Surname;\r\n\r\n        repositoryManager.StudentRepository.Update(oldStudent);\r\n\r\n        await repositoryManager.SaveAsync();\r\n\r\n        var studentDto = new StudentDto()\r\n        {\r\n            Name = oldStudent.Name,\r\n            Surname = oldStudent.Surname,\r\n            Grades = oldStudent.Grades,\r\n            Attendances = oldStudent.Attendances,\r\n            StudentGroups = oldStudent.StudentGroups\r\n        };\r\n\r\n        return new ResponseDto<StudentDto>(studentDto);\r\n    }\r\n\r\n    [HttpDelete]\r\n    [Produces(typeof(ResponseDto<StudentDto>))]\r\n    public async Task<ResponseDto<StudentDto>> DeleteStudentById(int id)\r\n    {\r\n        var oldStudent = repositoryManager.StudentRepository.GetAll()\r\n            .FirstOrDefault(student => student.StudentId == id);\r\n\r\n        if (oldStudent is null)\r\n            return new ResponseDto<StudentDto>(StatusCodes.Status400BadRequest, new Exception(\"Group not found\"));\r\n\r\n        repositoryManager.StudentRepository.Delete(oldStudent);\r\n\r\n        await repositoryManager.SaveAsync();\r\n\r\n        var studentDto = new StudentDto()\r\n        {\r\n            Name = oldStudent.Name,\r\n            Surname = oldStudent.Surname,\r\n            Grades = oldStudent.Grades,\r\n            Attendances = oldStudent.Attendances,\r\n            StudentGroups = oldStudent.StudentGroups\r\n        };\r\n        return new ResponseDto<StudentDto>(studentDto);\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/WebAPI/Controllers/StudentController.cs b/WebAPI/Controllers/StudentController.cs
+--- a/WebAPI/Controllers/StudentController.cs	
++++ b/WebAPI/Controllers/StudentController.cs	
+@@ -20,8 +20,6 @@
+     }
+ 
+     [HttpGet]
+-<<<<<<< HEAD
+-<<<<<<< HEAD
+     [Produces(typeof(ResponseDto<StudentDto>))]
+     public ResponseDto<StudentDto> GetStudents()
+     {
+@@ -35,142 +33,130 @@
+                 Name = student.Name,
+                 Surname = student.Surname
+             }));
+-=======
+-    [Produces(typeof(ResponseDto<Student>))]
+-    public ResponseDto<Student> GetStudents()
+-    {
+-        return new ResponseDto<Student>(repositoryManager.StudentRepository.GetAll());
+->>>>>>> origin/main
+-=======
+-    [Produces(typeof(ResponseDto<Student>))]
+-    public ResponseDto<Student> GetStudents()
+-    {
+-        return new ResponseDto<Student>(repositoryManager.StudentRepository.GetAll());
+->>>>>>> origin/main
+-    }
++
++        [Produces(typeof(ResponseDto<Student>))]
++        public ResponseDto<Student> GetStudents()
++        {
++            return new ResponseDto<Student>(repositoryManager.StudentRepository.GetAll());
++
++            [Produces(typeof(ResponseDto<Student>))]
++            public ResponseDto<Student> GetStudents()
++            {
++                return new ResponseDto<Student>(repositoryManager.StudentRepository.GetAll());
++            }
+ 
+-    [HttpGet("{StudentId:int}")]
+-    [Produces(typeof(ResponseDto<Student>))]
+-    public ResponseDto<Student> GetStudentById(int id)
+-    {
+-        var student = repositoryManager.StudentRepository
+-            .GetAllWithCondition(student => student.StudentId == id);
++            [HttpGet("{StudentId:int}")]
++            [Produces(typeof(ResponseDto<Student>))]
++            public ResponseDto<Student> GetStudentById(int id)
++            {
++                var student = repositoryManager.StudentRepository
++                    .GetAllWithCondition(student => student.StudentId == id);
+ 
+-        if (student is null)
+-            return new ResponseDto<Student>(StatusCodes.Status400BadRequest, new Exception("Student not found"));
++                if (student is null)
++                    return new ResponseDto<Student>(StatusCodes.Status400BadRequest,
++                        new Exception("Student not found"));
+ 
+-        return new ResponseDto<Student>(student);
+-    }
++                return new ResponseDto<Student>(student);
++            }
+ 
+-    [HttpPost]
+-<<<<<<< HEAD
+-<<<<<<< HEAD
+-    [Produces(typeof(ResponseDto<Student>))]
+-    public async Task CreateStudent([FromBody] CreateStudentDto student)
+-=======
+-    [Produces(typeof(ResponseDto<StudentDto>))]
+-    public async Task<ResponseDto<StudentDto>> CreateStudent([FromBody] CreateStudentDto createStudentDto)
+->>>>>>> origin/main
+-=======
+-    [Produces(typeof(ResponseDto<StudentDto>))]
+-    public async Task<ResponseDto<StudentDto>> CreateStudent([FromBody] CreateStudentDto createStudentDto)
+->>>>>>> origin/main
+-    {
+-        var newStudent = new Student();
+-        newStudent.Name = createStudentDto.Name;
+-        newStudent.Surname = createStudentDto.Surname;
++            [HttpPost]
++            [Produces(typeof(ResponseDto<StudentDto>))]
++            public async Task<ResponseDto<StudentDto>> CreateStudent([FromBody] CreateStudentDto createStudentDto)
++            {
++                var newStudent = new Student();
++                newStudent.Name = createStudentDto.Name;
++                newStudent.Surname = createStudentDto.Surname;
+ 
+-        var createdStudent = await repositoryManager.StudentRepository
+-            .CreateAsync(newStudent);
++                var createdStudent = await repositoryManager.StudentRepository
++                    .CreateAsync(newStudent);
+ 
+-        await repositoryManager.SaveAsync();
++                await repositoryManager.SaveAsync();
+ 
+-        var studentDto = new StudentDto()
+-        {
+-            Name = createdStudent.Name,
+-            Surname = createdStudent.Surname,
+-            Grades = createdStudent.Grades,
+-            Attendances = createdStudent.Attendances,
+-            StudentGroups = createdStudent.StudentGroups
+-        };
++                var studentDto = new StudentDto()
++                {
++                    Name = createdStudent.Name,
++                    Surname = createdStudent.Surname,
++                    Grades = createdStudent.Grades,
++                    Attendances = createdStudent.Attendances,
++                    StudentGroups = createdStudent.StudentGroups
++                };
+ 
+-        return new ResponseDto<StudentDto>(studentDto);
+-    }
++                return new ResponseDto<StudentDto>(studentDto);
++            }
+ 
+-    [HttpPut]
+-<<<<<<< HEAD
+-<<<<<<< HEAD
+-    [Produces(typeof(ResponseDto<Student>))]
+-    public void UpdateStudent([FromBody] UpdateStudentDto student)
+-    {
+-        var newStudent = new Student();
+-        newStudent.Name = student.Name;
+-        newStudent.Surname = student.Surname;
++            [HttpPut]
++            [Produces(typeof(ResponseDto<Student>))]
++            public void UpdateStudent([FromBody] UpdateStudentDto student)
++            {
++                var newStudent = new Student();
++                newStudent.Name = student.Name;
++                newStudent.Surname = student.Surname;
+ 
+-        repositoryManager.StudentRepository.Update(newStudent);
++                repositoryManager.StudentRepository.Update(newStudent);
+ 
+-        repositoryManager.Save();
+-    }
++                repositoryManager.Save();
++            }
+ 
+-    [HttpDelete]
+-    [Produces(typeof(int))]
+-    public void DeleteStudentById(int id)
+-=======
+-    [Produces(typeof(ResponseDto<StudentDto>))]
+-    public async Task<ResponseDto<StudentDto>> UpdateStudentById(int id, [FromBody] UpdateStudentDto updateStudent)
+->>>>>>> origin/main
+-=======
+-    [Produces(typeof(ResponseDto<StudentDto>))]
+-    public async Task<ResponseDto<StudentDto>> UpdateStudentById(int id, [FromBody] UpdateStudentDto updateStudent)
+->>>>>>> origin/main
+-    {
+-        var oldStudent = repositoryManager.StudentRepository.GetAll()
+-            .FirstOrDefault(student => student.StudentId == id);
++            [HttpDelete]
++            [Produces(typeof(int))]
++            public void DeleteStudentById(int id)
++
++            [Produces(typeof(ResponseDto<StudentDto>))]
++            public async Task<ResponseDto<StudentDto>> UpdateStudentById(int id,
++                [FromBody] UpdateStudentDto updateStudent)
++
++            [Produces(typeof(ResponseDto<StudentDto>))]
++            public async Task<ResponseDto<StudentDto>> UpdateStudentById(int id,
++                [FromBody] UpdateStudentDto updateStudent)
++            {
++                var oldStudent = repositoryManager.StudentRepository.GetAll()
++                    .FirstOrDefault(student => student.StudentId == id);
+ 
+-        if (oldStudent is null)
+-            return new ResponseDto<StudentDto>(404, new Exception("Student not found"));
++                if (oldStudent is null)
++                    return new ResponseDto<StudentDto>(404, new Exception("Student not found"));
+ 
+-        oldStudent.Name = updateStudent.Name;
+-        oldStudent.Surname = updateStudent.Surname;
++                oldStudent.Name = updateStudent.Name;
++                oldStudent.Surname = updateStudent.Surname;
+ 
+-        repositoryManager.StudentRepository.Update(oldStudent);
++                repositoryManager.StudentRepository.Update(oldStudent);
+ 
+-        await repositoryManager.SaveAsync();
++                await repositoryManager.SaveAsync();
+ 
+-        var studentDto = new StudentDto()
+-        {
+-            Name = oldStudent.Name,
+-            Surname = oldStudent.Surname,
+-            Grades = oldStudent.Grades,
+-            Attendances = oldStudent.Attendances,
+-            StudentGroups = oldStudent.StudentGroups
+-        };
++                var studentDto = new StudentDto()
++                {
++                    Name = oldStudent.Name,
++                    Surname = oldStudent.Surname,
++                    Grades = oldStudent.Grades,
++                    Attendances = oldStudent.Attendances,
++                    StudentGroups = oldStudent.StudentGroups
++                };
+ 
+-        return new ResponseDto<StudentDto>(studentDto);
+-    }
++                return new ResponseDto<StudentDto>(studentDto);
++            }
+ 
+-    [HttpDelete]
+-    [Produces(typeof(ResponseDto<StudentDto>))]
+-    public async Task<ResponseDto<StudentDto>> DeleteStudentById(int id)
+-    {
+-        var oldStudent = repositoryManager.StudentRepository.GetAll()
+-            .FirstOrDefault(student => student.StudentId == id);
++            [HttpDelete]
++            [Produces(typeof(ResponseDto<StudentDto>))]
++            public async Task<ResponseDto<StudentDto>> DeleteStudentById(int id)
++            {
++                var oldStudent = repositoryManager.StudentRepository.GetAll()
++                    .FirstOrDefault(student => student.StudentId == id);
+ 
+-        if (oldStudent is null)
+-            return new ResponseDto<StudentDto>(StatusCodes.Status400BadRequest, new Exception("Group not found"));
++                if (oldStudent is null)
++                    return new ResponseDto<StudentDto>(StatusCodes.Status400BadRequest,
++                        new Exception("Group not found"));
+ 
+-        repositoryManager.StudentRepository.Delete(oldStudent);
++                repositoryManager.StudentRepository.Delete(oldStudent);
+ 
+-        await repositoryManager.SaveAsync();
++                await repositoryManager.SaveAsync();
+ 
+-        var studentDto = new StudentDto()
+-        {
+-            Name = oldStudent.Name,
+-            Surname = oldStudent.Surname,
+-            Grades = oldStudent.Grades,
+-            Attendances = oldStudent.Attendances,
+-            StudentGroups = oldStudent.StudentGroups
+-        };
+-        return new ResponseDto<StudentDto>(studentDto);
+-    }
+-}
+\ No newline at end of file
++                var studentDto = new StudentDto()
++                {
++                    Name = oldStudent.Name,
++                    Surname = oldStudent.Surname,
++                    Grades = oldStudent.Grades,
++                    Attendances = oldStudent.Attendances,
++                    StudentGroups = oldStudent.StudentGroups
++                };
++                return new ResponseDto<StudentDto>(studentDto);
++            }
++        }
+\ No newline at end of file

@@ -1,0 +1,37 @@
+Index: StorageBroker/Dto/StudentDto.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>using StorageBroker.Models;\r\n\r\nnamespace StorageBroker.Dto;\r\n\r\npublic class StudentDto\r\n{\r\n<<<<<<< HEAD\r\n<<<<<<< HEAD\r\n    public int StudentId { get; set; }\r\n=======\r\n>>>>>>> origin/main\r\n=======\r\n>>>>>>> origin/main\r\n    public string Name { get; set; }\r\n    public string Surname { get; set; }\r\n    public ICollection<GradesLog> Grades { get; set; }\r\n    public ICollection<AttendanceLog> Attendances { get; set; }\r\n<<<<<<< HEAD\r\n<<<<<<< HEAD\r\n    public ICollection<Group> Groups { get; set; }\r\n}\r\n=======\r\n    public ICollection<Group> StudentGroups { get; set; }\r\n}\r\n>>>>>>> origin/main\r\n=======\r\n    public ICollection<Group> StudentGroups { get; set; }\r\n}\r\n>>>>>>> origin/main\r\n
+===================================================================
+diff --git a/StorageBroker/Dto/StudentDto.cs b/StorageBroker/Dto/StudentDto.cs
+--- a/StorageBroker/Dto/StudentDto.cs	
++++ b/StorageBroker/Dto/StudentDto.cs	
+@@ -4,26 +4,11 @@
+ 
+ public class StudentDto
+ {
+-<<<<<<< HEAD
+-<<<<<<< HEAD
+     public int StudentId { get; set; }
+-=======
+->>>>>>> origin/main
+-=======
+->>>>>>> origin/main
+     public string Name { get; set; }
+     public string Surname { get; set; }
+     public ICollection<GradesLog> Grades { get; set; }
+     public ICollection<AttendanceLog> Attendances { get; set; }
+-<<<<<<< HEAD
+-<<<<<<< HEAD
+     public ICollection<Group> Groups { get; set; }
+-}
+-=======
+     public ICollection<Group> StudentGroups { get; set; }
+-}
+->>>>>>> origin/main
+-=======
+-    public ICollection<Group> StudentGroups { get; set; }
+-}
+->>>>>>> origin/main
++}
+\ No newline at end of file
