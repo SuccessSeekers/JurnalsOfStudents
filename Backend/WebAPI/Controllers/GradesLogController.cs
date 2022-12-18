@@ -65,4 +65,17 @@ public class GradesLogController : ControllerBase
 
         repositoryManager.GradesLogRepository.Delete(oldGradesLog);
     }
+
+    [HttpDelete]
+    [Produces(typeof(int))]
+    public void DeleteGradesLogById(int id)
+    {
+        var oldGradesLog = repositoryManager.GradesLogRepository.GetAll()
+            .FirstOrDefault(student => student.StudentId == id);
+
+        if (oldGradesLog is null)
+            throw new Exception("Student not found");
+
+        repositoryManager.GradesLogRepository.Delete(oldGradesLog);
+    }
 }

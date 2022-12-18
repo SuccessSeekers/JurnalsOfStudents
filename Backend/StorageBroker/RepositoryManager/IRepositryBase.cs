@@ -4,7 +4,8 @@ public interface IRepositryBase<T>
 {
     IQueryable<T> GetAll();
     IQueryable<T> GetAllWithCondition(Func<T, bool> predicate);
-    void Create(T entity);
-    void Update(T entity);
-    void Delete(T entity);
+    T Create(T entity);
+    T Update(T entity);
+    T Delete(T entity);
+    ValueTask<T> CreateAsync(T entity);
 }

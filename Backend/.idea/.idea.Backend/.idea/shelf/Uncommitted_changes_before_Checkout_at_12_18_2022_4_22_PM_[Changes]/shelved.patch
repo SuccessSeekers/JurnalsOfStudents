@@ -1,0 +1,601 @@
+Index: StorageBroker/RepositoryManager/IRepositryBase.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>namespace StorageBroker.RepositoryManager;\r\n\r\npublic interface IRepositryBase<T>\r\n{\r\n    IQueryable<T> GetAll();\r\n    IQueryable<T> GetAllWithCondition(Func<T, bool> predicate);\r\n    void Create(T entity);\r\n    void Update(T entity);\r\n    void Delete(T entity);\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/StorageBroker/RepositoryManager/IRepositryBase.cs b/StorageBroker/RepositoryManager/IRepositryBase.cs
+--- a/StorageBroker/RepositoryManager/IRepositryBase.cs	(revision 3159261015dd9b13c034048e27f76fed45df556d)
++++ b/StorageBroker/RepositoryManager/IRepositryBase.cs	(date 1671362382065)
+@@ -4,7 +4,8 @@
+ {
+     IQueryable<T> GetAll();
+     IQueryable<T> GetAllWithCondition(Func<T, bool> predicate);
+-    void Create(T entity);
+-    void Update(T entity);
+-    void Delete(T entity);
++    T Create(T entity);
++    T Update(T entity);
++    T Delete(T entity);
++    ValueTask<T> CreateAsync(T entity);
+ }
+\ No newline at end of file
+Index: WebAPI/Controllers/TeacherController.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>using Microsoft.AspNetCore.Mvc;\r\nusing Microsoft.EntityFrameworkCore;\r\nusing StorageBroker.Models;\r\nusing StorageBroker.RepositoryManager;\r\nusing StorageBroker.Dto;\r\nusing WebAPI.Dto;\r\n\r\nnamespace WebAPI.Controllers\r\n{\r\n    [ApiController]\r\n    [Route(\"api/[controller]\")]\r\n    public class TeacherController : ControllerBase\r\n    {\r\n        private readonly IRepositoryManager RepositoryManager;\r\n\r\n        public TeacherController(IRepositoryManager repositoryManager)\r\n        {\r\n            this.RepositoryManager = repositoryManager;\r\n        }\r\n\r\n        [HttpGet]\r\n        [Produces(typeof(ResponseDto<Teacher>))]\r\n        public ResponseDto<Teacher> GetTeachers()\r\n        {\r\n            return new ResponseDto<Teacher>(RepositoryManager.TeacherRepository.GetAll()\r\n                .Include(teacher => teacher.TeacherGroups));\r\n        }\r\n\r\n        [HttpGet(\"{TeacherId:int}\")]\r\n        [Produces(typeof(ResponseDto<Teacher>))]\r\n        public ResponseDto<Teacher> GetTeacherById(int id)\r\n        {\r\n            ResponseDto<Teacher> teacher =new ResponseDto<Teacher>(RepositoryManager.TeacherRepository\r\n                .GetAllWithCondition(teacher => teacher.TeacherId == id));\r\n\r\n            if (teacher is null)\r\n                throw new Exception(\"Teacher not found\");\r\n\r\n            return teacher;\r\n        }\r\n\r\n        [HttpPost]\r\n        [Produces(typeof(ResponseDto<Teacher>))]\r\n        public void CreateTeacher([FromBody] CreateTeacherDto teacher)\r\n        {\r\n            var newTeacher = new Teacher();\r\n            newTeacher.Name = teacher.Name;\r\n\r\n            RepositoryManager.TeacherRepository.Create(newTeacher);\r\n\r\n            RepositoryManager.Save();\r\n        }\r\n\r\n        [HttpPut]\r\n        [Produces(typeof(ResponseDto<Teacher>))]\r\n        public void UpdateTeacher([FromBody] UpdateTeacherDto teacher)\r\n        {\r\n            var newTeacher = new Teacher();\r\n            newTeacher.Name = teacher.Name;\r\n\r\n            RepositoryManager.TeacherRepository.Update(newTeacher);\r\n\r\n            RepositoryManager.Save();\r\n        }\r\n\r\n        [HttpDelete]\r\n        [Produces(typeof(ResponseDto<Teacher>))]\r\n        public void DeleteTeacherById(int id)\r\n        {\r\n            var oldTeacher = RepositoryManager.TeacherRepository.GetAll()\r\n                .FirstOrDefault(teacher => teacher.TeacherId == id);\r\n            if (oldTeacher is null)\r\n                throw new Exception(\"Teacher not found\");\r\n\r\n            RepositoryManager.TeacherRepository.Delete(oldTeacher);\r\n\r\n            RepositoryManager.Save();\r\n        }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/WebAPI/Controllers/TeacherController.cs b/WebAPI/Controllers/TeacherController.cs
+--- a/WebAPI/Controllers/TeacherController.cs	(revision 3159261015dd9b13c034048e27f76fed45df556d)
++++ b/WebAPI/Controllers/TeacherController.cs	(date 1671362454007)
+@@ -2,7 +2,6 @@
+ using Microsoft.EntityFrameworkCore;
+ using StorageBroker.Models;
+ using StorageBroker.RepositoryManager;
+-using StorageBroker.Dto;
+ using WebAPI.Dto;
+ 
+ namespace WebAPI.Controllers
+@@ -27,44 +26,34 @@
+         }
+ 
+         [HttpGet("{TeacherId:int}")]
+-        [Produces(typeof(ResponseDto<Teacher>))]
+-        public ResponseDto<Teacher> GetTeacherById(int id)
++        [Produces(typeof(Teacher))]
++        public IActionResult GetTeacherById(int id)
+         {
+-            ResponseDto<Teacher> teacher =new ResponseDto<Teacher>(RepositoryManager.TeacherRepository
+-                .GetAllWithCondition(teacher => teacher.TeacherId == id));
++            IQueryable<Teacher> teacher = RepositoryManager.TeacherRepository
++                .GetAllWithCondition(teacher => teacher.TeacherId == id);
+ 
+             if (teacher is null)
+                 throw new Exception("Teacher not found");
+ 
+-            return teacher;
++            return Ok(teacher);
+         }
+ 
+         [HttpPost]
+-        [Produces(typeof(ResponseDto<Teacher>))]
+-        public void CreateTeacher([FromBody] CreateTeacherDto teacher)
++        [Produces(typeof(Teacher))]
++        public async Task CreateTeacher([FromBody] Teacher teacher)
+         {
+-            var newTeacher = new Teacher();
+-            newTeacher.Name = teacher.Name;
+-
+-            RepositoryManager.TeacherRepository.Create(newTeacher);
+-
+-            RepositoryManager.Save();
++            await RepositoryManager.TeacherRepository.CreateAsync(teacher);
+         }
+ 
+         [HttpPut]
+-        [Produces(typeof(ResponseDto<Teacher>))]
+-        public void UpdateTeacher([FromBody] UpdateTeacherDto teacher)
++        [Produces(typeof(Teacher))]
++        public void UpdateTeacher([FromBody] Teacher teacher)
+         {
+-            var newTeacher = new Teacher();
+-            newTeacher.Name = teacher.Name;
+-
+-            RepositoryManager.TeacherRepository.Update(newTeacher);
+-
+-            RepositoryManager.Save();
++            RepositoryManager.TeacherRepository.Update(teacher);
+         }
+ 
+         [HttpDelete]
+-        [Produces(typeof(ResponseDto<Teacher>))]
++        [Produces(typeof(Teacher))]
+         public void DeleteTeacherById(int id)
+         {
+             var oldTeacher = RepositoryManager.TeacherRepository.GetAll()
+@@ -73,8 +62,6 @@
+                 throw new Exception("Teacher not found");
+ 
+             RepositoryManager.TeacherRepository.Delete(oldTeacher);
+-
+-            RepositoryManager.Save();
+         }
+     }
+ }
+\ No newline at end of file
+Index: WebAPI/Controllers/GradesLogController.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\r\nusing Microsoft.AspNetCore.Mvc;\r\nusing Microsoft.EntityFrameworkCore;\r\nusing StorageBroker.Models;\r\nusing StorageBroker.RepositoryManager;\r\nusing WebAPI.Dto;\r\n\r\nnamespace WebAPI.Controllers;\r\n\r\n[ApiController]\r\n[Route(\"api/[controller]\")]\r\npublic class GradesLogController : ControllerBase\r\n{\r\n    private readonly IRepositoryManager repositoryManager;\r\n\r\n    public GradesLogController(IRepositoryManager repositoryManager)\r\n    {\r\n        this.repositoryManager = repositoryManager;\r\n    }\r\n\r\n    [HttpGet]\r\n    [Produces(typeof(ResponseDto<GradesLog>))]\r\n    public ResponseDto<GradesLog> GetGradesLogs()\r\n    {\r\n        return new ResponseDto<GradesLog>(repositoryManager.GradesLogRepository.GetAll()\r\n            .Include(gradesLog => gradesLog.Grade));\r\n    }\r\n\r\n    [HttpGet(\"{GradesLogId:int}\")]\r\n    [Produces(typeof(ResponseDto<GradesLog>))]\r\n    public IActionResult GetGradesLogById(int id)\r\n    {\r\n        var gradesLog = repositoryManager.GradesLogRepository\r\n            .GetAllWithCondition(gradesLog => gradesLog.Id == id);\r\n\r\n        if (gradesLog is null)\r\n            throw new Exception(\"Student not found\");\r\n\r\n        return Ok(gradesLog);\r\n    }\r\n\r\n    [HttpPost]\r\n    [Produces(typeof(GradesLog))]\r\n    public void CreateGradesLog([FromBody] GradesLog gradesLog)\r\n    {\r\n        repositoryManager.GradesLogRepository.Create(gradesLog);\r\n    }\r\n\r\n    [HttpPut]\r\n    [Produces(typeof(GradesLog))]\r\n    public void UpdateGradesLog([FromBody] GradesLog gradesLog)\r\n    {\r\n        repositoryManager.GradesLogRepository.Update(gradesLog);\r\n    }\r\n\r\n    [HttpDelete]\r\n    [Produces(typeof(int))]\r\n    public void DeleteGradesLogById(int id)\r\n    {\r\n        var oldGradesLog = repositoryManager.GradesLogRepository.GetAll()\r\n            .FirstOrDefault(student => student.StudentId == id);\r\n\r\n        if (oldGradesLog is null)\r\n            throw new Exception(\"Student not found\");\r\n\r\n        repositoryManager.GradesLogRepository.Delete(oldGradesLog);\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/WebAPI/Controllers/GradesLogController.cs b/WebAPI/Controllers/GradesLogController.cs
+--- a/WebAPI/Controllers/GradesLogController.cs	(revision 3159261015dd9b13c034048e27f76fed45df556d)
++++ b/WebAPI/Controllers/GradesLogController.cs	(date 1671362382038)
+@@ -1,68 +1,8 @@
+-
+ using Microsoft.AspNetCore.Mvc;
+-using Microsoft.EntityFrameworkCore;
+-using StorageBroker.Models;
+-using StorageBroker.RepositoryManager;
+-using WebAPI.Dto;
+-
+-namespace WebAPI.Controllers;
+-
+-[ApiController]
+-[Route("api/[controller]")]
+-public class GradesLogController : ControllerBase
+-{
+-    private readonly IRepositoryManager repositoryManager;
+-
+-    public GradesLogController(IRepositoryManager repositoryManager)
+-    {
+-        this.repositoryManager = repositoryManager;
+-    }
+-
+-    [HttpGet]
+-    [Produces(typeof(ResponseDto<GradesLog>))]
+-    public ResponseDto<GradesLog> GetGradesLogs()
+-    {
+-        return new ResponseDto<GradesLog>(repositoryManager.GradesLogRepository.GetAll()
+-            .Include(gradesLog => gradesLog.Grade));
+-    }
+-
+-    [HttpGet("{GradesLogId:int}")]
+-    [Produces(typeof(ResponseDto<GradesLog>))]
+-    public IActionResult GetGradesLogById(int id)
+-    {
+-        var gradesLog = repositoryManager.GradesLogRepository
+-            .GetAllWithCondition(gradesLog => gradesLog.Id == id);
+-
+-        if (gradesLog is null)
+-            throw new Exception("Student not found");
+-
+-        return Ok(gradesLog);
+-    }
+-
+-    [HttpPost]
+-    [Produces(typeof(GradesLog))]
+-    public void CreateGradesLog([FromBody] GradesLog gradesLog)
+-    {
+-        repositoryManager.GradesLogRepository.Create(gradesLog);
+-    }
+ 
+-    [HttpPut]
+-    [Produces(typeof(GradesLog))]
+-    public void UpdateGradesLog([FromBody] GradesLog gradesLog)
+-    {
+-        repositoryManager.GradesLogRepository.Update(gradesLog);
+-    }
+-
+-    [HttpDelete]
+-    [Produces(typeof(int))]
+-    public void DeleteGradesLogById(int id)
++namespace WebAPI.Controllers
++{
++    public class GradesLogController : Controller
+     {
+-        var oldGradesLog = repositoryManager.GradesLogRepository.GetAll()
+-            .FirstOrDefault(student => student.StudentId == id);
+-
+-        if (oldGradesLog is null)
+-            throw new Exception("Student not found");
+-
+-        repositoryManager.GradesLogRepository.Delete(oldGradesLog);
+     }
+ }
+\ No newline at end of file
+Index: WebAPI/obj/staticwebassets.pack.sentinel
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/WebAPI/obj/staticwebassets.pack.sentinel b/WebAPI/obj/staticwebassets.pack.sentinel
+--- a/WebAPI/obj/staticwebassets.pack.sentinel	(revision 3159261015dd9b13c034048e27f76fed45df556d)
++++ b/WebAPI/obj/staticwebassets.pack.sentinel	(date 1671362427496)
+@@ -39,3 +39,4 @@
+ 2.0
+ 2.0
+ 2.0
++2.0
+Index: WebAPI/obj/rider.project.restore.info
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>16713585662867537
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/WebAPI/obj/rider.project.restore.info b/WebAPI/obj/rider.project.restore.info
+--- a/WebAPI/obj/rider.project.restore.info	(revision 3159261015dd9b13c034048e27f76fed45df556d)
++++ b/WebAPI/obj/rider.project.restore.info	(date 1671362382071)
+@@ -1,1 +1,1 @@
+-16713585662867537
+\ No newline at end of file
++16713622892044136
+\ No newline at end of file
+Index: Tests/obj/rider.project.restore.info
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>16713585663663490
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Tests/obj/rider.project.restore.info b/Tests/obj/rider.project.restore.info
+--- a/Tests/obj/rider.project.restore.info	(revision 3159261015dd9b13c034048e27f76fed45df556d)
++++ b/Tests/obj/rider.project.restore.info	(date 1671362440679)
+@@ -1,1 +1,1 @@
+-16713585663663490
+\ No newline at end of file
++16713622892708896
+\ No newline at end of file
+Index: LoggerService/obj/LoggerService.csproj.nuget.g.props
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"no\"?>\r\n<Project ToolsVersion=\"14.0\" xmlns=\"http://schemas.microsoft.com/developer/msbuild/2003\">\r\n  <PropertyGroup Condition=\" '$(ExcludeRestorePackageImports)' != 'true' \">\r\n    <RestoreSuccess Condition=\" '$(RestoreSuccess)' == '' \">True</RestoreSuccess>\r\n    <RestoreTool Condition=\" '$(RestoreTool)' == '' \">NuGet</RestoreTool>\r\n    <ProjectAssetsFile Condition=\" '$(ProjectAssetsFile)' == '' \">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>\r\n    <NuGetPackageRoot Condition=\" '$(NuGetPackageRoot)' == '' \">$(UserProfile)\\.nuget\\packages\\</NuGetPackageRoot>\r\n    <NuGetPackageFolders Condition=\" '$(NuGetPackageFolders)' == '' \">C:\\Users\\elchi\\.nuget\\packages\\</NuGetPackageFolders>\r\n    <NuGetProjectStyle Condition=\" '$(NuGetProjectStyle)' == '' \">PackageReference</NuGetProjectStyle>\r\n    <NuGetToolVersion Condition=\" '$(NuGetToolVersion)' == '' \">6.4.0</NuGetToolVersion>\r\n  </PropertyGroup>\r\n  <ItemGroup Condition=\" '$(ExcludeRestorePackageImports)' != 'true' \">\r\n    <SourceRoot Include=\"C:\\Users\\elchi\\.nuget\\packages\\\" />\r\n  </ItemGroup>\r\n</Project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/LoggerService/obj/LoggerService.csproj.nuget.g.props b/LoggerService/obj/LoggerService.csproj.nuget.g.props
+--- a/LoggerService/obj/LoggerService.csproj.nuget.g.props	(revision 3159261015dd9b13c034048e27f76fed45df556d)
++++ b/LoggerService/obj/LoggerService.csproj.nuget.g.props	(date 1671362454006)
+@@ -5,11 +5,11 @@
+     <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
+     <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
+     <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
+-    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\elchi\.nuget\packages\</NuGetPackageFolders>
++    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\Abdumannon-PC\.nuget\packages\</NuGetPackageFolders>
+     <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
+-    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.4.0</NuGetToolVersion>
++    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.0.0</NuGetToolVersion>
+   </PropertyGroup>
+   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+-    <SourceRoot Include="C:\Users\elchi\.nuget\packages\" />
++    <SourceRoot Include="C:\Users\Abdumannon-PC\.nuget\packages\" />
+   </ItemGroup>
+ </Project>
+\ No newline at end of file
+Index: LoggerService/obj/rider.project.restore.info
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>16713585662325198
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/LoggerService/obj/rider.project.restore.info b/LoggerService/obj/rider.project.restore.info
+--- a/LoggerService/obj/rider.project.restore.info	(revision 3159261015dd9b13c034048e27f76fed45df556d)
++++ b/LoggerService/obj/rider.project.restore.info	(date 1671362407323)
+@@ -1,1 +1,1 @@
+-16713585662325198
+\ No newline at end of file
++16713622891402043
+\ No newline at end of file
+Index: .idea/.idea.Backend/.idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoGeneratedRunConfigurationManager\">\r\n    <projectFile profileName=\"WebAPI\">WebAPI/WebAPI.csproj</projectFile>\r\n    <projectFile profileName=\"IIS Express\">WebAPI/WebAPI.csproj</projectFile>\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"aaabd197-24ba-4ddd-b825-1b51add124f8\" name=\"Changes\" comment=\"Merged Abdumannon to Main\">\r\n      <change afterPath=\"$PROJECT_DIR$/StorageBroker/Dto/GroupDto.cs\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/.idea.Backend/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/.idea.Backend/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/StorageBroker/StorageBroker.csproj\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/StorageBroker/StorageBroker.csproj\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/WebAPI/Controllers/GroupController.cs\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/WebAPI/Controllers/GroupController.cs\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$/..\" value=\"Abdumannon\" />\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"GitSEFilterConfiguration\">\r\n    <file-type-list>\r\n      <filtered-out-file-type name=\"LOCAL_BRANCH\" />\r\n      <filtered-out-file-type name=\"REMOTE_BRANCH\" />\r\n      <filtered-out-file-type name=\"TAG\" />\r\n      <filtered-out-file-type name=\"COMMIT_BY_MESSAGE\" />\r\n    </file-type-list>\r\n  </component>\r\n  <component name=\"HighlightingSettingsPerFile\">\r\n    <setting file=\"file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/df71358f7b7337a1eee3a65abe6d678dd9a065e256b8cc3fd44a2949754/Object.cs\" root0=\"SKIP_HIGHLIGHTING\" />\r\n    <setting file=\"mock://C:/Users/Abdumannon-PC/Desktop/JurnalsOfStudents/Backend/StorageBroker/Migrations/20221218095846_third.cs\" root0=\"SKIP_HIGHLIGHTING\" />\r\n    <setting file=\"mock://C:/Users/Abdumannon-PC/Desktop/JurnalsOfStudents/Backend/WebAPI/Program.cs\" root0=\"SKIP_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/WebAPI/Controllers/TeacherController.cs\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/WebAPI/Properties/launchSettings.json\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs\" root0=\"SKIP_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/WebAPI/appsettings.json\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/WebAPI/Program.cs\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"mock://C:/Users/Abdumannon-PC/Desktop/JurnalsOfStudents/Backend/WebAPI/ServiceExtensions/AppExtensions.cs\" root0=\"SKIP_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/WebAPI/appsettings.Development.json\" root0=\"FORCE_HIGHLIGHTING\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2J2PrupFnHHhL39kFHbQQt9Dgyg\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"ASKED_ADD_EXTERNAL_FILES\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"nodejs_package_manager_path\" value=\"npm\" />\r\n    <property name=\"vue.rearranger.settings.migration\" value=\"true\" />\r\n  </component>\r\n  <component name=\"RunManager\" selected=\".NET Launch Settings Profile.WebAPI\">\r\n    <configuration name=\"WebAPI\" type=\"LaunchSettings\" factoryName=\".NET Launch Settings Profile\">\r\n      <option name=\"LAUNCH_PROFILE_PROJECT_FILE_PATH\" value=\"$PROJECT_DIR$/WebAPI/WebAPI.csproj\" />\r\n      <option name=\"LAUNCH_PROFILE_TFM\" value=\"net6.0\" />\r\n      <option name=\"LAUNCH_PROFILE_NAME\" value=\"WebAPI\" />\r\n      <option name=\"USE_EXTERNAL_CONSOLE\" value=\"0\" />\r\n      <option name=\"USE_MONO\" value=\"0\" />\r\n      <option name=\"RUNTIME_ARGUMENTS\" value=\"\" />\r\n      <option name=\"GENERATE_APPLICATIONHOST_CONFIG\" value=\"1\" />\r\n      <option name=\"SHOW_IIS_EXPRESS_OUTPUT\" value=\"0\" />\r\n      <option name=\"SEND_DEBUG_REQUEST\" value=\"1\" />\r\n      <option name=\"ADDITIONAL_IIS_EXPRESS_ARGUMENTS\" value=\"\" />\r\n      <method v=\"2\">\r\n        <option name=\"Build\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"WebAPI: IIS Express\" type=\"LaunchSettings\" factoryName=\".NET Launch Settings Profile\">\r\n      <option name=\"LAUNCH_PROFILE_PROJECT_FILE_PATH\" value=\"$PROJECT_DIR$/WebAPI/WebAPI.csproj\" />\r\n      <option name=\"LAUNCH_PROFILE_TFM\" value=\"net6.0\" />\r\n      <option name=\"LAUNCH_PROFILE_NAME\" value=\"IIS Express\" />\r\n      <option name=\"USE_EXTERNAL_CONSOLE\" value=\"0\" />\r\n      <option name=\"USE_MONO\" value=\"0\" />\r\n      <option name=\"RUNTIME_ARGUMENTS\" value=\"\" />\r\n      <option name=\"GENERATE_APPLICATIONHOST_CONFIG\" value=\"1\" />\r\n      <option name=\"SHOW_IIS_EXPRESS_OUTPUT\" value=\"0\" />\r\n      <option name=\"SEND_DEBUG_REQUEST\" value=\"1\" />\r\n      <option name=\"ADDITIONAL_IIS_EXPRESS_ARGUMENTS\" value=\"\" />\r\n      <method v=\"2\">\r\n        <option name=\"Build\" />\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"aaabd197-24ba-4ddd-b825-1b51add124f8\" name=\"Changes\" comment=\"\" />\r\n      <created>1671273410384</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1671273410384</updated>\r\n      <workItem from=\"1671273416701\" duration=\"3916000\" />\r\n      <workItem from=\"1671344639382\" duration=\"312000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Project Initialized\">\r\n      <created>1671273435653</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1671273435653</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Project fixed for developing\">\r\n      <created>1671273508187</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1671273508187</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Created StorageBroker layer\">\r\n      <created>1671278070362</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1671278070362</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Recreated StorageBroker layer\">\r\n      <created>1671278151577</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1671278151577</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Storage broker referenced to main project\">\r\n      <created>1671278267064</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1671278267064</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Group Model created\">\r\n      <created>1671278592285</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1671278592285</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"changed StorageBroker.Model.Group and created Enum of StorageBroker.Model.GroupStatus\">\r\n      <created>1671280767523</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1671280767523</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"Created Logger Service\">\r\n      <created>1671295164296</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1671295164296</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"Merged Logger_service branch\">\r\n      <created>1671295247702</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1671295247702</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"refixed project structure\">\r\n      <created>1671295542885</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1671295542885</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"restoring project\">\r\n      <created>1671345797688</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1671345797688</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\"some changes on temp branch\">\r\n      <created>1671345898802</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1671345898802</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00013\" summary=\"Project fully restored and got ready for developing\">\r\n      <created>1671346551011</created>\r\n      <option name=\"number\" value=\"00013\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00013\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1671346551011</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00014\" summary=\"unversioned files staged\">\r\n      <created>1671346577474</created>\r\n      <option name=\"number\" value=\"00014\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00014\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1671346577474</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00015\" summary=\"Techer controller issue fixed\">\r\n      <created>1671356900459</created>\r\n      <option name=\"number\" value=\"00015\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00015\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1671356900459</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00016\" summary=\"some changes on TeacherController\">\r\n      <created>1671357698696</created>\r\n      <option name=\"number\" value=\"00016\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00016\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1671357698696</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00017\" summary=\"some changes on TeacherController\">\r\n      <created>1671357724885</created>\r\n      <option name=\"number\" value=\"00017\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00017\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1671357724885</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00018\" summary=\"Solved conflict on merging\">\r\n      <created>1671358533825</created>\r\n      <option name=\"number\" value=\"00018\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00018\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1671358533825</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00019\" summary=\"Merged Abdumannon to Main\">\r\n      <created>1671358807667</created>\r\n      <option name=\"number\" value=\"00019\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00019\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1671358807667</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"20\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"UnitTestsCoverage.Settings\">\r\n    <option name=\"coveragePercentColumnWidth\" value=\"150\" />\r\n    <option name=\"sortOrder\" value=\"DESCENDING\" />\r\n    <option name=\"sortedColumn\" value=\"1\" />\r\n    <option name=\"symbolColumnWidth\" value=\"178\" />\r\n    <coverage-tree-state>\r\n      <expand>\r\n        <path>\r\n          <item name=\"rootNode\" type=\"c53c71d1:RiderDotCoverCoverageTreeModel$RootNode\" />\r\n          <item name=\"Total 90% 4/42\" type=\"8b8fad3a:RiderDotCoverCoverageTreeNode\" />\r\n        </path>\r\n      </expand>\r\n      <select />\r\n    </coverage-tree-state>\r\n  </component>\r\n  <component name=\"UnityCheckinConfiguration\" checkUnsavedScenes=\"true\" />\r\n  <component name=\"UnityProjectConfiguration\" hasMinimizedUI=\"false\" />\r\n  <component name=\"UnityUnitTestConfiguration\" currentTestLauncher=\"NUnit\" />\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"main\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n    <option name=\"CLEAR_INITIAL_COMMIT_MESSAGE\" value=\"true\" />\r\n    <MESSAGE value=\"Project Initialized\" />\r\n    <MESSAGE value=\"Project fixed for developing\" />\r\n    <MESSAGE value=\"Created StorageBroker layer\" />\r\n    <MESSAGE value=\"Recreated StorageBroker layer\" />\r\n    <MESSAGE value=\"Storage broker referenced to main project\" />\r\n    <MESSAGE value=\"Group Model created\" />\r\n    <MESSAGE value=\"changed StorageBroker.Model.Group and created Enum of StorageBroker.Model.GroupStatus\" />\r\n    <MESSAGE value=\"Merged Logger_service branch\" />\r\n    <MESSAGE value=\"refixed project structure\" />\r\n    <MESSAGE value=\"project restoring\" />\r\n    <MESSAGE value=\"restoring project\" />\r\n    <MESSAGE value=\"some changes on temp branch\" />\r\n    <MESSAGE value=\"Project fully restored and got ready for developing\" />\r\n    <MESSAGE value=\"unversioned files staged\" />\r\n    <MESSAGE value=\"Techer controller issue fixed\" />\r\n    <MESSAGE value=\"some changes on TeacherController\" />\r\n    <MESSAGE value=\"Created DTO for ResponseDt\" />\r\n    <MESSAGE value=\"Solved conflict on merging\" />\r\n    <MESSAGE value=\"Merged Abdumannon to Main\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Merged Abdumannon to Main\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.idea.Backend/.idea/workspace.xml b/.idea/.idea.Backend/.idea/workspace.xml
+--- a/.idea/.idea.Backend/.idea/workspace.xml	(revision 3159261015dd9b13c034048e27f76fed45df556d)
++++ b/.idea/.idea.Backend/.idea/workspace.xml	(date 1671362382076)
+@@ -5,11 +5,12 @@
+     <projectFile profileName="IIS Express">WebAPI/WebAPI.csproj</projectFile>
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="aaabd197-24ba-4ddd-b825-1b51add124f8" name="Changes" comment="Merged Abdumannon to Main">
+-      <change afterPath="$PROJECT_DIR$/StorageBroker/Dto/GroupDto.cs" afterDir="false" />
++    <list default="true" id="aaabd197-24ba-4ddd-b825-1b51add124f8" name="Changes" comment="Merge remote-tracking branch 'origin/main'">
+       <change beforePath="$PROJECT_DIR$/.idea/.idea.Backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Backend/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/StorageBroker/StorageBroker.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/StorageBroker.csproj" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/WebAPI/Controllers/GroupController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/Controllers/GroupController.cs" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/StorageBroker/RepositoryManager/IRepositryBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/RepositoryManager/IRepositryBase.cs" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/StorageBroker/RepositoryManager/RepositoryBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/RepositoryManager/RepositoryBase.cs" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/WebAPI/Controllers/GradesLogController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/Controllers/GradesLogController.cs" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/WebAPI/Controllers/TeacherController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/Controllers/TeacherController.cs" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -19,7 +20,7 @@
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$/.." value="Abdumannon" />
++        <entry key="$PROJECT_DIR$/.." value="main" />
+       </map>
+     </option>
+   </component>
+@@ -32,16 +33,19 @@
+     </file-type-list>
+   </component>
+   <component name="HighlightingSettingsPerFile">
++    <setting file="file://$PROJECT_DIR$/WebAPI/Controllers/TeacherController.cs" root0="FORCE_HIGHLIGHTING" />
++    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
++    <setting file="mock://C:/Users/Abdumannon-PC/Desktop/JurnalsOfStudents/Backend/WebAPI/ServiceExtensions/AppExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/df71358f7b7337a1eee3a65abe6d678dd9a065e256b8cc3fd44a2949754/Object.cs" root0="SKIP_HIGHLIGHTING" />
+     <setting file="mock://C:/Users/Abdumannon-PC/Desktop/JurnalsOfStudents/Backend/StorageBroker/Migrations/20221218095846_third.cs" root0="SKIP_HIGHLIGHTING" />
+     <setting file="mock://C:/Users/Abdumannon-PC/Desktop/JurnalsOfStudents/Backend/WebAPI/Program.cs" root0="SKIP_HIGHLIGHTING" />
+-    <setting file="file://$PROJECT_DIR$/WebAPI/Controllers/TeacherController.cs" root0="FORCE_HIGHLIGHTING" />
++    <setting file="mock://C:/Users/Abdumannon-PC/Desktop/JurnalsOfStudents/Backend/WebAPI/Controllers/GroupController.cs" root0="SKIP_HIGHLIGHTING" />
+     <setting file="file://$PROJECT_DIR$/WebAPI/Properties/launchSettings.json" root0="FORCE_HIGHLIGHTING" />
+     <setting file="file://$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
+     <setting file="file://$PROJECT_DIR$/WebAPI/appsettings.json" root0="FORCE_HIGHLIGHTING" />
+     <setting file="file://$PROJECT_DIR$/WebAPI/Program.cs" root0="FORCE_HIGHLIGHTING" />
+-    <setting file="mock://C:/Users/Abdumannon-PC/Desktop/JurnalsOfStudents/Backend/WebAPI/ServiceExtensions/AppExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+     <setting file="file://$PROJECT_DIR$/WebAPI/appsettings.Development.json" root0="FORCE_HIGHLIGHTING" />
++    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
+   </component>
+   <component name="MarkdownSettingsMigration">
+     <option name="stateVersion" value="1" />
+@@ -238,7 +242,28 @@
+       <option name="project" value="LOCAL" />
+       <updated>1671358807667</updated>
+     </task>
+-    <option name="localTasksCounter" value="20" />
++    <task id="LOCAL-00020" summary="GroupController assigned to groupDto">
++      <created>1671360068716</created>
++      <option name="number" value="00020" />
++      <option name="presentableId" value="LOCAL-00020" />
++      <option name="project" value="LOCAL" />
++      <updated>1671360068716</updated>
++    </task>
++    <task id="LOCAL-00021" summary="Merge remote-tracking branch 'origin/main'">
++      <created>1671360099848</created>
++      <option name="number" value="00021" />
++      <option name="presentableId" value="LOCAL-00021" />
++      <option name="project" value="LOCAL" />
++      <updated>1671360099849</updated>
++    </task>
++    <task id="LOCAL-00022" summary="Merge remote-tracking branch 'origin/main'">
++      <created>1671360119579</created>
++      <option name="number" value="00022" />
++      <option name="presentableId" value="LOCAL-00022" />
++      <option name="project" value="LOCAL" />
++      <updated>1671360119579</updated>
++    </task>
++    <option name="localTasksCounter" value="23" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -273,7 +298,7 @@
+                   <entry key="branch">
+                     <value>
+                       <list>
+-                        <option value="main" />
++                        <option value="Abdumannon" />
+                       </list>
+                     </value>
+                   </entry>
+@@ -307,6 +332,8 @@
+     <MESSAGE value="Created DTO for ResponseDt" />
+     <MESSAGE value="Solved conflict on merging" />
+     <MESSAGE value="Merged Abdumannon to Main" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Merged Abdumannon to Main" />
++    <MESSAGE value="GroupController assigned to groupDto" />
++    <MESSAGE value="Merge remote-tracking branch 'origin/main'" />
++    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/main'" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: Tests/bin/Debug/net6.0/CoverletSourceRootsMapping
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj|C:\\Users\\elchi\\.nuget\\packages\\=C:\\Users\\elchi\\.nuget\\packages\\\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-16LE
+===================================================================
+diff --git a/Tests/bin/Debug/net6.0/CoverletSourceRootsMapping b/Tests/bin/Debug/net6.0/CoverletSourceRootsMapping
+--- a/Tests/bin/Debug/net6.0/CoverletSourceRootsMapping	(revision 3159261015dd9b13c034048e27f76fed45df556d)
++++ b/Tests/bin/Debug/net6.0/CoverletSourceRootsMapping	(date 1671362411913)
+@@ -1,1 +1,1 @@
+-C:\Users\elchi\Source\Repos\JurnalsOfStudents\Backend\LoggerService\LoggerService.csproj|C:\Users\elchi\.nuget\packages\=C:\Users\elchi\.nuget\packages\
++C:\Users\99890\Desktop\JurnalsOfStudents\Backend\LoggerService\LoggerService.csproj|C:\Users\99890\.nuget\packages\=C:\Users\99890\.nuget\packages\
+Index: StorageBroker/obj/rider.project.restore.info
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>16713585662857412
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/StorageBroker/obj/rider.project.restore.info b/StorageBroker/obj/rider.project.restore.info
+--- a/StorageBroker/obj/rider.project.restore.info	(revision 3159261015dd9b13c034048e27f76fed45df556d)
++++ b/StorageBroker/obj/rider.project.restore.info	(date 1671362442799)
+@@ -1,1 +1,1 @@
+-16713585662857412
+\ No newline at end of file
++16713622892034135
+\ No newline at end of file
+Index: StorageBroker/RepositoryManager/RepositoryBase.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>namespace StorageBroker.RepositoryManager;\r\n\r\npublic abstract class RepositoryBase<T> : IRepositryBase<T> where T : class\r\n{\r\n    private readonly DataBaseContext _context;\r\n\r\n    public RepositoryBase(DataBaseContext context)\r\n    {\r\n        _context = context;\r\n    }\r\n\r\n    public IQueryable<T> GetAll()\r\n    {\r\n        return _context.Set<T>();\r\n    }\r\n\r\n    public IQueryable<T> GetAllWithCondition(Func<T, bool> predicate)\r\n    {\r\n        return _context.Set<T>().Where(predicate).AsQueryable();\r\n    }\r\n\r\n    public void Create(T entity)\r\n    {\r\n        _context.Set<T>().Add(entity);\r\n    }\r\n\r\n    public void Update(T entity)\r\n    {\r\n        _context.Set<T>().Update(entity);\r\n    }\r\n\r\n    public void Delete(T entity)\r\n    {\r\n        _context.Set<T>().Remove(entity);\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/StorageBroker/RepositoryManager/RepositoryBase.cs b/StorageBroker/RepositoryManager/RepositoryBase.cs
+--- a/StorageBroker/RepositoryManager/RepositoryBase.cs	(revision 3159261015dd9b13c034048e27f76fed45df556d)
++++ b/StorageBroker/RepositoryManager/RepositoryBase.cs	(date 1671362382061)
+@@ -1,3 +1,5 @@
++using Microsoft.EntityFrameworkCore;
++
+ namespace StorageBroker.RepositoryManager;
+ 
+ public abstract class RepositoryBase<T> : IRepositryBase<T> where T : class
+@@ -19,18 +21,23 @@
+         return _context.Set<T>().Where(predicate).AsQueryable();
+     }
+ 
+-    public void Create(T entity)
++    public T Create(T entity)
+     {
+-        _context.Set<T>().Add(entity);
++        return _context.Set<T>().Add(entity).Entity;
+     }
+ 
+-    public void Update(T entity)
++    public T Update(T entity)
+     {
+-        _context.Set<T>().Update(entity);
++        return _context.Set<T>().Update(entity).Entity;
+     }
+ 
+-    public void Delete(T entity)
++    public T Delete(T entity)
+     {
+-        _context.Set<T>().Remove(entity);
++        return _context.Set<T>().Remove(entity).Entity;
++    }
++
++    public async ValueTask<T> CreateAsync(T entity)
++    {
++        return (await _context.Set<T>().AddAsync(entity)).Entity;
+     }
+ }
+\ No newline at end of file
+Index: WebAPI/obj/WebAPI.csproj.nuget.dgspec.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\r\n  \"format\": 1,\r\n  \"restore\": {\r\n    \"C:\\\\Users\\\\elchi\\\\Source\\\\Repos\\\\JurnalsOfStudents\\\\Backend\\\\WebAPI\\\\WebAPI.csproj\": {}\r\n  },\r\n  \"projects\": {\r\n    \"C:\\\\Users\\\\elchi\\\\Source\\\\Repos\\\\JurnalsOfStudents\\\\Backend\\\\LoggerService\\\\LoggerService.csproj\": {\r\n      \"version\": \"1.0.0\",\r\n      \"restore\": {\r\n        \"projectUniqueName\": \"C:\\\\Users\\\\elchi\\\\Source\\\\Repos\\\\JurnalsOfStudents\\\\Backend\\\\LoggerService\\\\LoggerService.csproj\",\r\n        \"projectName\": \"LoggerService\",\r\n        \"projectPath\": \"C:\\\\Users\\\\elchi\\\\Source\\\\Repos\\\\JurnalsOfStudents\\\\Backend\\\\LoggerService\\\\LoggerService.csproj\",\r\n        \"packagesPath\": \"C:\\\\Users\\\\elchi\\\\.nuget\\\\packages\\\\\",\r\n        \"outputPath\": \"C:\\\\Users\\\\elchi\\\\Source\\\\Repos\\\\JurnalsOfStudents\\\\Backend\\\\LoggerService\\\\obj\\\\\",\r\n        \"projectStyle\": \"PackageReference\",\r\n        \"configFilePaths\": [\r\n          \"C:\\\\Users\\\\elchi\\\\AppData\\\\Roaming\\\\NuGet\\\\NuGet.Config\",\r\n          \"C:\\\\Program Files (x86)\\\\NuGet\\\\Config\\\\Microsoft.VisualStudio.Offline.config\"\r\n        ],\r\n        \"originalTargetFrameworks\": [\r\n          \"net6.0\"\r\n        ],\r\n        \"sources\": {\r\n          \"C:\\\\Program Files (x86)\\\\Microsoft SDKs\\\\NuGetPackages\\\\\": {},\r\n          \"https://api.nuget.org/v3/index.json\": {}\r\n        },\r\n        \"frameworks\": {\r\n          \"net6.0\": {\r\n            \"targetAlias\": \"net6.0\",\r\n            \"projectReferences\": {}\r\n          }\r\n        },\r\n        \"warningProperties\": {\r\n          \"warnAsError\": [\r\n            \"NU1605\"\r\n          ]\r\n        }\r\n      },\r\n      \"frameworks\": {\r\n        \"net6.0\": {\r\n          \"targetAlias\": \"net6.0\",\r\n          \"dependencies\": {\r\n            \"NLog\": {\r\n              \"target\": \"Package\",\r\n              \"version\": \"[5.1.0, )\"\r\n            }\r\n          },\r\n          \"imports\": [\r\n            \"net461\",\r\n            \"net462\",\r\n            \"net47\",\r\n            \"net471\",\r\n            \"net472\",\r\n            \"net48\",\r\n            \"net481\"\r\n          ],\r\n          \"assetTargetFallback\": true,\r\n          \"warn\": true,\r\n          \"frameworkReferences\": {\r\n            \"Microsoft.NETCore.App\": {\r\n              \"privateAssets\": \"all\"\r\n            }\r\n          },\r\n          \"runtimeIdentifierGraphPath\": \"C:\\\\Program Files\\\\dotnet\\\\sdk\\\\7.0.101\\\\RuntimeIdentifierGraph.json\"\r\n        }\r\n      }\r\n    },\r\n    \"C:\\\\Users\\\\elchi\\\\Source\\\\Repos\\\\JurnalsOfStudents\\\\Backend\\\\StorageBroker\\\\StorageBroker.csproj\": {\r\n      \"version\": \"1.0.0\",\r\n      \"restore\": {\r\n        \"projectUniqueName\": \"C:\\\\Users\\\\elchi\\\\Source\\\\Repos\\\\JurnalsOfStudents\\\\Backend\\\\StorageBroker\\\\StorageBroker.csproj\",\r\n        \"projectName\": \"StorageBroker\",\r\n        \"projectPath\": \"C:\\\\Users\\\\elchi\\\\Source\\\\Repos\\\\JurnalsOfStudents\\\\Backend\\\\StorageBroker\\\\StorageBroker.csproj\",\r\n        \"packagesPath\": \"C:\\\\Users\\\\elchi\\\\.nuget\\\\packages\\\\\",\r\n        \"outputPath\": \"C:\\\\Users\\\\elchi\\\\Source\\\\Repos\\\\JurnalsOfStudents\\\\Backend\\\\StorageBroker\\\\obj\\\\\",\r\n        \"projectStyle\": \"PackageReference\",\r\n        \"configFilePaths\": [\r\n          \"C:\\\\Users\\\\elchi\\\\AppData\\\\Roaming\\\\NuGet\\\\NuGet.Config\",\r\n          \"C:\\\\Program Files (x86)\\\\NuGet\\\\Config\\\\Microsoft.VisualStudio.Offline.config\"\r\n        ],\r\n        \"originalTargetFrameworks\": [\r\n          \"net6.0\"\r\n        ],\r\n        \"sources\": {\r\n          \"C:\\\\Program Files (x86)\\\\Microsoft SDKs\\\\NuGetPackages\\\\\": {},\r\n          \"https://api.nuget.org/v3/index.json\": {}\r\n        },\r\n        \"frameworks\": {\r\n          \"net6.0\": {\r\n            \"targetAlias\": \"net6.0\",\r\n            \"projectReferences\": {}\r\n          }\r\n        },\r\n        \"warningProperties\": {\r\n          \"warnAsError\": [\r\n            \"NU1605\"\r\n          ]\r\n        }\r\n      },\r\n      \"frameworks\": {\r\n        \"net6.0\": {\r\n          \"targetAlias\": \"net6.0\",\r\n          \"dependencies\": {\r\n            \"Microsoft.EntityFrameworkCore.SqlServer\": {\r\n              \"target\": \"Package\",\r\n              \"version\": \"[6.0.12, )\"\r\n            }\r\n          },\r\n          \"imports\": [\r\n            \"net461\",\r\n            \"net462\",\r\n            \"net47\",\r\n            \"net471\",\r\n            \"net472\",\r\n            \"net48\",\r\n            \"net481\"\r\n          ],\r\n          \"assetTargetFallback\": true,\r\n          \"warn\": true,\r\n          \"frameworkReferences\": {\r\n            \"Microsoft.NETCore.App\": {\r\n              \"privateAssets\": \"all\"\r\n            }\r\n          },\r\n          \"runtimeIdentifierGraphPath\": \"C:\\\\Program Files\\\\dotnet\\\\sdk\\\\7.0.101\\\\RuntimeIdentifierGraph.json\"\r\n        }\r\n      }\r\n    },\r\n    \"C:\\\\Users\\\\elchi\\\\Source\\\\Repos\\\\JurnalsOfStudents\\\\Backend\\\\WebAPI\\\\WebAPI.csproj\": {\r\n      \"version\": \"1.0.0\",\r\n      \"restore\": {\r\n        \"projectUniqueName\": \"C:\\\\Users\\\\elchi\\\\Source\\\\Repos\\\\JurnalsOfStudents\\\\Backend\\\\WebAPI\\\\WebAPI.csproj\",\r\n        \"projectName\": \"WebAPI\",\r\n        \"projectPath\": \"C:\\\\Users\\\\elchi\\\\Source\\\\Repos\\\\JurnalsOfStudents\\\\Backend\\\\WebAPI\\\\WebAPI.csproj\",\r\n        \"packagesPath\": \"C:\\\\Users\\\\elchi\\\\.nuget\\\\packages\\\\\",\r\n        \"outputPath\": \"C:\\\\Users\\\\elchi\\\\Source\\\\Repos\\\\JurnalsOfStudents\\\\Backend\\\\WebAPI\\\\obj\\\\\",\r\n        \"projectStyle\": \"PackageReference\",\r\n        \"configFilePaths\": [\r\n          \"C:\\\\Users\\\\elchi\\\\AppData\\\\Roaming\\\\NuGet\\\\NuGet.Config\",\r\n          \"C:\\\\Program Files (x86)\\\\NuGet\\\\Config\\\\Microsoft.VisualStudio.Offline.config\"\r\n        ],\r\n        \"originalTargetFrameworks\": [\r\n          \"net6.0\"\r\n        ],\r\n        \"sources\": {\r\n          \"C:\\\\Program Files (x86)\\\\Microsoft SDKs\\\\NuGetPackages\\\\\": {},\r\n          \"https://api.nuget.org/v3/index.json\": {}\r\n        },\r\n        \"frameworks\": {\r\n          \"net6.0\": {\r\n            \"targetAlias\": \"net6.0\",\r\n            \"projectReferences\": {\r\n              \"C:\\\\Users\\\\elchi\\\\Source\\\\Repos\\\\JurnalsOfStudents\\\\Backend\\\\LoggerService\\\\LoggerService.csproj\": {\r\n                \"projectPath\": \"C:\\\\Users\\\\elchi\\\\Source\\\\Repos\\\\JurnalsOfStudents\\\\Backend\\\\LoggerService\\\\LoggerService.csproj\"\r\n              },\r\n              \"C:\\\\Users\\\\elchi\\\\Source\\\\Repos\\\\JurnalsOfStudents\\\\Backend\\\\StorageBroker\\\\StorageBroker.csproj\": {\r\n                \"projectPath\": \"C:\\\\Users\\\\elchi\\\\Source\\\\Repos\\\\JurnalsOfStudents\\\\Backend\\\\StorageBroker\\\\StorageBroker.csproj\"\r\n              }\r\n            }\r\n          }\r\n        },\r\n        \"warningProperties\": {\r\n          \"warnAsError\": [\r\n            \"NU1605\"\r\n          ]\r\n        }\r\n      },\r\n      \"frameworks\": {\r\n        \"net6.0\": {\r\n          \"targetAlias\": \"net6.0\",\r\n          \"dependencies\": {\r\n            \"Microsoft.EntityFrameworkCore.Design\": {\r\n              \"include\": \"Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive\",\r\n              \"suppressParent\": \"All\",\r\n              \"target\": \"Package\",\r\n              \"version\": \"[6.0.12, )\"\r\n            },\r\n            \"Swashbuckle.AspNetCore\": {\r\n              \"target\": \"Package\",\r\n              \"version\": \"[6.2.3, )\"\r\n            }\r\n          },\r\n          \"imports\": [\r\n            \"net461\",\r\n            \"net462\",\r\n            \"net47\",\r\n            \"net471\",\r\n            \"net472\",\r\n            \"net48\",\r\n            \"net481\"\r\n          ],\r\n          \"assetTargetFallback\": true,\r\n          \"warn\": true,\r\n          \"frameworkReferences\": {\r\n            \"Microsoft.AspNetCore.App\": {\r\n              \"privateAssets\": \"none\"\r\n            },\r\n            \"Microsoft.NETCore.App\": {\r\n              \"privateAssets\": \"all\"\r\n            }\r\n          },\r\n          \"runtimeIdentifierGraphPath\": \"C:\\\\Program Files\\\\dotnet\\\\sdk\\\\7.0.101\\\\RuntimeIdentifierGraph.json\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/WebAPI/obj/WebAPI.csproj.nuget.dgspec.json b/WebAPI/obj/WebAPI.csproj.nuget.dgspec.json
+--- a/WebAPI/obj/WebAPI.csproj.nuget.dgspec.json	(revision 3159261015dd9b13c034048e27f76fed45df556d)
++++ b/WebAPI/obj/WebAPI.csproj.nuget.dgspec.json	(date 1671362454011)
+@@ -1,27 +1,25 @@
+ {
+   "format": 1,
+   "restore": {
+-    "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\WebAPI\\WebAPI.csproj": {}
++    "C:\\Users\\Abdumannon-PC\\Desktop\\JurnalsOfStudents\\Backend\\WebAPI\\WebAPI.csproj": {}
+   },
+   "projects": {
+-    "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj": {
++    "C:\\Users\\Abdumannon-PC\\Desktop\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj": {
+       "version": "1.0.0",
+       "restore": {
+-        "projectUniqueName": "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj",
++        "projectUniqueName": "C:\\Users\\Abdumannon-PC\\Desktop\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj",
+         "projectName": "LoggerService",
+-        "projectPath": "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj",
+-        "packagesPath": "C:\\Users\\elchi\\.nuget\\packages\\",
+-        "outputPath": "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\LoggerService\\obj\\",
++        "projectPath": "C:\\Users\\Abdumannon-PC\\Desktop\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj",
++        "packagesPath": "C:\\Users\\Abdumannon-PC\\.nuget\\packages\\",
++        "outputPath": "C:\\Users\\Abdumannon-PC\\Desktop\\JurnalsOfStudents\\Backend\\LoggerService\\obj\\",
+         "projectStyle": "PackageReference",
+         "configFilePaths": [
+-          "C:\\Users\\elchi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
++          "C:\\Users\\Abdumannon-PC\\AppData\\Roaming\\NuGet\\NuGet.Config"
+         ],
+         "originalTargetFrameworks": [
+           "net6.0"
+         ],
+         "sources": {
+-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+           "https://api.nuget.org/v3/index.json": {}
+         },
+         "frameworks": {
+@@ -61,28 +59,26 @@
+               "privateAssets": "all"
+             }
+           },
+-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
++          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.403\\RuntimeIdentifierGraph.json"
+         }
+       }
+     },
+-    "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\StorageBroker\\StorageBroker.csproj": {
++    "C:\\Users\\Abdumannon-PC\\Desktop\\JurnalsOfStudents\\Backend\\StorageBroker\\StorageBroker.csproj": {
+       "version": "1.0.0",
+       "restore": {
+-        "projectUniqueName": "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\StorageBroker\\StorageBroker.csproj",
++        "projectUniqueName": "C:\\Users\\Abdumannon-PC\\Desktop\\JurnalsOfStudents\\Backend\\StorageBroker\\StorageBroker.csproj",
+         "projectName": "StorageBroker",
+-        "projectPath": "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\StorageBroker\\StorageBroker.csproj",
+-        "packagesPath": "C:\\Users\\elchi\\.nuget\\packages\\",
+-        "outputPath": "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\StorageBroker\\obj\\",
++        "projectPath": "C:\\Users\\Abdumannon-PC\\Desktop\\JurnalsOfStudents\\Backend\\StorageBroker\\StorageBroker.csproj",
++        "packagesPath": "C:\\Users\\Abdumannon-PC\\.nuget\\packages\\",
++        "outputPath": "C:\\Users\\Abdumannon-PC\\Desktop\\JurnalsOfStudents\\Backend\\StorageBroker\\obj\\",
+         "projectStyle": "PackageReference",
+         "configFilePaths": [
+-          "C:\\Users\\elchi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
++          "C:\\Users\\Abdumannon-PC\\AppData\\Roaming\\NuGet\\NuGet.Config"
+         ],
+         "originalTargetFrameworks": [
+           "net6.0"
+         ],
+         "sources": {
+-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+           "https://api.nuget.org/v3/index.json": {}
+         },
+         "frameworks": {
+@@ -122,39 +118,37 @@
+               "privateAssets": "all"
+             }
+           },
+-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
++          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.403\\RuntimeIdentifierGraph.json"
+         }
+       }
+     },
+-    "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\WebAPI\\WebAPI.csproj": {
++    "C:\\Users\\Abdumannon-PC\\Desktop\\JurnalsOfStudents\\Backend\\WebAPI\\WebAPI.csproj": {
+       "version": "1.0.0",
+       "restore": {
+-        "projectUniqueName": "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\WebAPI\\WebAPI.csproj",
++        "projectUniqueName": "C:\\Users\\Abdumannon-PC\\Desktop\\JurnalsOfStudents\\Backend\\WebAPI\\WebAPI.csproj",
+         "projectName": "WebAPI",
+-        "projectPath": "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\WebAPI\\WebAPI.csproj",
+-        "packagesPath": "C:\\Users\\elchi\\.nuget\\packages\\",
+-        "outputPath": "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\WebAPI\\obj\\",
++        "projectPath": "C:\\Users\\Abdumannon-PC\\Desktop\\JurnalsOfStudents\\Backend\\WebAPI\\WebAPI.csproj",
++        "packagesPath": "C:\\Users\\Abdumannon-PC\\.nuget\\packages\\",
++        "outputPath": "C:\\Users\\Abdumannon-PC\\Desktop\\JurnalsOfStudents\\Backend\\WebAPI\\obj\\",
+         "projectStyle": "PackageReference",
+         "configFilePaths": [
+-          "C:\\Users\\elchi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
++          "C:\\Users\\Abdumannon-PC\\AppData\\Roaming\\NuGet\\NuGet.Config"
+         ],
+         "originalTargetFrameworks": [
+           "net6.0"
+         ],
+         "sources": {
+-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+           "https://api.nuget.org/v3/index.json": {}
+         },
+         "frameworks": {
+           "net6.0": {
+             "targetAlias": "net6.0",
+             "projectReferences": {
+-              "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj": {
+-                "projectPath": "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj"
++              "C:\\Users\\Abdumannon-PC\\Desktop\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj": {
++                "projectPath": "C:\\Users\\Abdumannon-PC\\Desktop\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj"
+               },
+-              "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\StorageBroker\\StorageBroker.csproj": {
+-                "projectPath": "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\StorageBroker\\StorageBroker.csproj"
++              "C:\\Users\\Abdumannon-PC\\Desktop\\JurnalsOfStudents\\Backend\\StorageBroker\\StorageBroker.csproj": {
++                "projectPath": "C:\\Users\\Abdumannon-PC\\Desktop\\JurnalsOfStudents\\Backend\\StorageBroker\\StorageBroker.csproj"
+               }
+             }
+           }
+@@ -199,7 +193,7 @@
+               "privateAssets": "all"
+             }
+           },
+-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
++          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.403\\RuntimeIdentifierGraph.json"
+         }
+       }
+     }

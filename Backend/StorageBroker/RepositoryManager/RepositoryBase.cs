@@ -1,4 +1,6 @@
-﻿namespace StorageBroker.RepositoryManager;
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace StorageBroker.RepositoryManager;
 
 public abstract class RepositoryBase<T> : IRepositryBase<T> where T : class
 {
@@ -19,18 +21,23 @@ public abstract class RepositoryBase<T> : IRepositryBase<T> where T : class
         return _context.Set<T>().Where(predicate).AsQueryable();
     }
 
-    public void Create(T entity)
+    public T Create(T entity)
     {
-        _context.Set<T>().Add(entity);
+        return _context.Set<T>().Add(entity).Entity;
     }
 
-    public void Update(T entity)
+    public T Update(T entity)
     {
-        _context.Set<T>().Update(entity);
+        return _context.Set<T>().Update(entity).Entity;
     }
 
-    public void Delete(T entity)
+    public T Delete(T entity)
     {
-        _context.Set<T>().Remove(entity);
+        return _context.Set<T>().Remove(entity).Entity;
+    }
+
+    public async ValueTask<T> CreateAsync(T entity)
+    {
+        return (await _context.Set<T>().AddAsync(entity)).Entity;
     }
 }

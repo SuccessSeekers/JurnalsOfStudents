@@ -1,0 +1,313 @@
+Index: StorageBroker/RepositoryManager/IRepositryBase.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>namespace StorageBroker.RepositoryManager;\r\n\r\npublic interface IRepositryBase<T>\r\n{\r\n    IQueryable<T> GetAll();\r\n    IQueryable<T> GetAllWithCondition(Func<T, bool> predicate);\r\n    void Create(T entity);\r\n    void Update(T entity);\r\n    void Delete(T entity);\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/StorageBroker/RepositoryManager/IRepositryBase.cs b/StorageBroker/RepositoryManager/IRepositryBase.cs
+--- a/StorageBroker/RepositoryManager/IRepositryBase.cs	(revision fac42f2ae9bc9249d4bad6106fab078976005307)
++++ b/StorageBroker/RepositoryManager/IRepositryBase.cs	(date 1671362533832)
+@@ -4,7 +4,8 @@
+ {
+     IQueryable<T> GetAll();
+     IQueryable<T> GetAllWithCondition(Func<T, bool> predicate);
+-    void Create(T entity);
+-    void Update(T entity);
+-    void Delete(T entity);
++    T Create(T entity);
++    T Update(T entity);
++    T Delete(T entity);
++    ValueTask<T> CreateAsync(T entity);
+ }
+\ No newline at end of file
+Index: WebAPI/Controllers/TeacherController.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>using Microsoft.AspNetCore.Mvc;\r\nusing Microsoft.EntityFrameworkCore;\r\nusing StorageBroker.Models;\r\nusing StorageBroker.RepositoryManager;\r\nusing WebAPI.Dto;\r\n\r\nnamespace WebAPI.Controllers\r\n{\r\n    [ApiController]\r\n    [Route(\"api/[controller]\")]\r\n    public class TeacherController : ControllerBase\r\n    {\r\n        private readonly IRepositoryManager RepositoryManager;\r\n\r\n        public TeacherController(IRepositoryManager repositoryManager)\r\n        {\r\n            this.RepositoryManager = repositoryManager;\r\n        }\r\n\r\n        [HttpGet]\r\n        [Produces(typeof(ResponseDto<Teacher>))]\r\n        public ResponseDto<Teacher> GetTeachers()\r\n        {\r\n            return new ResponseDto<Teacher>(RepositoryManager.TeacherRepository.GetAll()\r\n                .Include(teacher => teacher.TeacherGroups));\r\n        }\r\n\r\n        [HttpGet(\"{TeacherId:int}\")]\r\n        [Produces(typeof(Teacher))]\r\n        public IActionResult GetTeacherById(int id)\r\n        {\r\n            IQueryable<Teacher> teacher = RepositoryManager.TeacherRepository\r\n                .GetAllWithCondition(teacher => teacher.TeacherId == id);\r\n\r\n            if (teacher is null)\r\n                throw new Exception(\"Teacher not found\");\r\n\r\n            return Ok(teacher);\r\n        }\r\n\r\n        [HttpPost]\r\n        [Produces(typeof(Teacher))]\r\n        public void CreateTeacher([FromBody] Teacher teacher)\r\n        {\r\n            RepositoryManager.TeacherRepository.Create(teacher);\r\n        }\r\n\r\n        [HttpPut]\r\n        [Produces(typeof(Teacher))]\r\n        public void UpdateTeacher([FromBody] Teacher teacher)\r\n        {\r\n            RepositoryManager.TeacherRepository.Update(teacher);\r\n        }\r\n\r\n        [HttpDelete]\r\n        [Produces(typeof(Teacher))]\r\n        public void DeleteTeacherById(int id)\r\n        {\r\n            var oldTeacher = RepositoryManager.TeacherRepository.GetAll()\r\n                .FirstOrDefault(teacher => teacher.TeacherId == id);\r\n            if (oldTeacher is null)\r\n                throw new Exception(\"Teacher not found\");\r\n\r\n            RepositoryManager.TeacherRepository.Delete(oldTeacher);\r\n        }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/WebAPI/Controllers/TeacherController.cs b/WebAPI/Controllers/TeacherController.cs
+--- a/WebAPI/Controllers/TeacherController.cs	(revision fac42f2ae9bc9249d4bad6106fab078976005307)
++++ b/WebAPI/Controllers/TeacherController.cs	(date 1671362538002)
+@@ -2,6 +2,7 @@
+ using Microsoft.EntityFrameworkCore;
+ using StorageBroker.Models;
+ using StorageBroker.RepositoryManager;
++using StorageBroker.Dto;
+ using WebAPI.Dto;
+ 
+ namespace WebAPI.Controllers
+@@ -26,34 +27,44 @@
+         }
+ 
+         [HttpGet("{TeacherId:int}")]
+-        [Produces(typeof(Teacher))]
+-        public IActionResult GetTeacherById(int id)
++        [Produces(typeof(ResponseDto<Teacher>))]
++        public ResponseDto<Teacher> GetTeacherById(int id)
+         {
+-            IQueryable<Teacher> teacher = RepositoryManager.TeacherRepository
+-                .GetAllWithCondition(teacher => teacher.TeacherId == id);
++            ResponseDto<Teacher> teacher =new ResponseDto<Teacher>(RepositoryManager.TeacherRepository
++                .GetAllWithCondition(teacher => teacher.TeacherId == id));
+ 
+             if (teacher is null)
+                 throw new Exception("Teacher not found");
+ 
+-            return Ok(teacher);
++            return teacher;
+         }
+ 
+         [HttpPost]
+-        [Produces(typeof(Teacher))]
+-        public void CreateTeacher([FromBody] Teacher teacher)
++        [Produces(typeof(ResponseDto<Teacher>))]
++        public void CreateTeacher([FromBody] CreateTeacherDto teacher)
+         {
+-            RepositoryManager.TeacherRepository.Create(teacher);
++            var newTeacher = new Teacher();
++            newTeacher.Name = teacher.Name;
++
++            RepositoryManager.TeacherRepository.Create(newTeacher);
++
++            RepositoryManager.Save();
+         }
+ 
+         [HttpPut]
+-        [Produces(typeof(Teacher))]
+-        public void UpdateTeacher([FromBody] Teacher teacher)
++        [Produces(typeof(ResponseDto<Teacher>))]
++        public void UpdateTeacher([FromBody] UpdateTeacherDto teacher)
+         {
+-            RepositoryManager.TeacherRepository.Update(teacher);
++            var newTeacher = new Teacher();
++            newTeacher.Name = teacher.Name;
++
++            RepositoryManager.TeacherRepository.Update(newTeacher);
++
++            RepositoryManager.Save();
+         }
+ 
+         [HttpDelete]
+-        [Produces(typeof(Teacher))]
++        [Produces(typeof(ResponseDto<Teacher>))]
+         public void DeleteTeacherById(int id)
+         {
+             var oldTeacher = RepositoryManager.TeacherRepository.GetAll()
+@@ -62,6 +73,8 @@
+                 throw new Exception("Teacher not found");
+ 
+             RepositoryManager.TeacherRepository.Delete(oldTeacher);
++
++            RepositoryManager.Save();
+         }
+     }
+ }
+\ No newline at end of file
+Index: WebAPI/Controllers/GradesLogController.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\r\nusing Microsoft.AspNetCore.Mvc;\r\nusing Microsoft.EntityFrameworkCore;\r\nusing StorageBroker.Models;\r\nusing StorageBroker.RepositoryManager;\r\nusing WebAPI.Dto;\r\n\r\nnamespace WebAPI.Controllers;\r\n\r\n[ApiController]\r\n[Route(\"api/[controller]\")]\r\npublic class GradesLogController : ControllerBase\r\n{\r\n    private readonly IRepositoryManager repositoryManager;\r\n\r\n    public GradesLogController(IRepositoryManager repositoryManager)\r\n    {\r\n        this.repositoryManager = repositoryManager;\r\n    }\r\n\r\n    [HttpGet]\r\n    [Produces(typeof(ResponseDto<GradesLog>))]\r\n    public ResponseDto<GradesLog> GetGradesLogs()\r\n    {\r\n        return new ResponseDto<GradesLog>(repositoryManager.GradesLogRepository.GetAll()\r\n            .Include(gradesLog => gradesLog.Grade));\r\n    }\r\n\r\n    [HttpGet(\"{GradesLogId:int}\")]\r\n    [Produces(typeof(ResponseDto<GradesLog>))]\r\n    public IActionResult GetGradesLogById(int id)\r\n    {\r\n        var gradesLog = repositoryManager.GradesLogRepository\r\n            .GetAllWithCondition(gradesLog => gradesLog.Id == id);\r\n\r\n        if (gradesLog is null)\r\n            throw new Exception(\"Student not found\");\r\n\r\n        return Ok(gradesLog);\r\n    }\r\n\r\n    [HttpPost]\r\n    [Produces(typeof(GradesLog))]\r\n    public void CreateGradesLog([FromBody] GradesLog gradesLog)\r\n    {\r\n        repositoryManager.GradesLogRepository.Create(gradesLog);\r\n    }\r\n\r\n    [HttpPut]\r\n    [Produces(typeof(GradesLog))]\r\n    public void UpdateGradesLog([FromBody] GradesLog gradesLog)\r\n    {\r\n        repositoryManager.GradesLogRepository.Update(gradesLog);\r\n    }\r\n\r\n    [HttpDelete]\r\n    [Produces(typeof(int))]\r\n    public void DeleteGradesLogById(int id)\r\n    {\r\n        var oldGradesLog = repositoryManager.GradesLogRepository.GetAll()\r\n            .FirstOrDefault(student => student.StudentId == id);\r\n\r\n        if (oldGradesLog is null)\r\n            throw new Exception(\"Student not found\");\r\n\r\n        repositoryManager.GradesLogRepository.Delete(oldGradesLog);\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/WebAPI/Controllers/GradesLogController.cs b/WebAPI/Controllers/GradesLogController.cs
+--- a/WebAPI/Controllers/GradesLogController.cs	(revision fac42f2ae9bc9249d4bad6106fab078976005307)
++++ b/WebAPI/Controllers/GradesLogController.cs	(date 1671362538031)
+@@ -1,68 +1,8 @@
+-
+ using Microsoft.AspNetCore.Mvc;
+-using Microsoft.EntityFrameworkCore;
+-using StorageBroker.Models;
+-using StorageBroker.RepositoryManager;
+-using WebAPI.Dto;
+-
+-namespace WebAPI.Controllers;
+-
+-[ApiController]
+-[Route("api/[controller]")]
+-public class GradesLogController : ControllerBase
+-{
+-    private readonly IRepositoryManager repositoryManager;
+-
+-    public GradesLogController(IRepositoryManager repositoryManager)
+-    {
+-        this.repositoryManager = repositoryManager;
+-    }
+-
+-    [HttpGet]
+-    [Produces(typeof(ResponseDto<GradesLog>))]
+-    public ResponseDto<GradesLog> GetGradesLogs()
+-    {
+-        return new ResponseDto<GradesLog>(repositoryManager.GradesLogRepository.GetAll()
+-            .Include(gradesLog => gradesLog.Grade));
+-    }
+-
+-    [HttpGet("{GradesLogId:int}")]
+-    [Produces(typeof(ResponseDto<GradesLog>))]
+-    public IActionResult GetGradesLogById(int id)
+-    {
+-        var gradesLog = repositoryManager.GradesLogRepository
+-            .GetAllWithCondition(gradesLog => gradesLog.Id == id);
+-
+-        if (gradesLog is null)
+-            throw new Exception("Student not found");
+-
+-        return Ok(gradesLog);
+-    }
+-
+-    [HttpPost]
+-    [Produces(typeof(GradesLog))]
+-    public void CreateGradesLog([FromBody] GradesLog gradesLog)
+-    {
+-        repositoryManager.GradesLogRepository.Create(gradesLog);
+-    }
+ 
+-    [HttpPut]
+-    [Produces(typeof(GradesLog))]
+-    public void UpdateGradesLog([FromBody] GradesLog gradesLog)
+-    {
+-        repositoryManager.GradesLogRepository.Update(gradesLog);
+-    }
+-
+-    [HttpDelete]
+-    [Produces(typeof(int))]
+-    public void DeleteGradesLogById(int id)
++namespace WebAPI.Controllers
++{
++    public class GradesLogController : Controller
+     {
+-        var oldGradesLog = repositoryManager.GradesLogRepository.GetAll()
+-            .FirstOrDefault(student => student.StudentId == id);
+-
+-        if (oldGradesLog is null)
+-            throw new Exception("Student not found");
+-
+-        repositoryManager.GradesLogRepository.Delete(oldGradesLog);
+     }
+ }
+\ No newline at end of file
+Index: WebAPI/obj/staticwebassets.pack.sentinel
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/WebAPI/obj/staticwebassets.pack.sentinel b/WebAPI/obj/staticwebassets.pack.sentinel
+--- a/WebAPI/obj/staticwebassets.pack.sentinel	(revision fac42f2ae9bc9249d4bad6106fab078976005307)
++++ b/WebAPI/obj/staticwebassets.pack.sentinel	(date 1671362538037)
+@@ -39,3 +39,4 @@
+ 2.0
+ 2.0
+ 2.0
++2.0
+Index: WebAPI/obj/rider.project.restore.info
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>16713585662867537
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/WebAPI/obj/rider.project.restore.info b/WebAPI/obj/rider.project.restore.info
+--- a/WebAPI/obj/rider.project.restore.info	(revision fac42f2ae9bc9249d4bad6106fab078976005307)
++++ b/WebAPI/obj/rider.project.restore.info	(date 1671362538044)
+@@ -1,1 +1,1 @@
+-16713585662867537
+\ No newline at end of file
++16713622892044136
+\ No newline at end of file
+Index: Tests/obj/rider.project.restore.info
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>16713585663663490
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Tests/obj/rider.project.restore.info b/Tests/obj/rider.project.restore.info
+--- a/Tests/obj/rider.project.restore.info	(revision fac42f2ae9bc9249d4bad6106fab078976005307)
++++ b/Tests/obj/rider.project.restore.info	(date 1671362538050)
+@@ -1,1 +1,1 @@
+-16713585663663490
+\ No newline at end of file
++16713622892708896
+\ No newline at end of file
+Index: LoggerService/obj/rider.project.restore.info
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>16713585662325198
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/LoggerService/obj/rider.project.restore.info b/LoggerService/obj/rider.project.restore.info
+--- a/LoggerService/obj/rider.project.restore.info	(revision fac42f2ae9bc9249d4bad6106fab078976005307)
++++ b/LoggerService/obj/rider.project.restore.info	(date 1671362540102)
+@@ -1,1 +1,1 @@
+-16713585662325198
+\ No newline at end of file
++16713622891402043
+\ No newline at end of file
+Index: StorageBroker/obj/rider.project.restore.info
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>16713585662857412
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/StorageBroker/obj/rider.project.restore.info b/StorageBroker/obj/rider.project.restore.info
+--- a/StorageBroker/obj/rider.project.restore.info	(revision fac42f2ae9bc9249d4bad6106fab078976005307)
++++ b/StorageBroker/obj/rider.project.restore.info	(date 1671362541219)
+@@ -1,1 +1,1 @@
+-16713585662857412
+\ No newline at end of file
++16713622892034135
+\ No newline at end of file
+Index: StorageBroker/RepositoryManager/RepositoryBase.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>namespace StorageBroker.RepositoryManager;\r\n\r\npublic abstract class RepositoryBase<T> : IRepositryBase<T> where T : class\r\n{\r\n    private readonly DataBaseContext _context;\r\n\r\n    public RepositoryBase(DataBaseContext context)\r\n    {\r\n        _context = context;\r\n    }\r\n\r\n    public IQueryable<T> GetAll()\r\n    {\r\n        return _context.Set<T>();\r\n    }\r\n\r\n    public IQueryable<T> GetAllWithCondition(Func<T, bool> predicate)\r\n    {\r\n        return _context.Set<T>().Where(predicate).AsQueryable();\r\n    }\r\n\r\n    public void Create(T entity)\r\n    {\r\n        _context.Set<T>().Add(entity);\r\n    }\r\n\r\n    public void Update(T entity)\r\n    {\r\n        _context.Set<T>().Update(entity);\r\n    }\r\n\r\n    public void Delete(T entity)\r\n    {\r\n        _context.Set<T>().Remove(entity);\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/StorageBroker/RepositoryManager/RepositoryBase.cs b/StorageBroker/RepositoryManager/RepositoryBase.cs
+--- a/StorageBroker/RepositoryManager/RepositoryBase.cs	(revision fac42f2ae9bc9249d4bad6106fab078976005307)
++++ b/StorageBroker/RepositoryManager/RepositoryBase.cs	(date 1671362541226)
+@@ -1,3 +1,5 @@
++using Microsoft.EntityFrameworkCore;
++
+ namespace StorageBroker.RepositoryManager;
+ 
+ public abstract class RepositoryBase<T> : IRepositryBase<T> where T : class
+@@ -19,18 +21,23 @@
+         return _context.Set<T>().Where(predicate).AsQueryable();
+     }
+ 
+-    public void Create(T entity)
++    public T Create(T entity)
+     {
+-        _context.Set<T>().Add(entity);
++        return _context.Set<T>().Add(entity).Entity;
+     }
+ 
+-    public void Update(T entity)
++    public T Update(T entity)
+     {
+-        _context.Set<T>().Update(entity);
++        return _context.Set<T>().Update(entity).Entity;
+     }
+ 
+-    public void Delete(T entity)
++    public T Delete(T entity)
+     {
+-        _context.Set<T>().Remove(entity);
++        return _context.Set<T>().Remove(entity).Entity;
++    }
++
++    public async ValueTask<T> CreateAsync(T entity)
++    {
++        return (await _context.Set<T>().AddAsync(entity)).Entity;
+     }
+ }
+\ No newline at end of file

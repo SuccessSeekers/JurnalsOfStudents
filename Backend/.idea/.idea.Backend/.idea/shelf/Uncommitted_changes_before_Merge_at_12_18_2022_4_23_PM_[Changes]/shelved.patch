@@ -1,0 +1,232 @@
+Index: WebAPI/Controllers/GradesLogController.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>using Microsoft.AspNetCore.Mvc;\r\n\r\nnamespace WebAPI.Controllers\r\n{\r\n    public class GradesLogController : Controller\r\n    {\r\n        public IActionResult Index()\r\n        {\r\n            return View();\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/WebAPI/Controllers/GradesLogController.cs b/WebAPI/Controllers/GradesLogController.cs
+--- a/WebAPI/Controllers/GradesLogController.cs	(revision 73e88a9128c372b49b6e0e2da134b2e82b5f79c4)
++++ b/WebAPI/Controllers/GradesLogController.cs	(date 1671362581977)
+@@ -1,12 +1,68 @@
++
+ using Microsoft.AspNetCore.Mvc;
++using Microsoft.EntityFrameworkCore;
++using StorageBroker.Models;
++using StorageBroker.RepositoryManager;
++using WebAPI.Dto;
++
++namespace WebAPI.Controllers;
+ 
+-namespace WebAPI.Controllers
++[ApiController]
++[Route("api/[controller]")]
++public class GradesLogController : ControllerBase
+ {
+-    public class GradesLogController : Controller
++    private readonly IRepositoryManager repositoryManager;
++
++    public GradesLogController(IRepositoryManager repositoryManager)
+     {
+-        public IActionResult Index()
+-        {
+-            return View();
+-        }
++        this.repositoryManager = repositoryManager;
++    }
++
++    [HttpGet]
++    [Produces(typeof(ResponseDto<GradesLog>))]
++    public ResponseDto<GradesLog> GetGradesLogs()
++    {
++        return new ResponseDto<GradesLog>(repositoryManager.GradesLogRepository.GetAll()
++            .Include(gradesLog => gradesLog.Grade));
++    }
++
++    [HttpGet("{GradesLogId:int}")]
++    [Produces(typeof(ResponseDto<GradesLog>))]
++    public IActionResult GetGradesLogById(int id)
++    {
++        var gradesLog = repositoryManager.GradesLogRepository
++            .GetAllWithCondition(gradesLog => gradesLog.Id == id);
++
++        if (gradesLog is null)
++            throw new Exception("Student not found");
++
++        return Ok(gradesLog);
++    }
++
++    [HttpPost]
++    [Produces(typeof(GradesLog))]
++    public void CreateGradesLog([FromBody] GradesLog gradesLog)
++    {
++        repositoryManager.GradesLogRepository.Create(gradesLog);
++    }
++
++    [HttpPut]
++    [Produces(typeof(GradesLog))]
++    public void UpdateGradesLog([FromBody] GradesLog gradesLog)
++    {
++        repositoryManager.GradesLogRepository.Update(gradesLog);
+     }
+-}
++
++    [HttpDelete]
++    [Produces(typeof(int))]
++    public void DeleteGradesLogById(int id)
++    {
++        var oldGradesLog = repositoryManager.GradesLogRepository.GetAll()
++            .FirstOrDefault(student => student.StudentId == id);
++
++        if (oldGradesLog is null)
++            throw new Exception("Student not found");
++
++        repositoryManager.GradesLogRepository.Delete(oldGradesLog);
++    }
++}
+\ No newline at end of file
+Index: WebAPI/obj/staticwebassets.pack.sentinel
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n2.0\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/WebAPI/obj/staticwebassets.pack.sentinel b/WebAPI/obj/staticwebassets.pack.sentinel
+--- a/WebAPI/obj/staticwebassets.pack.sentinel	(revision 73e88a9128c372b49b6e0e2da134b2e82b5f79c4)
++++ b/WebAPI/obj/staticwebassets.pack.sentinel	(date 1671362582000)
+@@ -39,3 +39,4 @@
+ 2.0
+ 2.0
+ 2.0
++2.0
+Index: WebAPI/obj/rider.project.restore.info
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>16713585662867537
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/WebAPI/obj/rider.project.restore.info b/WebAPI/obj/rider.project.restore.info
+--- a/WebAPI/obj/rider.project.restore.info	(revision 73e88a9128c372b49b6e0e2da134b2e82b5f79c4)
++++ b/WebAPI/obj/rider.project.restore.info	(date 1671362582007)
+@@ -1,1 +1,1 @@
+-16713585662867537
+\ No newline at end of file
++16713622892044136
+\ No newline at end of file
+Index: StorageBroker/RepositoryManager/IRepositryBase.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>namespace StorageBroker.RepositoryManager;\r\n\r\npublic interface IRepositryBase<T>\r\n{\r\n    IQueryable<T> GetAll();\r\n    IQueryable<T> GetAllWithCondition(Func<T, bool> predicate);\r\n    void Create(T entity);\r\n    void Update(T entity);\r\n    void Delete(T entity);\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/StorageBroker/RepositoryManager/IRepositryBase.cs b/StorageBroker/RepositoryManager/IRepositryBase.cs
+--- a/StorageBroker/RepositoryManager/IRepositryBase.cs	(revision 73e88a9128c372b49b6e0e2da134b2e82b5f79c4)
++++ b/StorageBroker/RepositoryManager/IRepositryBase.cs	(date 1671362570068)
+@@ -4,7 +4,8 @@
+ {
+     IQueryable<T> GetAll();
+     IQueryable<T> GetAllWithCondition(Func<T, bool> predicate);
+-    void Create(T entity);
+-    void Update(T entity);
+-    void Delete(T entity);
++    T Create(T entity);
++    T Update(T entity);
++    T Delete(T entity);
++    ValueTask<T> CreateAsync(T entity);
+ }
+\ No newline at end of file
+Index: Tests/obj/rider.project.restore.info
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>16713585663663490
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Tests/obj/rider.project.restore.info b/Tests/obj/rider.project.restore.info
+--- a/Tests/obj/rider.project.restore.info	(revision 73e88a9128c372b49b6e0e2da134b2e82b5f79c4)
++++ b/Tests/obj/rider.project.restore.info	(date 1671362582015)
+@@ -1,1 +1,1 @@
+-16713585663663490
+\ No newline at end of file
++16713622892708896
+\ No newline at end of file
+Index: LoggerService/obj/rider.project.restore.info
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>16713585662325198
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/LoggerService/obj/rider.project.restore.info b/LoggerService/obj/rider.project.restore.info
+--- a/LoggerService/obj/rider.project.restore.info	(revision 73e88a9128c372b49b6e0e2da134b2e82b5f79c4)
++++ b/LoggerService/obj/rider.project.restore.info	(date 1671362582020)
+@@ -1,1 +1,1 @@
+-16713585662325198
+\ No newline at end of file
++16713622891402043
+\ No newline at end of file
+Index: StorageBroker/obj/rider.project.restore.info
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>16713585662857412
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/StorageBroker/obj/rider.project.restore.info b/StorageBroker/obj/rider.project.restore.info
+--- a/StorageBroker/obj/rider.project.restore.info	(revision 73e88a9128c372b49b6e0e2da134b2e82b5f79c4)
++++ b/StorageBroker/obj/rider.project.restore.info	(date 1671362582027)
+@@ -1,1 +1,1 @@
+-16713585662857412
+\ No newline at end of file
++16713622892034135
+\ No newline at end of file
+Index: StorageBroker/RepositoryManager/RepositoryBase.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>namespace StorageBroker.RepositoryManager;\r\n\r\npublic abstract class RepositoryBase<T> : IRepositryBase<T> where T : class\r\n{\r\n    private readonly DataBaseContext _context;\r\n\r\n    public RepositoryBase(DataBaseContext context)\r\n    {\r\n        _context = context;\r\n    }\r\n\r\n    public IQueryable<T> GetAll()\r\n    {\r\n        return _context.Set<T>();\r\n    }\r\n\r\n    public IQueryable<T> GetAllWithCondition(Func<T, bool> predicate)\r\n    {\r\n        return _context.Set<T>().Where(predicate).AsQueryable();\r\n    }\r\n\r\n    public void Create(T entity)\r\n    {\r\n        _context.Set<T>().Add(entity);\r\n    }\r\n\r\n    public void Update(T entity)\r\n    {\r\n        _context.Set<T>().Update(entity);\r\n    }\r\n\r\n    public void Delete(T entity)\r\n    {\r\n        _context.Set<T>().Remove(entity);\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/StorageBroker/RepositoryManager/RepositoryBase.cs b/StorageBroker/RepositoryManager/RepositoryBase.cs
+--- a/StorageBroker/RepositoryManager/RepositoryBase.cs	(revision 73e88a9128c372b49b6e0e2da134b2e82b5f79c4)
++++ b/StorageBroker/RepositoryManager/RepositoryBase.cs	(date 1671362582032)
+@@ -1,3 +1,5 @@
++using Microsoft.EntityFrameworkCore;
++
+ namespace StorageBroker.RepositoryManager;
+ 
+ public abstract class RepositoryBase<T> : IRepositryBase<T> where T : class
+@@ -19,18 +21,23 @@
+         return _context.Set<T>().Where(predicate).AsQueryable();
+     }
+ 
+-    public void Create(T entity)
++    public T Create(T entity)
+     {
+-        _context.Set<T>().Add(entity);
++        return _context.Set<T>().Add(entity).Entity;
+     }
+ 
+-    public void Update(T entity)
++    public T Update(T entity)
+     {
+-        _context.Set<T>().Update(entity);
++        return _context.Set<T>().Update(entity).Entity;
+     }
+ 
+-    public void Delete(T entity)
++    public T Delete(T entity)
+     {
+-        _context.Set<T>().Remove(entity);
++        return _context.Set<T>().Remove(entity).Entity;
++    }
++
++    public async ValueTask<T> CreateAsync(T entity)
++    {
++        return (await _context.Set<T>().AddAsync(entity)).Entity;
+     }
+ }
+\ No newline at end of file
