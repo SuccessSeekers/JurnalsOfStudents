@@ -42,7 +42,7 @@ namespace WebAPI.Controllers
         {
             var group = repositoryManager.GroupRepository
                 .GetAll()
-                .Where(x => x.GroupId == id)
+                .Include(x => x.StudentGroups)
                 .FirstOrDefault(x => x.GroupId == id);
             if (group == null)
                 return new ResponseDto<GroupDto>(StatusCodes.Status400BadRequest, new Exception("Group not found"));
@@ -50,9 +50,7 @@ namespace WebAPI.Controllers
             {
                 Name = group.Name,
                 Status = group.Status,
-                Students = group.StudentGroups.AsQueryable()
-                    .Include(x => x.Student)
-                    .Select(x => x.Student).ToList(),
+                Students = group.StudentGroups?.Select(studentGroup => studentGroup.Student).ToList(),
                 Teachers = group.Teachers,
                 CountOfStudents = group.CountOfStudents
             };
