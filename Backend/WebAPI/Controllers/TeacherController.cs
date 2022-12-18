@@ -20,61 +20,86 @@ namespace WebAPI.Controllers
 
         [HttpGet]
         [Produces(typeof(ResponseDto<Teacher>))]
-        public ResponseDto<Teacher> GetTeachers()
+        public ResponseDto<TeacherDto> GetTeachers()
         {
-            return new ResponseDto<Teacher>(RepositoryManager.TeacherRepository.GetAll()
-                .Include(teacher => teacher.TeacherGroups));
+            var teachers = RepositoryManager.TeacherRepository.GetAll().Select(teacher =>
+                new TeacherDto()
+                {
+                    Name = teacher.Name
+                }
+            );
+
+            return new ResponseDto<TeacherDto>(teachers);
         }
 
-        [HttpGet("{TeacherId:int}")]
-        [Produces(typeof(ResponseDto<Teacher>))]
-        public ResponseDto<Teacher> GetTeacherById(int id)
+        [HttpGet("{id:int}")]
+        [Produces(typeof(ResponseDto<TeacherDto>))]
+        public ResponseDto<TeacherDto> GetTeacherById(int id)
         {
-            ResponseDto<Teacher> teacher =new ResponseDto<Teacher>(RepositoryManager.TeacherRepository
-                .GetAllWithCondition(teacher => teacher.TeacherId == id));
-
+            var teacher = RepositoryManager.TeacherRepository
+                .GetAll()
+                .FirstOrDefault(teacher => teacher.TeacherId == id);
             if (teacher is null)
-                throw new Exception("Teacher not found");
-
-            return teacher;
+                return new ResponseDto<TeacherDto>(StatusCodes.Status400BadRequest, new Exception("Teacher not found"));
+            var teacherDto = new TeacherDto()
+            {
+                Name = teacher.Name
+            };
+            return new ResponseDto<TeacherDto>(teacherDto);
         }
 
         [HttpPost]
-        [Produces(typeof(ResponseDto<Teacher>))]
-        public void CreateTeacher([FromBody] CreateTeacherDto teacher)
+        [Produces(typeof(ResponseDto<TeacherDto>))]
+        public async Task<ResponseDto<TeacherDto>> CreateTeacher([FromBody] CreateTeacherDto createTeacherDto)
         {
-            var newTeacher = new Teacher();
-            newTeacher.Name = teacher.Name;
-
-            RepositoryManager.TeacherRepository.Create(newTeacher);
-
-            RepositoryManager.Save();
+            var newTeacher = new Teacher()
+            {
+                Name = createTeacherDto.Name
+            };
+            var createdTeacher = await RepositoryManager.TeacherRepository.CreateAsync(newTeacher);
+            await RepositoryManager.SaveAsync();
+            var teacherDto = new TeacherDto()
+            {
+                Name = createdTeacher.Name
+            };
+            return new ResponseDto<TeacherDto>(teacherDto);
         }
 
         [HttpPut]
-        [Produces(typeof(ResponseDto<Teacher>))]
-        public void UpdateTeacher([FromBody] UpdateTeacherDto teacher)
+        [Produces(typeof(ResponseDto<TeacherDto>))]
+        public async Task<ResponseDto<TeacherDto>> UpdateTeacher(int id, [FromBody] UpdateTeacherDto updateTeacherDto)
         {
-            var newTeacher = new Teacher();
-            newTeacher.Name = teacher.Name;
+            var oldTeacher = RepositoryManager.TeacherRepository.GetAll().FirstOrDefault(teacher => teacher.TeacherId == id);
+            if (oldTeacher == null)
+                return new ResponseDto<TeacherDto>(404, new Exception("Teacher not found"));
 
-            RepositoryManager.TeacherRepository.Update(newTeacher);
-
-            RepositoryManager.Save();
+            oldTeacher.Name = updateTeacherDto.Name;
+            var updatedTeacher = RepositoryManager.TeacherRepository.Update(oldTeacher);
+            await RepositoryManager.SaveAsync();
+            var teacherDto = new TeacherDto()
+            {
+                Name = oldTeacher.Name
+            };
+            return new ResponseDto<TeacherDto>(teacherDto);
         }
 
         [HttpDelete]
-        [Produces(typeof(ResponseDto<Teacher>))]
-        public void DeleteTeacherById(int id)
+        [Produces(typeof(ResponseDto<TeacherDto>))]
+        public async Task<ResponseDto<TeacherDto>> DeleteTeacherById(int id)
         {
-            var oldTeacher = RepositoryManager.TeacherRepository.GetAll()
+            var oldTeacher = RepositoryManager.TeacherRepository
+                .GetAll()
                 .FirstOrDefault(teacher => teacher.TeacherId == id);
-            if (oldTeacher is null)
-                throw new Exception("Teacher not found");
 
+            if (oldTeacher == null)
+                return new ResponseDto<TeacherDto>(404, new Exception("Teacher not found"));
             RepositoryManager.TeacherRepository.Delete(oldTeacher);
-
-            RepositoryManager.Save();
+            await RepositoryManager.SaveAsync();
+            var teacherDto = new TeacherDto()
+            {
+                Name = oldTeacher.Name
+            };
+            return new ResponseDto<TeacherDto>(teacherDto);
         }
     }
 }
