@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>StorageBroker</id>
+    <version>1.0.0</version>
+    <authors>StorageBroker</authors>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework="net6.0">
+        <dependency id="Microsoft.EntityFrameworkCore.SqlServer" version="6.0.12" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <contentFiles>
+      <files include="any/net6.0/obj/Debug/net6.0/StorageBroker.csproj.CoreCompileInputs.cache" buildAction="Content" />
+      <files include="any/net6.0/obj/Debug/net6.0/StorageBroker.csproj.FileListAbsolute.txt" buildAction="Content" />
+      <files include="any/net6.0/obj/Debug/net6.0/StorageBroker.dll" buildAction="Content" />
+      <files include="any/net6.0/obj/Debug/net6.0/StorageBroker.pdb" buildAction="Content" />
+      <files include="any/net6.0/obj/StorageBroker.csproj.EntityFrameworkCore.targets" buildAction="Content" />
+    </contentFiles>
+  </metadata>
+  <files>
+    <file src="C:\Users\Abdumannon-PC\Desktop\JurnalsOfStudents\Backend\StorageBroker\bin\Debug\net6.0\StorageBroker.dll" target="lib\net6.0\StorageBroker.dll" />
+    <file src="C:\Users\Abdumannon-PC\Desktop\JurnalsOfStudents\Backend\StorageBroker\obj\Debug\net6.0\StorageBroker.csproj.CoreCompileInputs.cache" target="content\obj\Debug\net6.0\StorageBroker.csproj.CoreCompileInputs.cache" />
+    <file src="C:\Users\Abdumannon-PC\Desktop\JurnalsOfStudents\Backend\StorageBroker\obj\Debug\net6.0\StorageBroker.csproj.CoreCompileInputs.cache" target="contentFiles\any\net6.0\obj\Debug\net6.0\StorageBroker.csproj.CoreCompileInputs.cache" />
+    <file src="C:\Users\Abdumannon-PC\Desktop\JurnalsOfStudents\Backend\StorageBroker\obj\Debug\net6.0\StorageBroker.csproj.FileListAbsolute.txt" target="content\obj\Debug\net6.0\StorageBroker.csproj.FileListAbsolute.txt" />
+    <file src="C:\Users\Abdumannon-PC\Desktop\JurnalsOfStudents\Backend\StorageBroker\obj\Debug\net6.0\StorageBroker.csproj.FileListAbsolute.txt" target="contentFiles\any\net6.0\obj\Debug\net6.0\StorageBroker.csproj.FileListAbsolute.txt" />
+    <file src="C:\Users\Abdumannon-PC\Desktop\JurnalsOfStudents\Backend\StorageBroker\obj\Debug\net6.0\StorageBroker.dll" target="content\obj\Debug\net6.0\StorageBroker.dll" />
+    <file src="C:\Users\Abdumannon-PC\Desktop\JurnalsOfStudents\Backend\StorageBroker\obj\Debug\net6.0\StorageBroker.dll" target="contentFiles\any\net6.0\obj\Debug\net6.0\StorageBroker.dll" />
+    <file src="C:\Users\Abdumannon-PC\Desktop\JurnalsOfStudents\Backend\StorageBroker\obj\Debug\net6.0\StorageBroker.pdb" target="content\obj\Debug\net6.0\StorageBroker.pdb" />
+    <file src="C:\Users\Abdumannon-PC\Desktop\JurnalsOfStudents\Backend\StorageBroker\obj\Debug\net6.0\StorageBroker.pdb" target="contentFiles\any\net6.0\obj\Debug\net6.0\StorageBroker.pdb" />
+    <file src="C:\Users\Abdumannon-PC\Desktop\JurnalsOfStudents\Backend\StorageBroker\obj\StorageBroker.csproj.EntityFrameworkCore.targets" target="content\obj\StorageBroker.csproj.EntityFrameworkCore.targets" />
+    <file src="C:\Users\Abdumannon-PC\Desktop\JurnalsOfStudents\Backend\StorageBroker\obj\StorageBroker.csproj.EntityFrameworkCore.targets" target="contentFiles\any\net6.0\obj\StorageBroker.csproj.EntityFrameworkCore.targets" />
+  </files>
+</package>
