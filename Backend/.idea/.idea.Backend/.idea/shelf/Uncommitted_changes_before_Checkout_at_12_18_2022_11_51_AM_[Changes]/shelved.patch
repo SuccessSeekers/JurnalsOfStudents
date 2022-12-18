@@ -1,0 +1,1376 @@
+Index: StorageBroker/RepositoryManager/IRepositoryManager.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/StorageBroker/RepositoryManager/IRepositoryManager.cs b/StorageBroker/RepositoryManager/IRepositoryManager.cs
+deleted file mode 100644
+--- a/StorageBroker/RepositoryManager/IRepositoryManager.cs	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
++++ /dev/null	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
+@@ -1,7 +0,0 @@
+-namespace StorageBroker.RepositoryManager;
+-
+-public interface IRepositoryManager
+-{
+-    TeacherRepository TeacherRepository { get; }
+-    void Save();
+-}
+\ No newline at end of file
+Index: StorageBroker/Migrations/20221217194938_StudentModelChanged.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/StorageBroker/Migrations/20221217194938_StudentModelChanged.cs b/StorageBroker/Migrations/20221217194938_StudentModelChanged.cs
+deleted file mode 100644
+--- a/StorageBroker/Migrations/20221217194938_StudentModelChanged.cs	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
++++ /dev/null	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
+@@ -1,26 +0,0 @@
+-using Microsoft.EntityFrameworkCore.Migrations;
+-
+-#nullable disable
+-
+-namespace StorageBroker.Migrations
+-{
+-    public partial class StudentModelChanged : Migration
+-    {
+-        protected override void Up(MigrationBuilder migrationBuilder)
+-        {
+-            migrationBuilder.AddColumn<string>(
+-                name: "Surname",
+-                table: "Students",
+-                type: "nvarchar(max)",
+-                nullable: false,
+-                defaultValue: "");
+-        }
+-
+-        protected override void Down(MigrationBuilder migrationBuilder)
+-        {
+-            migrationBuilder.DropColumn(
+-                name: "Surname",
+-                table: "Students");
+-        }
+-    }
+-}
+Index: StorageBroker/RepositoryManager/IRepositryBase.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/StorageBroker/RepositoryManager/IRepositryBase.cs b/StorageBroker/RepositoryManager/IRepositryBase.cs
+deleted file mode 100644
+--- a/StorageBroker/RepositoryManager/IRepositryBase.cs	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
++++ /dev/null	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
+@@ -1,10 +0,0 @@
+-namespace StorageBroker.RepositoryManager;
+-
+-public interface IRepositryBase<T>
+-{
+-    IQueryable<T> GetAll();
+-    IQueryable<T> GetAllWithCondition(Func<T, bool> predicate);
+-    void Create(T entity);
+-    void Update(T entity);
+-    void Delete(T entity);
+-}
+\ No newline at end of file
+Index: StorageBroker/RepositoryManager/StudentRepository.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/StorageBroker/RepositoryManager/StudentRepository.cs b/StorageBroker/RepositoryManager/StudentRepository.cs
+deleted file mode 100644
+--- a/StorageBroker/RepositoryManager/StudentRepository.cs	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
++++ /dev/null	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
+@@ -1,10 +0,0 @@
+-using StorageBroker.Models;
+-
+-namespace StorageBroker.RepositoryManager;
+-
+-public class StudentRepository : RepositoryBase<Student>
+-{
+-    public StudentRepository(DataBaseContext context) : base(context)
+-    {
+-    }
+-}
+\ No newline at end of file
+Index: StorageBroker/Migrator.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/StorageBroker/Migrator.cs b/StorageBroker/Migrator.cs
+deleted file mode 100644
+--- a/StorageBroker/Migrator.cs	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
++++ /dev/null	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
+@@ -1,19 +0,0 @@
+-using Microsoft.EntityFrameworkCore.Infrastructure;
+-using Microsoft.Extensions.DependencyInjection;
+-
+-namespace StorageBroker.MigratorService;
+-
+-public class Migrator : IMigrator
+-{
+-    private readonly DataBaseContext _context;
+-
+-    public Migrator(DataBaseContext context)
+-    {
+-        _context = context;
+-    }
+-
+-    public void Migrate()
+-    {
+-        _context.Database.GetInfrastructure().GetService<IMigrator>().Migrate();
+-    }
+-}
+\ No newline at end of file
+Index: StorageBroker/Migrations/20221217193838_Initial.Designer.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/StorageBroker/Migrations/20221217193838_Initial.Designer.cs b/StorageBroker/Migrations/20221217193838_Initial.Designer.cs
+deleted file mode 100644
+--- a/StorageBroker/Migrations/20221217193838_Initial.Designer.cs	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
++++ /dev/null	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
+@@ -1,210 +0,0 @@
+-// <auto-generated />
+-using System;
+-using Microsoft.EntityFrameworkCore;
+-using Microsoft.EntityFrameworkCore.Infrastructure;
+-using Microsoft.EntityFrameworkCore.Metadata;
+-using Microsoft.EntityFrameworkCore.Migrations;
+-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+-using StorageBroker;
+-
+-#nullable disable
+-
+-namespace StorageBroker.Migrations
+-{
+-    [DbContext(typeof(DataBaseContext))]
+-    [Migration("20221217193838_Initial")]
+-    partial class Initial
+-    {
+-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+-        {
+-#pragma warning disable 612, 618
+-            modelBuilder
+-                .HasAnnotation("ProductVersion", "6.0.12")
+-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+-
+-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+-
+-            modelBuilder.Entity("StorageBroker.Models.AttendanceLog", b =>
+-                {
+-                    b.Property<int>("AttendanceLogId")
+-                        .ValueGeneratedOnAdd()
+-                        .HasColumnType("int");
+-
+-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AttendanceLogId"), 1L, 1);
+-
+-                    b.Property<DateTime>("Date")
+-                        .HasColumnType("datetime2");
+-
+-                    b.Property<int>("GroupId")
+-                        .HasColumnType("int");
+-
+-                    b.Property<int>("LateTime")
+-                        .HasColumnType("int");
+-
+-                    b.Property<int>("Status")
+-                        .HasColumnType("int");
+-
+-                    b.Property<int>("StudentId")
+-                        .HasColumnType("int");
+-
+-                    b.HasKey("AttendanceLogId");
+-
+-                    b.HasIndex("GroupId");
+-
+-                    b.HasIndex("StudentId");
+-
+-                    b.ToTable("AttendanceLogs");
+-                });
+-
+-            modelBuilder.Entity("StorageBroker.Models.GradesLog", b =>
+-                {
+-                    b.Property<int>("Id")
+-                        .ValueGeneratedOnAdd()
+-                        .HasColumnType("int");
+-
+-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+-
+-                    b.Property<int>("Grade")
+-                        .HasColumnType("int");
+-
+-                    b.Property<int>("GroupId")
+-                        .HasColumnType("int");
+-
+-                    b.Property<int>("StudentId")
+-                        .HasColumnType("int");
+-
+-                    b.HasKey("Id");
+-
+-                    b.HasIndex("GroupId");
+-
+-                    b.HasIndex("StudentId");
+-
+-                    b.ToTable("GradeLogs");
+-                });
+-
+-            modelBuilder.Entity("StorageBroker.Models.Group", b =>
+-                {
+-                    b.Property<int>("GroupId")
+-                        .ValueGeneratedOnAdd()
+-                        .HasColumnType("int");
+-
+-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GroupId"), 1L, 1);
+-
+-                    b.Property<int>("CountOfStudents")
+-                        .HasColumnType("int");
+-
+-                    b.Property<string>("Name")
+-                        .IsRequired()
+-                        .HasColumnType("nvarchar(max)");
+-
+-                    b.Property<int>("Status")
+-                        .HasColumnType("int");
+-
+-                    b.HasKey("GroupId");
+-
+-                    b.ToTable("Groups");
+-                });
+-
+-            modelBuilder.Entity("StorageBroker.Models.Student", b =>
+-                {
+-                    b.Property<int>("StudentId")
+-                        .ValueGeneratedOnAdd()
+-                        .HasColumnType("int");
+-
+-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StudentId"), 1L, 1);
+-
+-                    b.Property<int?>("GroupId")
+-                        .HasColumnType("int");
+-
+-                    b.Property<int?>("GroupId1")
+-                        .HasColumnType("int");
+-
+-                    b.Property<string>("Name")
+-                        .IsRequired()
+-                        .HasColumnType("nvarchar(max)");
+-
+-                    b.HasKey("StudentId");
+-
+-                    b.HasIndex("GroupId");
+-
+-                    b.HasIndex("GroupId1");
+-
+-                    b.ToTable("Students");
+-                });
+-
+-            modelBuilder.Entity("StorageBroker.Models.Teacher", b =>
+-                {
+-                    b.Property<int>("TeacherId")
+-                        .ValueGeneratedOnAdd()
+-                        .HasColumnType("int");
+-
+-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TeacherId"), 1L, 1);
+-
+-                    b.Property<string>("Name")
+-                        .IsRequired()
+-                        .HasColumnType("nvarchar(max)");
+-
+-                    b.HasKey("TeacherId");
+-
+-                    b.ToTable("Teachers");
+-                });
+-
+-            modelBuilder.Entity("StorageBroker.Models.AttendanceLog", b =>
+-                {
+-                    b.HasOne("StorageBroker.Models.Group", "Group")
+-                        .WithMany()
+-                        .HasForeignKey("GroupId")
+-                        .OnDelete(DeleteBehavior.Cascade)
+-                        .IsRequired();
+-
+-                    b.HasOne("StorageBroker.Models.Student", "Student")
+-                        .WithMany()
+-                        .HasForeignKey("StudentId")
+-                        .OnDelete(DeleteBehavior.Cascade)
+-                        .IsRequired();
+-
+-                    b.Navigation("Group");
+-
+-                    b.Navigation("Student");
+-                });
+-
+-            modelBuilder.Entity("StorageBroker.Models.GradesLog", b =>
+-                {
+-                    b.HasOne("StorageBroker.Models.Group", "Group")
+-                        .WithMany()
+-                        .HasForeignKey("GroupId")
+-                        .OnDelete(DeleteBehavior.Cascade)
+-                        .IsRequired();
+-
+-                    b.HasOne("StorageBroker.Models.Student", "Student")
+-                        .WithMany()
+-                        .HasForeignKey("StudentId")
+-                        .OnDelete(DeleteBehavior.Cascade)
+-                        .IsRequired();
+-
+-                    b.Navigation("Group");
+-
+-                    b.Navigation("Student");
+-                });
+-
+-            modelBuilder.Entity("StorageBroker.Models.Student", b =>
+-                {
+-                    b.HasOne("StorageBroker.Models.Group", null)
+-                        .WithMany("Students")
+-                        .HasForeignKey("GroupId");
+-
+-                    b.HasOne("StorageBroker.Models.Group", null)
+-                        .WithMany("Teachers")
+-                        .HasForeignKey("GroupId1");
+-                });
+-
+-            modelBuilder.Entity("StorageBroker.Models.Group", b =>
+-                {
+-                    b.Navigation("Students");
+-
+-                    b.Navigation("Teachers");
+-                });
+-#pragma warning restore 612, 618
+-        }
+-    }
+-}
+Index: StorageBroker/IMigrator.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/StorageBroker/IMigrator.cs b/StorageBroker/IMigrator.cs
+deleted file mode 100644
+--- a/StorageBroker/IMigrator.cs	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
++++ /dev/null	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
+@@ -1,6 +0,0 @@
+-namespace StorageBroker.MigratorService;
+-
+-public interface IMigrator
+-{
+-    void Migrate();
+-}
+\ No newline at end of file
+Index: StorageBroker/RepositoryManager/TeacherRepository.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/StorageBroker/RepositoryManager/TeacherRepository.cs b/StorageBroker/RepositoryManager/TeacherRepository.cs
+deleted file mode 100644
+--- a/StorageBroker/RepositoryManager/TeacherRepository.cs	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
++++ /dev/null	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
+@@ -1,10 +0,0 @@
+-using StorageBroker.Models;
+-
+-namespace StorageBroker.RepositoryManager;
+-
+-public class TeacherRepository : RepositoryBase<Teacher>
+-{
+-    public TeacherRepository(DataBaseContext context) : base(context)
+-    {
+-    }
+-}
+\ No newline at end of file
+Index: StorageBroker/RepositoryManager/GradesLogRepository.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/StorageBroker/RepositoryManager/GradesLogRepository.cs b/StorageBroker/RepositoryManager/GradesLogRepository.cs
+deleted file mode 100644
+--- a/StorageBroker/RepositoryManager/GradesLogRepository.cs	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
++++ /dev/null	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
+@@ -1,10 +0,0 @@
+-using StorageBroker.Models;
+-
+-namespace StorageBroker.RepositoryManager;
+-
+-public class GradesLogRepository : RepositoryBase<GradesLog>
+-{
+-    public GradesLogRepository(DataBaseContext context) : base(context)
+-    {
+-    }
+-}
+\ No newline at end of file
+Index: StorageBroker/Migrations/20221217193838_Initial.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/StorageBroker/Migrations/20221217193838_Initial.cs b/StorageBroker/Migrations/20221217193838_Initial.cs
+deleted file mode 100644
+--- a/StorageBroker/Migrations/20221217193838_Initial.cs	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
++++ /dev/null	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
+@@ -1,170 +0,0 @@
+-using System;
+-using Microsoft.EntityFrameworkCore.Migrations;
+-
+-#nullable disable
+-
+-namespace StorageBroker.Migrations
+-{
+-    public partial class Initial : Migration
+-    {
+-        protected override void Up(MigrationBuilder migrationBuilder)
+-        {
+-            migrationBuilder.CreateTable(
+-                name: "Groups",
+-                columns: table => new
+-                {
+-                    GroupId = table.Column<int>(type: "int", nullable: false)
+-                        .Annotation("SqlServer:Identity", "1, 1"),
+-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+-                    Status = table.Column<int>(type: "int", nullable: false),
+-                    CountOfStudents = table.Column<int>(type: "int", nullable: false)
+-                },
+-                constraints: table =>
+-                {
+-                    table.PrimaryKey("PK_Groups", x => x.GroupId);
+-                });
+-
+-            migrationBuilder.CreateTable(
+-                name: "Teachers",
+-                columns: table => new
+-                {
+-                    TeacherId = table.Column<int>(type: "int", nullable: false)
+-                        .Annotation("SqlServer:Identity", "1, 1"),
+-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+-                },
+-                constraints: table =>
+-                {
+-                    table.PrimaryKey("PK_Teachers", x => x.TeacherId);
+-                });
+-
+-            migrationBuilder.CreateTable(
+-                name: "Students",
+-                columns: table => new
+-                {
+-                    StudentId = table.Column<int>(type: "int", nullable: false)
+-                        .Annotation("SqlServer:Identity", "1, 1"),
+-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+-                    GroupId = table.Column<int>(type: "int", nullable: true),
+-                    GroupId1 = table.Column<int>(type: "int", nullable: true)
+-                },
+-                constraints: table =>
+-                {
+-                    table.PrimaryKey("PK_Students", x => x.StudentId);
+-                    table.ForeignKey(
+-                        name: "FK_Students_Groups_GroupId",
+-                        column: x => x.GroupId,
+-                        principalTable: "Groups",
+-                        principalColumn: "GroupId");
+-                    table.ForeignKey(
+-                        name: "FK_Students_Groups_GroupId1",
+-                        column: x => x.GroupId1,
+-                        principalTable: "Groups",
+-                        principalColumn: "GroupId");
+-                });
+-
+-            migrationBuilder.CreateTable(
+-                name: "AttendanceLogs",
+-                columns: table => new
+-                {
+-                    AttendanceLogId = table.Column<int>(type: "int", nullable: false)
+-                        .Annotation("SqlServer:Identity", "1, 1"),
+-                    GroupId = table.Column<int>(type: "int", nullable: false),
+-                    StudentId = table.Column<int>(type: "int", nullable: false),
+-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+-                    LateTime = table.Column<int>(type: "int", nullable: false),
+-                    Status = table.Column<int>(type: "int", nullable: false)
+-                },
+-                constraints: table =>
+-                {
+-                    table.PrimaryKey("PK_AttendanceLogs", x => x.AttendanceLogId);
+-                    table.ForeignKey(
+-                        name: "FK_AttendanceLogs_Groups_GroupId",
+-                        column: x => x.GroupId,
+-                        principalTable: "Groups",
+-                        principalColumn: "GroupId",
+-                        onDelete: ReferentialAction.Cascade);
+-                    table.ForeignKey(
+-                        name: "FK_AttendanceLogs_Students_StudentId",
+-                        column: x => x.StudentId,
+-                        principalTable: "Students",
+-                        principalColumn: "StudentId",
+-                        onDelete: ReferentialAction.Cascade);
+-                });
+-
+-            migrationBuilder.CreateTable(
+-                name: "GradeLogs",
+-                columns: table => new
+-                {
+-                    Id = table.Column<int>(type: "int", nullable: false)
+-                        .Annotation("SqlServer:Identity", "1, 1"),
+-                    GroupId = table.Column<int>(type: "int", nullable: false),
+-                    StudentId = table.Column<int>(type: "int", nullable: false),
+-                    Grade = table.Column<int>(type: "int", nullable: false)
+-                },
+-                constraints: table =>
+-                {
+-                    table.PrimaryKey("PK_GradeLogs", x => x.Id);
+-                    table.ForeignKey(
+-                        name: "FK_GradeLogs_Groups_GroupId",
+-                        column: x => x.GroupId,
+-                        principalTable: "Groups",
+-                        principalColumn: "GroupId",
+-                        onDelete: ReferentialAction.Cascade);
+-                    table.ForeignKey(
+-                        name: "FK_GradeLogs_Students_StudentId",
+-                        column: x => x.StudentId,
+-                        principalTable: "Students",
+-                        principalColumn: "StudentId",
+-                        onDelete: ReferentialAction.Cascade);
+-                });
+-
+-            migrationBuilder.CreateIndex(
+-                name: "IX_AttendanceLogs_GroupId",
+-                table: "AttendanceLogs",
+-                column: "GroupId");
+-
+-            migrationBuilder.CreateIndex(
+-                name: "IX_AttendanceLogs_StudentId",
+-                table: "AttendanceLogs",
+-                column: "StudentId");
+-
+-            migrationBuilder.CreateIndex(
+-                name: "IX_GradeLogs_GroupId",
+-                table: "GradeLogs",
+-                column: "GroupId");
+-
+-            migrationBuilder.CreateIndex(
+-                name: "IX_GradeLogs_StudentId",
+-                table: "GradeLogs",
+-                column: "StudentId");
+-
+-            migrationBuilder.CreateIndex(
+-                name: "IX_Students_GroupId",
+-                table: "Students",
+-                column: "GroupId");
+-
+-            migrationBuilder.CreateIndex(
+-                name: "IX_Students_GroupId1",
+-                table: "Students",
+-                column: "GroupId1");
+-        }
+-
+-        protected override void Down(MigrationBuilder migrationBuilder)
+-        {
+-            migrationBuilder.DropTable(
+-                name: "AttendanceLogs");
+-
+-            migrationBuilder.DropTable(
+-                name: "GradeLogs");
+-
+-            migrationBuilder.DropTable(
+-                name: "Teachers");
+-
+-            migrationBuilder.DropTable(
+-                name: "Students");
+-
+-            migrationBuilder.DropTable(
+-                name: "Groups");
+-        }
+-    }
+-}
+Index: StorageBroker/RepositoryManager/AttendanceLogRepository.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/StorageBroker/RepositoryManager/AttendanceLogRepository.cs b/StorageBroker/RepositoryManager/AttendanceLogRepository.cs
+deleted file mode 100644
+--- a/StorageBroker/RepositoryManager/AttendanceLogRepository.cs	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
++++ /dev/null	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
+@@ -1,10 +0,0 @@
+-using StorageBroker.Models;
+-
+-namespace StorageBroker.RepositoryManager;
+-
+-public class AttendanceLogRepository : RepositoryBase<AttendanceLog>
+-{
+-    public AttendanceLogRepository(DataBaseContext context) : base(context)
+-    {
+-    }
+-}
+\ No newline at end of file
+Index: WebAPI/Controllers/Home.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/WebAPI/Controllers/Home.cs b/WebAPI/Controllers/Home.cs
+deleted file mode 100644
+--- a/WebAPI/Controllers/Home.cs	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
++++ /dev/null	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
+@@ -1,28 +0,0 @@
+-using LoggerService;
+-using Microsoft.AspNetCore.Mvc;
+-using StorageBroker.RepositoryManager;
+-using ILogger = LoggerService.ILogger;
+-
+-namespace WebAPI.Controllers;
+-
+-[ApiController]
+-[Route("api/[controller]")]
+-public class Home : ControllerBase
+-{
+-    private readonly ILogger _logger;
+-    private readonly IRepositoryManager _repositoryManager;
+-
+-    public Home(ILogger logger, IRepositoryManager repositoryManager)
+-    {
+-        _logger = logger;
+-        _repositoryManager = repositoryManager;
+-    }
+-
+-    // GET
+-    [HttpGet]
+-    public IActionResult Teachers()
+-    {
+-        _logger.LogInfo("Info log");
+-        return Ok(_repositoryManager.TeacherRepository.GetAll().Count());
+-    }
+-}
+\ No newline at end of file
+Index: LoggerService/ILogger.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/LoggerService/ILogger.cs b/LoggerService/ILogger.cs
+deleted file mode 100644
+--- a/LoggerService/ILogger.cs	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
++++ /dev/null	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
+@@ -1,9 +0,0 @@
+-namespace LoggerService;
+-
+-public interface ILogger
+-{
+-    void LogInfo(string message);
+-    void LogDebug(string message);
+-    void LogWarning(string message);
+-    void LogError(string message);
+-}
+\ No newline at end of file
+Index: LoggerService/Logger.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/LoggerService/Logger.cs b/LoggerService/Logger.cs
+deleted file mode 100644
+--- a/LoggerService/Logger.cs	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
++++ /dev/null	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
+@@ -1,46 +0,0 @@
+-using NLog;
+-using NLog.Config;
+-using NLog.Targets;
+-
+-namespace LoggerService;
+-
+-public class Logger : ILogger
+-{
+-    private readonly NLog.Logger _logger;
+-
+-    public Logger(string loggerFilePath = null)
+-    {
+-        var loggingConfiguration = new LoggingConfiguration();
+-        var logTargetToConsole = new ColoredConsoleTarget("logConsole");
+-        loggingConfiguration.AddRule(LogLevel.Info, LogLevel.Fatal, logTargetToConsole);
+-        if (loggerFilePath != null)
+-        {
+-            var logTargetToSpecificFilePath = new FileTarget("logFile") {FileName = loggerFilePath};
+-            loggingConfiguration.AddRule(LogLevel.Info, LogLevel.Fatal, logTargetToSpecificFilePath);
+-        }
+-
+-        LogManager.Configuration = loggingConfiguration;
+-        LogManager.Setup();
+-        _logger = LogManager.GetCurrentClassLogger();
+-    }
+-
+-    public void LogInfo(string message)
+-    {
+-        _logger.Info(message);
+-    }
+-
+-    public void LogDebug(string message)
+-    {
+-        _logger.Debug(message);
+-    }
+-
+-    public void LogWarning(string message)
+-    {
+-        _logger.Warn(message);
+-    }
+-
+-    public void LogError(string message)
+-    {
+-        _logger.Error(message);
+-    }
+-}
+\ No newline at end of file
+Index: StorageBroker/Migrations/20221217194938_StudentModelChanged.Designer.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/StorageBroker/Migrations/20221217194938_StudentModelChanged.Designer.cs b/StorageBroker/Migrations/20221217194938_StudentModelChanged.Designer.cs
+deleted file mode 100644
+--- a/StorageBroker/Migrations/20221217194938_StudentModelChanged.Designer.cs	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
++++ /dev/null	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
+@@ -1,214 +0,0 @@
+-// <auto-generated />
+-using System;
+-using Microsoft.EntityFrameworkCore;
+-using Microsoft.EntityFrameworkCore.Infrastructure;
+-using Microsoft.EntityFrameworkCore.Metadata;
+-using Microsoft.EntityFrameworkCore.Migrations;
+-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+-using StorageBroker;
+-
+-#nullable disable
+-
+-namespace StorageBroker.Migrations
+-{
+-    [DbContext(typeof(DataBaseContext))]
+-    [Migration("20221217194938_StudentModelChanged")]
+-    partial class StudentModelChanged
+-    {
+-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+-        {
+-#pragma warning disable 612, 618
+-            modelBuilder
+-                .HasAnnotation("ProductVersion", "6.0.12")
+-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+-
+-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+-
+-            modelBuilder.Entity("StorageBroker.Models.AttendanceLog", b =>
+-                {
+-                    b.Property<int>("AttendanceLogId")
+-                        .ValueGeneratedOnAdd()
+-                        .HasColumnType("int");
+-
+-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AttendanceLogId"), 1L, 1);
+-
+-                    b.Property<DateTime>("Date")
+-                        .HasColumnType("datetime2");
+-
+-                    b.Property<int>("GroupId")
+-                        .HasColumnType("int");
+-
+-                    b.Property<int>("LateTime")
+-                        .HasColumnType("int");
+-
+-                    b.Property<int>("Status")
+-                        .HasColumnType("int");
+-
+-                    b.Property<int>("StudentId")
+-                        .HasColumnType("int");
+-
+-                    b.HasKey("AttendanceLogId");
+-
+-                    b.HasIndex("GroupId");
+-
+-                    b.HasIndex("StudentId");
+-
+-                    b.ToTable("AttendanceLogs");
+-                });
+-
+-            modelBuilder.Entity("StorageBroker.Models.GradesLog", b =>
+-                {
+-                    b.Property<int>("Id")
+-                        .ValueGeneratedOnAdd()
+-                        .HasColumnType("int");
+-
+-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+-
+-                    b.Property<int>("Grade")
+-                        .HasColumnType("int");
+-
+-                    b.Property<int>("GroupId")
+-                        .HasColumnType("int");
+-
+-                    b.Property<int>("StudentId")
+-                        .HasColumnType("int");
+-
+-                    b.HasKey("Id");
+-
+-                    b.HasIndex("GroupId");
+-
+-                    b.HasIndex("StudentId");
+-
+-                    b.ToTable("GradeLogs");
+-                });
+-
+-            modelBuilder.Entity("StorageBroker.Models.Group", b =>
+-                {
+-                    b.Property<int>("GroupId")
+-                        .ValueGeneratedOnAdd()
+-                        .HasColumnType("int");
+-
+-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GroupId"), 1L, 1);
+-
+-                    b.Property<int>("CountOfStudents")
+-                        .HasColumnType("int");
+-
+-                    b.Property<string>("Name")
+-                        .IsRequired()
+-                        .HasColumnType("nvarchar(max)");
+-
+-                    b.Property<int>("Status")
+-                        .HasColumnType("int");
+-
+-                    b.HasKey("GroupId");
+-
+-                    b.ToTable("Groups");
+-                });
+-
+-            modelBuilder.Entity("StorageBroker.Models.Student", b =>
+-                {
+-                    b.Property<int>("StudentId")
+-                        .ValueGeneratedOnAdd()
+-                        .HasColumnType("int");
+-
+-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StudentId"), 1L, 1);
+-
+-                    b.Property<int?>("GroupId")
+-                        .HasColumnType("int");
+-
+-                    b.Property<int?>("GroupId1")
+-                        .HasColumnType("int");
+-
+-                    b.Property<string>("Name")
+-                        .IsRequired()
+-                        .HasColumnType("nvarchar(max)");
+-
+-                    b.Property<string>("Surname")
+-                        .IsRequired()
+-                        .HasColumnType("nvarchar(max)");
+-
+-                    b.HasKey("StudentId");
+-
+-                    b.HasIndex("GroupId");
+-
+-                    b.HasIndex("GroupId1");
+-
+-                    b.ToTable("Students");
+-                });
+-
+-            modelBuilder.Entity("StorageBroker.Models.Teacher", b =>
+-                {
+-                    b.Property<int>("TeacherId")
+-                        .ValueGeneratedOnAdd()
+-                        .HasColumnType("int");
+-
+-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TeacherId"), 1L, 1);
+-
+-                    b.Property<string>("Name")
+-                        .IsRequired()
+-                        .HasColumnType("nvarchar(max)");
+-
+-                    b.HasKey("TeacherId");
+-
+-                    b.ToTable("Teachers");
+-                });
+-
+-            modelBuilder.Entity("StorageBroker.Models.AttendanceLog", b =>
+-                {
+-                    b.HasOne("StorageBroker.Models.Group", "Group")
+-                        .WithMany()
+-                        .HasForeignKey("GroupId")
+-                        .OnDelete(DeleteBehavior.Cascade)
+-                        .IsRequired();
+-
+-                    b.HasOne("StorageBroker.Models.Student", "Student")
+-                        .WithMany()
+-                        .HasForeignKey("StudentId")
+-                        .OnDelete(DeleteBehavior.Cascade)
+-                        .IsRequired();
+-
+-                    b.Navigation("Group");
+-
+-                    b.Navigation("Student");
+-                });
+-
+-            modelBuilder.Entity("StorageBroker.Models.GradesLog", b =>
+-                {
+-                    b.HasOne("StorageBroker.Models.Group", "Group")
+-                        .WithMany()
+-                        .HasForeignKey("GroupId")
+-                        .OnDelete(DeleteBehavior.Cascade)
+-                        .IsRequired();
+-
+-                    b.HasOne("StorageBroker.Models.Student", "Student")
+-                        .WithMany()
+-                        .HasForeignKey("StudentId")
+-                        .OnDelete(DeleteBehavior.Cascade)
+-                        .IsRequired();
+-
+-                    b.Navigation("Group");
+-
+-                    b.Navigation("Student");
+-                });
+-
+-            modelBuilder.Entity("StorageBroker.Models.Student", b =>
+-                {
+-                    b.HasOne("StorageBroker.Models.Group", null)
+-                        .WithMany("Students")
+-                        .HasForeignKey("GroupId");
+-
+-                    b.HasOne("StorageBroker.Models.Group", null)
+-                        .WithMany("Teachers")
+-                        .HasForeignKey("GroupId1");
+-                });
+-
+-            modelBuilder.Entity("StorageBroker.Models.Group", b =>
+-                {
+-                    b.Navigation("Students");
+-
+-                    b.Navigation("Teachers");
+-                });
+-#pragma warning restore 612, 618
+-        }
+-    }
+-}
+Index: StorageBroker/RepositoryManager/GroupRepository.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/StorageBroker/RepositoryManager/GroupRepository.cs b/StorageBroker/RepositoryManager/GroupRepository.cs
+deleted file mode 100644
+--- a/StorageBroker/RepositoryManager/GroupRepository.cs	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
++++ /dev/null	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
+@@ -1,10 +0,0 @@
+-using StorageBroker.Models;
+-
+-namespace StorageBroker.RepositoryManager;
+-
+-public class GroupRepository : RepositoryBase<Group>
+-{
+-    public GroupRepository(DataBaseContext context) : base(context)
+-    {
+-    }
+-}
+\ No newline at end of file
+Index: StorageBroker/RepositoryManager/RepositoryBase.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/StorageBroker/RepositoryManager/RepositoryBase.cs b/StorageBroker/RepositoryManager/RepositoryBase.cs
+deleted file mode 100644
+--- a/StorageBroker/RepositoryManager/RepositoryBase.cs	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
++++ /dev/null	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
+@@ -1,36 +0,0 @@
+-namespace StorageBroker.RepositoryManager;
+-
+-public abstract class RepositoryBase<T> : IRepositryBase<T> where T : class
+-{
+-    private readonly DataBaseContext _context;
+-
+-    public RepositoryBase(DataBaseContext context)
+-    {
+-        _context = context;
+-    }
+-
+-    public IQueryable<T> GetAll()
+-    {
+-        return _context.Set<T>();
+-    }
+-
+-    public IQueryable<T> GetAllWithCondition(Func<T, bool> predicate)
+-    {
+-        return _context.Set<T>().Where(predicate).AsQueryable();
+-    }
+-
+-    public void Create(T entity)
+-    {
+-        _context.Set<T>().Add(entity);
+-    }
+-
+-    public void Update(T entity)
+-    {
+-        _context.Set<T>().Update(entity);
+-    }
+-
+-    public void Delete(T entity)
+-    {
+-        _context.Set<T>().Remove(entity);
+-    }
+-}
+\ No newline at end of file
+Index: StorageBroker/RepositoryManager/RepositoryManager.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/StorageBroker/RepositoryManager/RepositoryManager.cs b/StorageBroker/RepositoryManager/RepositoryManager.cs
+deleted file mode 100644
+--- a/StorageBroker/RepositoryManager/RepositoryManager.cs	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
++++ /dev/null	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
+@@ -1,27 +0,0 @@
+-namespace StorageBroker.RepositoryManager;
+-
+-public class RepositoryManager : IRepositoryManager
+-{
+-    private readonly DataBaseContext _context;
+-    private TeacherRepository _teacherRepository;
+-
+-    public RepositoryManager(DataBaseContext context)
+-    {
+-        _context = context;
+-    }
+-
+-    public TeacherRepository TeacherRepository
+-    {
+-        get
+-        {
+-            if (_teacherRepository == null)
+-                _teacherRepository = new TeacherRepository(_context);
+-            return _teacherRepository;
+-        }
+-    }
+-
+-    public void Save()
+-    {
+-        _context.SaveChanges();
+-    }
+-}
+\ No newline at end of file
+Index: WebAPI/ServiceExtensions/ServiceExtensions.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/WebAPI/ServiceExtensions/ServiceExtensions.cs b/WebAPI/ServiceExtensions/ServiceExtensions.cs
+deleted file mode 100644
+--- a/WebAPI/ServiceExtensions/ServiceExtensions.cs	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
++++ /dev/null	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
+@@ -1,34 +0,0 @@
+-using LoggerService;
+-using Microsoft.EntityFrameworkCore;
+-using StorageBroker;
+-using StorageBroker.RepositoryManager;
+-using ILogger = LoggerService.ILogger;
+-
+-namespace WebAPI.ServiceExtensions;
+-
+-public static class ServiceExtensions
+-{
+-    public static void ConfigureDatabaseContext(this IServiceCollection serviceCollection, IConfiguration configuration)
+-    {
+-        var optionsBuilder = new DbContextOptionsBuilder<DataBaseContext>();
+-        serviceCollection.AddDbContext<DataBaseContext>(optionsAction =>
+-        {
+-            optionsAction.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+-        });
+-    }
+-
+-    public static void ConfigureRepositoryManager(this IServiceCollection serviceCollection)
+-    {
+-        serviceCollection.AddScoped<IRepositoryManager, RepositoryManager>();
+-    }
+-
+-    public static void ConfigureLoggingService(this IServiceCollection serviceCollection, IConfiguration configuration)
+-    {
+-        var logFilePathSection = configuration.GetSection("Logging").GetSection("LogFilePath");
+-
+-        if (logFilePathSection.Exists())
+-            serviceCollection.AddSingleton<ILogger>(provider => new Logger(logFilePathSection.Value));
+-        else
+-            serviceCollection.AddSingleton<ILogger>(provider => new Logger());
+-    }
+-}
+\ No newline at end of file
+Index: StorageBroker/Migrations/DataBaseContextModelSnapshot.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/StorageBroker/Migrations/DataBaseContextModelSnapshot.cs b/StorageBroker/Migrations/DataBaseContextModelSnapshot.cs
+deleted file mode 100644
+--- a/StorageBroker/Migrations/DataBaseContextModelSnapshot.cs	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
++++ /dev/null	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
+@@ -1,212 +0,0 @@
+-// <auto-generated />
+-using System;
+-using Microsoft.EntityFrameworkCore;
+-using Microsoft.EntityFrameworkCore.Infrastructure;
+-using Microsoft.EntityFrameworkCore.Metadata;
+-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+-using StorageBroker;
+-
+-#nullable disable
+-
+-namespace StorageBroker.Migrations
+-{
+-    [DbContext(typeof(DataBaseContext))]
+-    partial class DataBaseContextModelSnapshot : ModelSnapshot
+-    {
+-        protected override void BuildModel(ModelBuilder modelBuilder)
+-        {
+-#pragma warning disable 612, 618
+-            modelBuilder
+-                .HasAnnotation("ProductVersion", "6.0.12")
+-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+-
+-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+-
+-            modelBuilder.Entity("StorageBroker.Models.AttendanceLog", b =>
+-                {
+-                    b.Property<int>("AttendanceLogId")
+-                        .ValueGeneratedOnAdd()
+-                        .HasColumnType("int");
+-
+-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AttendanceLogId"), 1L, 1);
+-
+-                    b.Property<DateTime>("Date")
+-                        .HasColumnType("datetime2");
+-
+-                    b.Property<int>("GroupId")
+-                        .HasColumnType("int");
+-
+-                    b.Property<int>("LateTime")
+-                        .HasColumnType("int");
+-
+-                    b.Property<int>("Status")
+-                        .HasColumnType("int");
+-
+-                    b.Property<int>("StudentId")
+-                        .HasColumnType("int");
+-
+-                    b.HasKey("AttendanceLogId");
+-
+-                    b.HasIndex("GroupId");
+-
+-                    b.HasIndex("StudentId");
+-
+-                    b.ToTable("AttendanceLogs");
+-                });
+-
+-            modelBuilder.Entity("StorageBroker.Models.GradesLog", b =>
+-                {
+-                    b.Property<int>("Id")
+-                        .ValueGeneratedOnAdd()
+-                        .HasColumnType("int");
+-
+-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+-
+-                    b.Property<int>("Grade")
+-                        .HasColumnType("int");
+-
+-                    b.Property<int>("GroupId")
+-                        .HasColumnType("int");
+-
+-                    b.Property<int>("StudentId")
+-                        .HasColumnType("int");
+-
+-                    b.HasKey("Id");
+-
+-                    b.HasIndex("GroupId");
+-
+-                    b.HasIndex("StudentId");
+-
+-                    b.ToTable("GradeLogs");
+-                });
+-
+-            modelBuilder.Entity("StorageBroker.Models.Group", b =>
+-                {
+-                    b.Property<int>("GroupId")
+-                        .ValueGeneratedOnAdd()
+-                        .HasColumnType("int");
+-
+-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GroupId"), 1L, 1);
+-
+-                    b.Property<int>("CountOfStudents")
+-                        .HasColumnType("int");
+-
+-                    b.Property<string>("Name")
+-                        .IsRequired()
+-                        .HasColumnType("nvarchar(max)");
+-
+-                    b.Property<int>("Status")
+-                        .HasColumnType("int");
+-
+-                    b.HasKey("GroupId");
+-
+-                    b.ToTable("Groups");
+-                });
+-
+-            modelBuilder.Entity("StorageBroker.Models.Student", b =>
+-                {
+-                    b.Property<int>("StudentId")
+-                        .ValueGeneratedOnAdd()
+-                        .HasColumnType("int");
+-
+-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StudentId"), 1L, 1);
+-
+-                    b.Property<int?>("GroupId")
+-                        .HasColumnType("int");
+-
+-                    b.Property<int?>("GroupId1")
+-                        .HasColumnType("int");
+-
+-                    b.Property<string>("Name")
+-                        .IsRequired()
+-                        .HasColumnType("nvarchar(max)");
+-
+-                    b.Property<string>("Surname")
+-                        .IsRequired()
+-                        .HasColumnType("nvarchar(max)");
+-
+-                    b.HasKey("StudentId");
+-
+-                    b.HasIndex("GroupId");
+-
+-                    b.HasIndex("GroupId1");
+-
+-                    b.ToTable("Students");
+-                });
+-
+-            modelBuilder.Entity("StorageBroker.Models.Teacher", b =>
+-                {
+-                    b.Property<int>("TeacherId")
+-                        .ValueGeneratedOnAdd()
+-                        .HasColumnType("int");
+-
+-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TeacherId"), 1L, 1);
+-
+-                    b.Property<string>("Name")
+-                        .IsRequired()
+-                        .HasColumnType("nvarchar(max)");
+-
+-                    b.HasKey("TeacherId");
+-
+-                    b.ToTable("Teachers");
+-                });
+-
+-            modelBuilder.Entity("StorageBroker.Models.AttendanceLog", b =>
+-                {
+-                    b.HasOne("StorageBroker.Models.Group", "Group")
+-                        .WithMany()
+-                        .HasForeignKey("GroupId")
+-                        .OnDelete(DeleteBehavior.Cascade)
+-                        .IsRequired();
+-
+-                    b.HasOne("StorageBroker.Models.Student", "Student")
+-                        .WithMany()
+-                        .HasForeignKey("StudentId")
+-                        .OnDelete(DeleteBehavior.Cascade)
+-                        .IsRequired();
+-
+-                    b.Navigation("Group");
+-
+-                    b.Navigation("Student");
+-                });
+-
+-            modelBuilder.Entity("StorageBroker.Models.GradesLog", b =>
+-                {
+-                    b.HasOne("StorageBroker.Models.Group", "Group")
+-                        .WithMany()
+-                        .HasForeignKey("GroupId")
+-                        .OnDelete(DeleteBehavior.Cascade)
+-                        .IsRequired();
+-
+-                    b.HasOne("StorageBroker.Models.Student", "Student")
+-                        .WithMany()
+-                        .HasForeignKey("StudentId")
+-                        .OnDelete(DeleteBehavior.Cascade)
+-                        .IsRequired();
+-
+-                    b.Navigation("Group");
+-
+-                    b.Navigation("Student");
+-                });
+-
+-            modelBuilder.Entity("StorageBroker.Models.Student", b =>
+-                {
+-                    b.HasOne("StorageBroker.Models.Group", null)
+-                        .WithMany("Students")
+-                        .HasForeignKey("GroupId");
+-
+-                    b.HasOne("StorageBroker.Models.Group", null)
+-                        .WithMany("Teachers")
+-                        .HasForeignKey("GroupId1");
+-                });
+-
+-            modelBuilder.Entity("StorageBroker.Models.Group", b =>
+-                {
+-                    b.Navigation("Students");
+-
+-                    b.Navigation("Teachers");
+-                });
+-#pragma warning restore 612, 618
+-        }
+-    }
+-}
+Index: WebAPI/ServiceExtensions/AppExtensions.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/WebAPI/ServiceExtensions/AppExtensions.cs b/WebAPI/ServiceExtensions/AppExtensions.cs
+deleted file mode 100644
+--- a/WebAPI/ServiceExtensions/AppExtensions.cs	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
++++ /dev/null	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
+@@ -1,29 +0,0 @@
+-using Microsoft.EntityFrameworkCore.Infrastructure;
+-using Microsoft.EntityFrameworkCore.Migrations;
+-using StorageBroker;
+-
+-namespace WebAPI.ServiceExtensions;
+-
+-public static class AppExtensions
+-{
+-    public static void MigrateDataBase(this IApplicationBuilder builder)
+-    {
+-        try
+-        {
+-            Console.WriteLine("Please wait for migrating for database....");
+-            using var scope = builder.ApplicationServices.CreateScope();
+-            var dbContext = scope.ServiceProvider.GetService<DataBaseContext>();
+-            if (dbContext == null)
+-                throw new Exception("DataBase context has been registered");
+-            // Console.WriteLine(dbContext.Database.);
+-            dbContext.Database.EnsureCreated();
+-            dbContext.Database.EnsureDeleted();
+-            dbContext.Database.GetInfrastructure().GetService<IMigrator>().Migrate();
+-        }
+-        catch (Exception e)
+-        {
+-            Console.Error.WriteLine("Error on Migration: \n" + e.Message);
+-            Environment.Exit(1);
+-        }
+-    }
+-}
+\ No newline at end of file
+Index: WebAPI/obj/staticwebassets.pack.sentinel
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>2.0\r\n2.0\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/WebAPI/obj/staticwebassets.pack.sentinel b/WebAPI/obj/staticwebassets.pack.sentinel
+--- a/WebAPI/obj/staticwebassets.pack.sentinel	(revision 0d303bf8e9807ec47dc7e61be286e6f68b966640)
++++ b/WebAPI/obj/staticwebassets.pack.sentinel	(date 1671346208381)
+@@ -1,2 +1,6 @@
+ 2.0
+ 2.0
++2.0
++2.0
++2.0
++2.0
