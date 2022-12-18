@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using StorageBroker.Models;
 using StorageBroker.RepositoryManager;
 
@@ -19,7 +20,8 @@ namespace WebAPI.Controllers
         [Produces(typeof(Teacher))]
         public IActionResult GetTeachers()
         {
-            return Ok(RepositoryManager.TeacherRepository.GetAll());
+            return Ok(RepositoryManager.TeacherRepository.GetAll()
+                .Include(teacher => teacher.TeacherGroups));
         }
 
         [HttpGet("{TeacherId:int}")]

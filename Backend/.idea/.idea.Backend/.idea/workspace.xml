@@ -5,14 +5,28 @@
     <projectFile profileName="IIS Express">WebAPI/WebAPI.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aaabd197-24ba-4ddd-b825-1b51add124f8" name="Changes" comment="unversioned files staged">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Backend/.idea/shelf/Uncommitted_changes_before_Merge_at_12_18_2022_2_31_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Backend/.idea/shelf/Uncommitted_changes_before_Merge_at_12_18_2022_2_31_PM__Changes_.xml" afterDir="false" />
+    <list default="true" id="aaabd197-24ba-4ddd-b825-1b51add124f8" name="Changes" comment="Techer controller issue fixed">
+      <change afterPath="$PROJECT_DIR$/StorageBroker/Migrations/20221218095846_third.Designer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StorageBroker/Migrations/20221218095846_third.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StorageBroker/obj/StorageBroker.csproj.EntityFrameworkCore.targets" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebAPI/obj/WebAPI.csproj.EntityFrameworkCore.targets" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Backend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageBroker/Migrations/DataBaseContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/Migrations/DataBaseContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageBroker/bin/Debug/net6.0/StorageBroker.dll" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/bin/Debug/net6.0/StorageBroker.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageBroker/bin/Debug/net6.0/StorageBroker.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/bin/Debug/net6.0/StorageBroker.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/StorageBroker.dll" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/StorageBroker.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/StorageBroker.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/StorageBroker.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/ref/StorageBroker.dll" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/ref/StorageBroker.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/refint/StorageBroker.dll" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/refint/StorageBroker.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebAPI/Controllers/TeacherController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/Controllers/TeacherController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAPI/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/appsettings.Development.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/Log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/Log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/StorageBroker.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/StorageBroker.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/StorageBroker.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/StorageBroker.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/WebAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/WebAPI.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/WebAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/WebAPI.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/appsettings.Development.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/ref/WebAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/ref/WebAPI.dll" afterDir="false" />
@@ -210,7 +224,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671346577474</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Techer controller issue fixed">
+      <created>1671356900459</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1671356900459</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -245,7 +266,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="main" />
+                        <option value="Abdumannon" />
                       </list>
                     </value>
                   </entry>
@@ -274,6 +295,7 @@
     <MESSAGE value="some changes on temp branch" />
     <MESSAGE value="Project fully restored and got ready for developing" />
     <MESSAGE value="unversioned files staged" />
-    <option name="LAST_COMMIT_MESSAGE" value="unversioned files staged" />
+    <MESSAGE value="Techer controller issue fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Techer controller issue fixed" />
   </component>
 </project>
