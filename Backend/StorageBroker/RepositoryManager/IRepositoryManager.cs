@@ -6,5 +6,7 @@ public interface IRepositoryManager
     StudentRepository StudentRepository { get; }
     GroupRepository GroupRepository { get; }
     AttendanceLogRepository AttendanceLogRepository { get; }
+    GradesLogRepository GradesLogRepository { get; }
     void Save();
+    Task SaveAsync();
 }

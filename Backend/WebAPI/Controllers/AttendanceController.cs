@@ -30,7 +30,8 @@ namespace WebAPI.Controllers
         [Produces(typeof(ResponseDto<AttendanceLog>))]
         public ResponseDto<AttendanceLog> GetAttendanceLogById(int id)
         {
-            ResponseDto<AttendanceLog> attendance = new ResponseDto<AttendanceLog>(repositoryManager.AttendanceLogRepository
+            ResponseDto<AttendanceLog> attendance = new ResponseDto<AttendanceLog>(repositoryManager
+                .AttendanceLogRepository
                 .GetAllWithCondition(attendance => attendance.AttendanceLogId == id));
 
             if (attendance is null)
@@ -63,7 +64,7 @@ namespace WebAPI.Controllers
             newAttendance.GroupId = attendanceLog.GroupId;
             newAttendance.Group = currentGroup;
             newAttendance.Student = currentStudent;
-            
+
             repositoryManager.AttendanceLogRepository.Create(newAttendance);
 
             repositoryManager.Save();
@@ -94,9 +95,9 @@ namespace WebAPI.Controllers
             newAttendance.Group = currentGroup;
             newAttendance.Student = currentStudent;
 
-            repositoryManager.AttendanceLogRepository.Update(newAttendance);
+            var updatedAttendanceLog = repositoryManager.AttendanceLogRepository.Update(newAttendance);
 
-            repositoryManager.Save();
+            repositoryManager.SaveAsync();
         }
 
         [HttpDelete]

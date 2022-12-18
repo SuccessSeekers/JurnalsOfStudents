@@ -7,6 +7,7 @@ public class RepositoryManager : IRepositoryManager
     private StudentRepository _studentRepository;
     private GroupRepository _groupRepository;
     private AttendanceLogRepository _attendanceLogRepository;
+    private GradesLogRepository _gradesLogRepository;
 
     public RepositoryManager(DataBaseContext context)
     {
@@ -53,8 +54,23 @@ public class RepositoryManager : IRepositoryManager
         }
     }
 
+    public GradesLogRepository GradesLogRepository
+    {
+        get
+        {
+            if (_gradesLogRepository == null)
+                _gradesLogRepository = new GradesLogRepository(_context);
+            return _gradesLogRepository;
+        }
+    }
+
     public void Save()
     {
         _context.SaveChanges();
+    }
+
+    public async Task SaveAsync()
+    {
+        await _context.SaveChangesAsync();
     }
 }
