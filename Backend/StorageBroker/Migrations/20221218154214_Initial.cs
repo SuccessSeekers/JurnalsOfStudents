@@ -44,8 +44,8 @@ namespace StorageBroker.Migrations
                     StudentId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    GroupId = table.Column<int>(type: "int", nullable: true),
-                    GroupId1 = table.Column<int>(type: "int", nullable: true)
+                    Surname = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    GroupId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -55,11 +55,30 @@ namespace StorageBroker.Migrations
                         column: x => x.GroupId,
                         principalTable: "Groups",
                         principalColumn: "GroupId");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "GroupTeacher",
+                columns: table => new
+                {
+                    TeacherGroupsGroupId = table.Column<int>(type: "int", nullable: false),
+                    TeachersTeacherId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_GroupTeacher", x => new { x.TeacherGroupsGroupId, x.TeachersTeacherId });
                     table.ForeignKey(
-                        name: "FK_Students_Groups_GroupId1",
-                        column: x => x.GroupId1,
+                        name: "FK_GroupTeacher_Groups_TeacherGroupsGroupId",
+                        column: x => x.TeacherGroupsGroupId,
                         principalTable: "Groups",
-                        principalColumn: "GroupId");
+                        principalColumn: "GroupId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_GroupTeacher_Teachers_TeachersTeacherId",
+                        column: x => x.TeachersTeacherId,
+                        principalTable: "Teachers",
+                        principalColumn: "TeacherId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -68,11 +87,11 @@ namespace StorageBroker.Migrations
                 {
                     AttendanceLogId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    GroupId = table.Column<int>(type: "int", nullable: false),
-                    StudentId = table.Column<int>(type: "int", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LateTime = table.Column<int>(type: "int", nullable: false),
-                    Status = table.Column<int>(type: "int", nullable: false)
+                    Status = table.Column<int>(type: "int", nullable: false),
+                    StudentId = table.Column<int>(type: "int", nullable: false),
+                    GroupId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -97,9 +116,9 @@ namespace StorageBroker.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    GroupId = table.Column<int>(type: "int", nullable: false),
+                    Grade = table.Column<int>(type: "int", nullable: false),
                     StudentId = table.Column<int>(type: "int", nullable: false),
-                    Grade = table.Column<int>(type: "int", nullable: false)
+                    GroupId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -117,6 +136,57 @@ namespace StorageBroker.Migrations
                         principalColumn: "StudentId",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "StudentGroups",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    StudentId = table.Column<int>(type: "int", nullable: false),
+                    GroupId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_StudentGroups", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_StudentGroups_Groups_GroupId",
+                        column: x => x.GroupId,
+                        principalTable: "Groups",
+                        principalColumn: "GroupId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_StudentGroups_Students_StudentId",
+                        column: x => x.StudentId,
+                        principalTable: "Students",
+                        principalColumn: "StudentId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Groups",
+                columns: new[] { "GroupId", "CountOfStudents", "Name", "Status" },
+                values: new object[] { 1, 17, "B23", 1 });
+
+            migrationBuilder.InsertData(
+                table: "Students",
+                columns: new[] { "StudentId", "GroupId", "Name", "Surname" },
+                values: new object[] { 1, null, "Elchin", "Uralov" });
+
+            migrationBuilder.InsertData(
+                table: "Students",
+                columns: new[] { "StudentId", "GroupId", "Name", "Surname" },
+                values: new object[] { 2, null, "Diyor", "Abdumannonpov" });
+
+            migrationBuilder.InsertData(
+                table: "StudentGroups",
+                columns: new[] { "Id", "GroupId", "StudentId" },
+                values: new object[] { 1, 1, 1 });
+
+            migrationBuilder.InsertData(
+                table: "StudentGroups",
+                columns: new[] { "Id", "GroupId", "StudentId" },
+                values: new object[] { 2, 1, 2 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AttendanceLogs_GroupId",
@@ -139,14 +209,24 @@ namespace StorageBroker.Migrations
                 column: "StudentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Students_GroupId",
-                table: "Students",
+                name: "IX_GroupTeacher_TeachersTeacherId",
+                table: "GroupTeacher",
+                column: "TeachersTeacherId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_StudentGroups_GroupId",
+                table: "StudentGroups",
                 column: "GroupId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Students_GroupId1",
+                name: "IX_StudentGroups_StudentId",
+                table: "StudentGroups",
+                column: "StudentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Students_GroupId",
                 table: "Students",
-                column: "GroupId1");
+                column: "GroupId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -156,6 +236,12 @@ namespace StorageBroker.Migrations
 
             migrationBuilder.DropTable(
                 name: "GradeLogs");
+
+            migrationBuilder.DropTable(
+                name: "GroupTeacher");
+
+            migrationBuilder.DropTable(
+                name: "StudentGroups");
 
             migrationBuilder.DropTable(
                 name: "Teachers");

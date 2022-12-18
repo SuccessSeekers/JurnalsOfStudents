@@ -26,7 +26,7 @@ namespace WebAPI.Controllers
                 {
                     Name = group.Name,
                     Status = group.Status,
-                    Students = group.Students,
+                    Students = group.StudentGroups.Select(x => x.Student).ToList(),
                     Teachers = group.Teachers,
                     CountOfStudents = group.CountOfStudents
                 }
@@ -48,7 +48,7 @@ namespace WebAPI.Controllers
             {
                 Name = group.Name,
                 Status = group.Status,
-                Students = group.Students,
+                Students = group.StudentGroups.Select(x => x.Student).ToList(),
                 Teachers = group.Teachers,
                 CountOfStudents = group.CountOfStudents
             };
@@ -71,11 +71,25 @@ namespace WebAPI.Controllers
             {
                 Name = createdGroup.Name,
                 Status = createdGroup.Status,
-                Students = createdGroup.Students,
+                Students = createdGroup.StudentGroups.Select(x => x.Student).ToList(),
                 Teachers = createdGroup.Teachers,
                 CountOfStudents = createdGroup.CountOfStudents
             };
             return new ResponseDto<GroupDto>(groupDto);
+        }
+
+        [HttpPost("addStudent/")]
+        public async Task AddStudent(int studentId, int groupId)
+        {
+            var group = repositoryManager.GroupRepository.GetAll().FirstOrDefault(group => group.GroupId == groupId);
+            var student = repositoryManager.StudentRepository.GetAll()
+                .FirstOrDefault(student => student.StudentId == studentId);
+            await repositoryManager.StudentGroupRepository.CreateAsync(new StudentGroup()
+            {
+                StudentId = student.StudentId,
+                GroupId = group.GroupId
+            });
+            await repositoryManager.SaveAsync();
         }
 
         [HttpPut]
@@ -93,7 +107,7 @@ namespace WebAPI.Controllers
             {
                 Name = oldGroup.Name,
                 Status = oldGroup.Status,
-                Students = oldGroup.Students,
+                Students = oldGroup.StudentGroups.Select(x => x.Student).ToList(),
                 Teachers = oldGroup.Teachers,
                 CountOfStudents = oldGroup.CountOfStudents
             };
@@ -115,7 +129,7 @@ namespace WebAPI.Controllers
             {
                 Name = oldGroup.Name,
                 Status = oldGroup.Status,
-                Students = oldGroup.Students,
+                Students = oldGroup.StudentGroups.Select(x => x.Student).ToList(),
                 Teachers = oldGroup.Teachers,
                 CountOfStudents = oldGroup.CountOfStudents
             };

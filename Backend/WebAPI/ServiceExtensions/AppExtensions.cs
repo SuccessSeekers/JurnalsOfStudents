@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using StorageBroker;
+using StorageBroker.Models;
+using StorageBroker.RepositoryManager;
 using ILogger = LoggerService.ILogger;
 
 namespace WebAPI.ServiceExtensions;

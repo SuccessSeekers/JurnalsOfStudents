@@ -1,4 +1,6 @@
-﻿namespace StorageBroker.RepositoryManager;
+﻿using StorageBroker.Models;
+
+namespace StorageBroker.RepositoryManager;
 
 public interface IRepositoryManager
 {
@@ -7,6 +9,7 @@ public interface IRepositoryManager
     GroupRepository GroupRepository { get; }
     AttendanceLogRepository AttendanceLogRepository { get; }
     GradesLogRepository GradesLogRepository { get; }
+    StudentGroupRepository StudentGroupRepository { get; }
     void Save();
     Task SaveAsync();
 }

@@ -5,17 +5,36 @@
     <projectFile profileName="IIS Express">WebAPI/WebAPI.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aaabd197-24ba-4ddd-b825-1b51add124f8" name="Changes" comment="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;Backend/.vs/Backend/v17/.suo&#10;#&#9;Backend/Tests/obj/Debug/net6.0/Tests.csproj.AssemblyReference.cache&#10;#&#9;Backend/WebAPI/obj/Debug/net6.0/WebAPI.csproj.AssemblyReference.cache">
-      <change afterPath="$PROJECT_DIR$/StorageBroker/Dto/CreateGroupDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StorageBroker/Dto/UpdateGroupDto.cs" afterDir="false" />
+    <list default="true" id="aaabd197-24ba-4ddd-b825-1b51add124f8" name="Changes" comment="Created finally group controller">
+      <change afterPath="$PROJECT_DIR$/StorageBroker/Dto/GradesLogDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StorageBroker/Dto/StudentDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StorageBroker/Models/StudentGroup.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StorageBroker/RepositoryManager/StudentGroupRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Backend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoggerService/bin/Debug/net6.0/LoggerService.dll" beforeDir="false" afterPath="$PROJECT_DIR$/LoggerService/bin/Debug/net6.0/LoggerService.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoggerService/bin/Debug/net6.0/LoggerService.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/LoggerService/bin/Debug/net6.0/LoggerService.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LoggerService/obj/Debug/net6.0/LoggerService.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/LoggerService/obj/Debug/net6.0/LoggerService.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LoggerService/obj/Debug/net6.0/LoggerService.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/LoggerService/obj/Debug/net6.0/LoggerService.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoggerService/obj/Debug/net6.0/LoggerService.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/LoggerService/obj/Debug/net6.0/LoggerService.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoggerService/obj/Debug/net6.0/LoggerService.dll" beforeDir="false" afterPath="$PROJECT_DIR$/LoggerService/obj/Debug/net6.0/LoggerService.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoggerService/obj/Debug/net6.0/LoggerService.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/LoggerService/obj/Debug/net6.0/LoggerService.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LoggerService/obj/LoggerService.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/LoggerService/obj/LoggerService.csproj.nuget.dgspec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LoggerService/obj/LoggerService.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/LoggerService/obj/LoggerService.csproj.nuget.g.props" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LoggerService/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/LoggerService/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LoggerService/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/LoggerService/obj/project.nuget.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LoggerService/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/LoggerService/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageBroker/DataBaseContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/DataBaseContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageBroker/Migrations/20221217193838_Initial.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageBroker/Migrations/20221217193838_Initial.cs" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/Migrations/20221218154214_Initial.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageBroker/Migrations/20221217194938_StudentModelChanged.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageBroker/Migrations/20221217194938_StudentModelChanged.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageBroker/Migrations/20221218095846_third.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/Migrations/20221218154214_Initial.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageBroker/Migrations/20221218095846_third.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageBroker/Migrations/DataBaseContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/Migrations/DataBaseContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageBroker/Models/Group.cs" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/Models/Group.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageBroker/Models/Student.cs" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/Models/Student.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageBroker/RepositoryManager/IRepositoryManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/RepositoryManager/IRepositoryManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageBroker/RepositoryManager/RepositoryManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/RepositoryManager/RepositoryManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StorageBroker/bin/Debug/net6.0/StorageBroker.dll" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/bin/Debug/net6.0/StorageBroker.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StorageBroker/bin/Debug/net6.0/StorageBroker.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/bin/Debug/net6.0/StorageBroker.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/StorageBroker.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/StorageBroker/obj/Debug/net6.0/StorageBroker.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
@@ -39,16 +58,27 @@
       <change beforePath="$PROJECT_DIR$/Tests/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/project.nuget.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAPI/Controllers/GradesLogController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/Controllers/GradesLogController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebAPI/Controllers/GroupController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/Controllers/GroupController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAPI/Controllers/StudentController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/Controllers/StudentController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAPI/ServiceExtensions/AppExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/ServiceExtensions/AppExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/Log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/Log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/LoggerService.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/LoggerService.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/LoggerService.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/LoggerService.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/StorageBroker.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/StorageBroker.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/StorageBroker.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/StorageBroker.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/WebAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/WebAPI.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/WebAPI.exe" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/WebAPI.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/WebAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/bin/Debug/net6.0/WebAPI.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.MvcApplicationPartsAssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.MvcApplicationPartsAssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.assets.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.genruntimeconfig.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/WebAPI.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/apphost.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/ref/WebAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/ref/WebAPI.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/refint/WebAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/Debug/net6.0/refint/WebAPI.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebAPI/obj/WebAPI.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/obj/WebAPI.csproj.nuget.dgspec.json" afterDir="false" />
@@ -336,7 +366,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671366905636</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Created finally group controller">
+      <created>1671369404620</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1671369404621</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -409,6 +446,7 @@
     <MESSAGE value="Bugs fixed on GradesLogController.cs" />
     <MESSAGE value="some changes in AttendanceController.cs" />
     <MESSAGE value="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;Backend/.vs/Backend/v17/.suo&#10;#&#9;Backend/Tests/obj/Debug/net6.0/Tests.csproj.AssemblyReference.cache&#10;#&#9;Backend/WebAPI/obj/Debug/net6.0/WebAPI.csproj.AssemblyReference.cache" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;Backend/.vs/Backend/v17/.suo&#10;#&#9;Backend/Tests/obj/Debug/net6.0/Tests.csproj.AssemblyReference.cache&#10;#&#9;Backend/WebAPI/obj/Debug/net6.0/WebAPI.csproj.AssemblyReference.cache" />
+    <MESSAGE value="Created finally group controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created finally group controller" />
   </component>
 </project>

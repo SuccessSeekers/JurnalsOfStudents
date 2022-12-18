@@ -12,7 +12,7 @@ using StorageBroker;
 namespace StorageBroker.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20221217193838_Initial")]
+    [Migration("20221218154214_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,6 +23,21 @@ namespace StorageBroker.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("GroupTeacher", b =>
+                {
+                    b.Property<int>("TeacherGroupsGroupId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TeachersTeacherId")
+                        .HasColumnType("int");
+
+                    b.HasKey("TeacherGroupsGroupId", "TeachersTeacherId");
+
+                    b.HasIndex("TeachersTeacherId");
+
+                    b.ToTable("GroupTeacher");
+                });
 
             modelBuilder.Entity("StorageBroker.Models.AttendanceLog", b =>
                 {
@@ -103,6 +118,15 @@ namespace StorageBroker.Migrations
                     b.HasKey("GroupId");
 
                     b.ToTable("Groups");
+
+                    b.HasData(
+                        new
+                        {
+                            GroupId = 1,
+                            CountOfStudents = 17,
+                            Name = "B23",
+                            Status = 1
+                        });
                 });
 
             modelBuilder.Entity("StorageBroker.Models.Student", b =>
@@ -116,10 +140,11 @@ namespace StorageBroker.Migrations
                     b.Property<int?>("GroupId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("GroupId1")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Surname")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -127,9 +152,58 @@ namespace StorageBroker.Migrations
 
                     b.HasIndex("GroupId");
 
-                    b.HasIndex("GroupId1");
-
                     b.ToTable("Students");
+
+                    b.HasData(
+                        new
+                        {
+                            StudentId = 1,
+                            Name = "Elchin",
+                            Surname = "Uralov"
+                        },
+                        new
+                        {
+                            StudentId = 2,
+                            Name = "Diyor",
+                            Surname = "Abdumannonpov"
+                        });
+                });
+
+            modelBuilder.Entity("StorageBroker.Models.StudentGroup", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("GroupId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GroupId");
+
+                    b.HasIndex("StudentId");
+
+                    b.ToTable("StudentGroups");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            GroupId = 1,
+                            StudentId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            GroupId = 1,
+                            StudentId = 2
+                        });
                 });
 
             modelBuilder.Entity("StorageBroker.Models.Teacher", b =>
@@ -149,6 +223,21 @@ namespace StorageBroker.Migrations
                     b.ToTable("Teachers");
                 });
 
+            modelBuilder.Entity("GroupTeacher", b =>
+                {
+                    b.HasOne("StorageBroker.Models.Group", null)
+                        .WithMany()
+                        .HasForeignKey("TeacherGroupsGroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StorageBroker.Models.Teacher", null)
+                        .WithMany()
+                        .HasForeignKey("TeachersTeacherId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("StorageBroker.Models.AttendanceLog", b =>
                 {
                     b.HasOne("StorageBroker.Models.Group", "Group")
@@ -158,7 +247,7 @@ namespace StorageBroker.Migrations
                         .IsRequired();
 
                     b.HasOne("StorageBroker.Models.Student", "Student")
-                        .WithMany()
+                        .WithMany("Attendances")
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -177,7 +266,7 @@ namespace StorageBroker.Migrations
                         .IsRequired();
 
                     b.HasOne("StorageBroker.Models.Student", "Student")
-                        .WithMany()
+                        .WithMany("Grades")
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -192,17 +281,41 @@ namespace StorageBroker.Migrations
                     b.HasOne("StorageBroker.Models.Group", null)
                         .WithMany("Students")
                         .HasForeignKey("GroupId");
+                });
 
-                    b.HasOne("StorageBroker.Models.Group", null)
-                        .WithMany("Teachers")
-                        .HasForeignKey("GroupId1");
+            modelBuilder.Entity("StorageBroker.Models.StudentGroup", b =>
+                {
+                    b.HasOne("StorageBroker.Models.Group", "Group")
+                        .WithMany("StudentGroups")
+                        .HasForeignKey("GroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StorageBroker.Models.Student", "Student")
+                        .WithMany("StudentGroups")
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Group");
+
+                    b.Navigation("Student");
                 });
 
             modelBuilder.Entity("StorageBroker.Models.Group", b =>
                 {
-                    b.Navigation("Students");
+                    b.Navigation("StudentGroups");
 
-                    b.Navigation("Teachers");
+                    b.Navigation("Students");
+                });
+
+            modelBuilder.Entity("StorageBroker.Models.Student", b =>
+                {
+                    b.Navigation("Attendances");
+
+                    b.Navigation("Grades");
+
+                    b.Navigation("StudentGroups");
                 });
 #pragma warning restore 612, 618
         }

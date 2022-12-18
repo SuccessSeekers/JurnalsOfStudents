@@ -6165,19 +6165,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\99890\\.nuget\\packages\\": {}
+    "C:\\Users\\elchi\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\99890\\Documents\\JurnalsOfStudents\\Backend\\Tests\\Tests.csproj",
+      "projectUniqueName": "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\Tests\\Tests.csproj",
       "projectName": "Tests",
-      "projectPath": "C:\\Users\\99890\\Documents\\JurnalsOfStudents\\Backend\\Tests\\Tests.csproj",
-      "packagesPath": "C:\\Users\\99890\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\99890\\Documents\\JurnalsOfStudents\\Backend\\Tests\\obj\\",
+      "projectPath": "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\Tests\\Tests.csproj",
+      "packagesPath": "C:\\Users\\elchi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\Tests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\99890\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\elchi\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6191,8 +6191,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\99890\\Documents\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj": {
-              "projectPath": "C:\\Users\\99890\\Documents\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj"
+            "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj": {
+              "projectPath": "C:\\Users\\elchi\\Source\\Repos\\JurnalsOfStudents\\Backend\\LoggerService\\LoggerService.csproj"
             }
           }
         }
